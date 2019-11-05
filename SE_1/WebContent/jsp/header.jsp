@@ -14,7 +14,7 @@
 					<div class="col-lg-2 text-center text-lg-left">
 						<!-- logo -->
 						<a href="./index.jsp" class="site-logo">
-							<img src="img/logo3.png" alt="">
+							<img src="img/logo3.png" alt="" width="130px">
 						</a>
 					</div>
 					<div class="col-xl-6 col-lg-5">
