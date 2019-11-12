@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
 <%@ page import ="java.sql.*" %>
-<%@ page import ="product.ProductDAO" %>
+<%@ page import ="dao.ProductDAO" %>
 <!DOCTYPE html>
 <html>
 <head>

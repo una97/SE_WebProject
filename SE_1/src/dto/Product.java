@@ -4,85 +4,79 @@ import java.util.List;
 
 public class Product {
 
-    private Integer idx;
-    private String name;
-    private Integer price;
-    private String info;
+	private int id;
+	private String p_name;
+	private int p_price;
+	private String p_pic;
+	private int p_stock;
+	private String p_info;
+	private String p_category;
     
-    public Product(Integer idx, String name, Integer price, String picture, String info)
+    public Product(Integer idx, String name, Integer price, String picture, String info, Integer stock, String category)
     {
-        this.idx=idx;
-        this.name=name;
-        this.price=price;
-        this.imagepath=picture;
-        this.info=info;
+        this.id=idx;
+        this.p_name=name;
+        this.p_price=price;
+        this.p_pic=picture;
+        this.p_info=info;
+        this.p_stock = stock;
+        this.p_category=category;
         
     }
-    
-    public Integer getProductidx() { 
-        return idx; 
-    }
-    
-    public void setProductidx(Integer idx) { 
-        this.idx = idx; 
-    }
-    
-    public String getName() { 
-        return name; 
-    }
+    public int getId() {
+		return id;
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-    public Integer getPrice() { return price; }
-    
-    public void setPrice(Integer Price) { this.price = Price; }
-    
-    private String imagepath;
-    /*
-    private List<ImagePath> imagePaths;
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public List<ImagePath> getImagePaths() {
-        return imagePaths;
-    }
+	public String getP_name() {
+		return p_name;
+	}
 
-    public void setImagePaths(List<ImagePath> imagePaths) {
-        this.imagePaths = imagePaths;
-    }
-*/
-    public String getImagepath() {
-        return imagepath;
-    }
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
+	}
 
-    public void setImagepath(String imagepath) {
-        this.imagepath = imagepath == null ? null : imagepath.trim();
-    }
-    
-    private Integer sellerid;
-    private String sellername;
+	public int getP_price() {
+		return p_price;
+	}
 
-    public String getInfo() {
-        return info;
-    }
+	public void setP_price(int p_price) {
+		this.p_price = p_price;
+	}
 
-    public void setInfo(String Info) {
-        //this.info = Info == null ? null : Info.trim();
-    	this.info = Info;
-    }
+	public String getP_pic() {
+		return p_pic;
+	}
 
-    public Integer getSellerid() {
-        return sellerid;
-    }
+	public void setP_pic(String p_pic) {
+		this.p_pic = p_pic;
+	}
 
-    public void setSellerid(Integer sellerid) {
-        this.sellerid = sellerid;
-    }
+	public int getP_stock() {
+		return p_stock;
+	}
 
-    public String getSellername() {
-        return sellername;
-    }
+	public void setP_stock(int p_stock) {
+		this.p_stock = p_stock;
+	}
 
-    public void setSellername(String sellername) {
-        this.sellername = sellername == null ? null : sellername.trim();
-    }
+	public String getP_info() {
+		return p_info;
+	}
+
+	public void setP_info(String p_info) {
+		this.p_info = p_info;
+	}
+
+	public String getP_category() {
+		return p_category;
+	}
+
+	public void setP_category(String p_category) {
+		this.p_category = p_category;
+	}
+
 }

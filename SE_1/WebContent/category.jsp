@@ -209,7 +209,7 @@
 							<div class="product-item">
 								<div class="pi-pic">
 									<!--<div class="tag-sale">ON SALE</div>-->
-                                    <a href=product.jsp?idx=<%=pdDto.getProductidx() %>><img src=<%=imgPath+pdDto.getImagepath() %> alt=""></a>
+                                    <a href=product.jsp?idx=<%=pdDto.getId() %>><img src=<%="http://localhost:8080/SE_1/"+pdDto.getP_pic() %> alt=""></a>
 									<div class="pi-links">
 										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>장바구니</span></a>
 										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
@@ -217,8 +217,8 @@
 								</div>
 								<div class="pi-text">
                                     
-									<h6><%=pdDto.getPrice() %></h6>
-									<p><%=pdDto.getName() %></p>
+									<h6><%=pdDto.getP_price() %></h6>
+									<p><%=pdDto.getP_name() %></p>
                                     </a>
 								</div>
 							</div>
