@@ -1,9 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="dto.Product"%>
+<%@ include file="jsp/product_li.jsp" %>
+
+<%request.setCharacterEncoding("utf-8");%>
+
+
 <html>
 <head>
-	<title>Divisima | eCommerce Template</title>
+	<title></title>
 	<meta charset="UTF-8">
 	<meta name="description" content=" Divisima | eCommerce Template">
 	<meta name="keywords" content="divisima, eCommerce, creative, html">
@@ -60,31 +67,39 @@
 			<div class="row">
 				<div class="col-lg-3 order-2 order-lg-1">
 					<div class="filter-widget">
-						<h2 class="fw-title">Categories</h2>
+						<h2 class="fw-title">카테고리 목록</h2>
 						<ul class="category-menu">
-							<li><a href="#">Woman wear</a>
+							<li><a href="#">텐트/타프</a>
 								<ul class="sub-menu">
-									<li><a href="#">Midi Dresses <span>(2)</span></a></li>
-									<li><a href="#">Maxi Dresses<span>(56)</span></a></li>
-									<li><a href="#">Prom Dresses<span>(36)</span></a></li>
-									<li><a href="#">Little Black Dresses <span>(27)</span></a></li>
-									<li><a href="#">Mini Dresses<span>(19)</span></a></li>
+									<li><a href="#">텐트<span>(2)</span></a></li>
+									<li><a href="#">텐트 악세서리<span>(56)</span></a></li>
+									<li><a href="#">타프<span>(36)</span></a></li>
 								</ul>
 							</li>
-							<li><a href="#">Man Wear</a>
+							<li><a href="#">의자/테이블/가구</a>
 								<ul class="sub-menu">
-									<li><a href="#">Midi Dresses <span>(2)</span></a></li>
-									<li><a href="#">Maxi Dresses<span>(56)</span></a></li>
-									<li><a href="#">Prom Dresses<span>(36)</span></a></li>
+									<li><a href="#">의자<span>(2)</span></a></li>
+									<li><a href="#">테이블<span>(56)</span></a></li>
+									<li><a href="#">야전침대<span>(36)</span></a></li>
 								</ul></li>
-							<li><a href="#">Children</a></li>
-							<li><a href="#">Bags & Purses</a></li>
-							<li><a href="#">Eyewear</a></li>
-							<li><a href="#">Footwear</a></li>
+							<li><a href="#">침낭/매트</a>
+                            	<ul class="sub-menu">
+									<li><a href="#">침낭<span>(2)</span></a></li>
+									<li><a href="#">매트<span>(56)</span></a></li>
+                                </ul></li>
+							<li><a href="#">코펠/식기</a>
+                            	<ul class="sub-menu">
+									<li><a href="#">코펠<span>(2)</span></a></li>
+									<li><a href="#">식기<span>(56)</span></a></li>
+                                </ul></li>
+							<li><a href="#">버너/난로</a></li>
+							<li><a href="#">랜턴/후레쉬</a></li>
+                            <li><a href="#">화로대/가스/연료/장작</a></li>
+                            <li><a href="#">가방/케이스</a></li>
 						</ul>
 					</div>
 					<div class="filter-widget mb-0">
-						<h2 class="fw-title">refine by</h2>
+						<h2 class="fw-title">필터</h2>
 						<div class="price-range-wrap">
 							<h4>Price</h4>
                             <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="10" data-max="270">
@@ -103,7 +118,7 @@
                         </div>
 					</div>
 					<div class="filter-widget mb-0">
-						<h2 class="fw-title">color by</h2>
+						<h2 class="fw-title">색상</h2>
 						<div class="fw-color-choose">
 							<div class="cs-item">
 								<input type="radio" name="cs" id="gray-color">
@@ -144,7 +159,7 @@
 						</div>
 					</div>
 					<div class="filter-widget mb-0">
-						<h2 class="fw-title">Size</h2>
+						<h2 class="fw-title">크기</h2>
 						<div class="fw-size-choose">
 							<div class="sc-item">
 								<input type="radio" name="sc" id="xs-size">
@@ -173,7 +188,7 @@
 						</div>
 					</div>
 					<div class="filter-widget">
-						<h2 class="fw-title">Brand</h2>
+						<h2 class="fw-title">브랜드</h2>
 						<ul class="category-menu">
 							<li><a href="#">Abercrombie & Fitch <span>(2)</span></a></li>
 							<li><a href="#">Asos<span>(56)</span></a></li>
@@ -183,191 +198,35 @@
 						</ul>
 					</div>
 				</div>
-
+                <!-- 상품 판매란 -->
 				<div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
 					<div class="row">
+                        <%
+                        for(int i=0;i<pdDtos.size();i++){
+                            Product pdDto = pdDtos.get(i);
+                        %>
 						<div class="col-lg-4 col-sm-6">
 							<div class="product-item">
 								<div class="pi-pic">
-									<div class="tag-sale">ON SALE</div>
-									<img src="./img/product/6.jpg" alt="">
+									<!--<div class="tag-sale">ON SALE</div>-->
+                                    <a href=product.jsp?idx=<%=pdDto.getProductidx() %>><img src=<%=imgPath+pdDto.getImagepath() %> alt=""></a>
 									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>장바구니</span></a>
 										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 									</div>
 								</div>
 								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Black and White Stripes Dress</p>
+                                    
+									<h6><%=pdDto.getPrice() %></h6>
+									<p><%=pdDto.getName() %></p>
+                                    </a>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="./img/product/7.jpg" alt="">
-									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="./img/product/8.jpg" alt="">
-									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top </p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="./img/product/10.jpg" alt="">
-									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Black and White Stripes Dress</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="./img/product/11.jpg" alt="">
-									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="./img/product/12.jpg" alt="">
-									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top </p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="./img/product/5.jpg" alt="">
-									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="./img/product/9.jpg" alt="">
-									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="./img/product/1.jpg" alt="">
-									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top </p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<div class="tag-new">new</div>
-									<img src="./img/product/2.jpg" alt="">
-									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Black and White Stripes Dress</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="./img/product/3.jpg" alt="">
-									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top </p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="./img/product/4.jpg" alt="">
-									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top </p>
-								</div>
-							</div>
-						</div>
+                        <%
+                        }
+                        %>
+                        <!-- if문 -->
 						<div class="text-center w-100 pt-3">
 							<button class="site-btn sb-line sb-dark">LOAD MORE</button>
 						</div>
