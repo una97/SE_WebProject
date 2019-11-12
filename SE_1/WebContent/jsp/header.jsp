@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>header</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
 					<div class="col-lg-2 text-center text-lg-left">
 						<!-- logo -->
 						<a href="./index.jsp" class="site-logo">
-							<img src="img/logo3.png" alt="" width="130px">
+							<img src="img/logo.png" alt="" width="130px">
 						</a>
 					</div>
 					<div class="col-xl-6 col-lg-5">
@@ -29,14 +29,14 @@
 							<div class="up-item">
 								<br>
 								<i class="flaticon-profile"></i>
-								<a href="#">·Î±×ÀÎ</a> / <a href="#">È¸¿ø °¡ÀÔ</a>
+								<a href="login.jsp">ë¡œê·¸ì¸</a> / <a href="login.jsp">íšŒì› ê°€ìž…</a>
 							</div>
 							<div class="up-item">
 								<div class="shopping-card">
 									<i class="flaticon-bag"></i>
 									<span>0</span>
 								</div>
-								<a href="#">¼îÇÎ Ä«Æ®</a>
+								<a href="#">ì‡¼í•‘ ì¹´íŠ¸</a>
 							</div>
 						</div>
 					</div>
@@ -50,14 +50,14 @@
 					<li><a href="#">Home</a></li>
 					<li><a href="#">Camping shop</a>
 						<ul class="sub-menu">
-							<li><a href="#">ÅÙÆ®/Å¸ÇÁ</a></li>
-							<li><a href="#">ÀÇÀÚ/Å×ÀÌºí</a></li>
-							<li><a href="#">Ä§³¶/¸ÅÆ®</a></li>
-							<li><a href="#">ÄÚÆç/½Ä±â</a></li>
-							<li><a href="#">¹ö³Ê/³­·Î</a></li>
-							<li><a href="#">·£ÅÏ/ÈÄ·¹½¬</a></li>
-							<li><a href="#">È­·Î´ë/°¡½º/¿¬·á/ÀåÀÛ</a></li>
-							<li><a href="#">°¡¹æ/ÄÉÀÌ½º</a></li>
+							<li><a href="#">í…íŠ¸/íƒ€í”„</a></li>
+							<li><a href="#">ì˜ìž/í…Œì´ë¸”</a></li>
+							<li><a href="#">ì¹¨ë‚­/ë§¤íŠ¸</a></li>
+							<li><a href="#">ì½”íŽ /ì‹ê¸°</a></li>
+							<li><a href="#">ë²„ë„ˆ/ë‚œë¡œ</a></li>
+							<li><a href="#">ëžœí„´/í›„ë ˆì‰¬</a></li>
+							<li><a href="#">í™”ë¡œëŒ€/ê°€ìŠ¤/ì—°ë£Œ/ìž¥ìž‘</a></li>
+							<li><a href="#">ê°€ë°©/ì¼€ì´ìŠ¤</a></li>
 						</ul>
 					</li>
 					<li><a href="#">Sharing</a></li>
