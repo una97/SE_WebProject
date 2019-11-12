@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
+<%@ page import ="java.sql.*" %>
+<%@ page import ="product.ProductDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Divisima | eCommerce Template</title>
+	<title>DoCamp-캠핑용품샵</title>
 	<meta charset="UTF-8">
 	<meta name="description" content=" Divisima | eCommerce Template">
 	<meta name="keywords" content="divisima, eCommerce, creative, html">
@@ -50,9 +52,9 @@
 						<div class="col-xl-6 col-lg-7 text-white">
 							<span>New Arrivals</span>
 							<h2>Make your life simple</h2>
-							<p>ķ���� ó���̽Ű���?</p>
-							<a href="#" class="site-btn sb-line">ù ���� ���� �̺�Ʈ</a>
-							<a href="#" class="site-btn sb-white">ķ�� �Թ� ���̵�</a>
+							<p>캠핑은 처음이신가요?</p>
+							<a href="#" class="site-btn sb-line">첫 구매 할인 이벤트</a>
+							<a href="#" class="site-btn sb-white">캠핑 입문 가이드</a>
 						</div>
 					</div>
 				</div>
@@ -63,15 +65,15 @@
 						<div class="col-xl-6 col-lg-7 text-white">
 							<span>New Arrivals</span>
 							<h2>Camp Time</h2>
-							<p>�ͳν� ����ġ �˾� ��Ʈ! ��ġ�� ������ �˾������� �����⸸ �ϸ� �ϼ��Ǵ� �ϸ� 1�� ��Ʈ�Դϴ�.</p>
-							<a href="#" class="site-btn sb-line">�ڼ��� ����</a>
-							<a href="#" class="site-btn sb-white">īƮ�� ���</a>
+							<p>터널식 원터치 팝업 텐트! 설치가 간편한 팝업식으로 던지기만 하면 완성되는 일명 1초 텐트입니다.</p>
+							<a href="#" class="site-btn sb-line">자세히 보기</a>
+							<a href="#" class="site-btn sb-white">카트에 담기</a>
 						</div>
 					</div>
 					<div class="offer-card text-white">
 						<br>
-						<h3>33,000��</h3>
-						<h3>����</h3>
+						<h3>33,000원</h3>
+						<h3>부터</h3>
 					</div>
 				</div>
 			</div>
@@ -93,7 +95,7 @@
 						<div class="feature-icon">
 							<img src="img/icons/1.png" alt="#">
 						</div>
-						<h2>Fast Secure Payments</h2>
+						<h2>빠르고 안전한 결제</h2>
 					</div>
 				</div>
 				<div class="col-md-4 p-0 feature">
@@ -101,7 +103,7 @@
 						<div class="feature-icon">
 							<img src="img/icons/2.png" alt="#">
 						</div>
-						<h2>Premium Products</h2>
+						<h2>프리미엄 상품</h2>
 					</div>
 				</div>
 				<div class="col-md-4 p-0 feature">
@@ -109,7 +111,7 @@
 						<div class="feature-icon">
 							<img src="img/icons/3.png" alt="#">
 						</div>
-						<h2>Free & fast Delivery</h2>
+						<h2>빠른 배송</h2>
 					</div>
 				</div>
 			</div>
@@ -124,217 +126,78 @@
 				<h2>LATEST PRODUCTS</h2>
 			</div>
 			<div class="product-slider owl-carousel">
+			<%
+				ProductDAO pd = new ProductDAO();
+				String sql = "select * from product";
+				ResultSet rs = pd.getResult(sql);
+				if(rs == null){
+					out.println("DB 연동 오류입니다");
+				}
+				while(rs.next()){
+					String img="http://localhost:8080/SE_1/"+rs.getString("p_pic");
+			%>
 				<div class="product-item">
 					<div class="pi-pic">
-						<img src="./img/product/1.jpg" alt="">
+						<img src=<%=img%> alt="">
 						<div class="pi-links">
 							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
 							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 						</div>
 					</div>
 					<div class="pi-text">
-						<h6>$35,00</h6>
-						<p>Flamboyant Pink Top </p>
+						<h6><%=rs.getString("p_price") %>원</h6>
+						<p><%=rs.getString("p_name") %> </p>
 					</div>
 				</div>
-				<div class="product-item">
-					<div class="pi-pic">
-						<div class="tag-new">New</div>
-						<img src="./img/product/2.jpg" alt="">
-						<div class="pi-links">
-							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-						</div>
-					</div>
-					<div class="pi-text">
-						<h6>$35,00</h6>
-						<p>Black and White Stripes Dress</p>
-					</div>
-				</div>
-				<div class="product-item">
-					<div class="pi-pic">
-						<img src="./img/product/3.jpg" alt="">
-						<div class="pi-links">
-							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-						</div>
-					</div>
-					<div class="pi-text">
-						<h6>$35,00</h6>
-						<p>Flamboyant Pink Top </p>
-					</div>
-				</div>
-				<div class="product-item">
-						<div class="pi-pic">
-							<img src="./img/product/4.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				<div class="product-item">
-						<div class="pi-pic">
-							<img src="./img/product/6.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
+			<%
+				}
+			%>
 			</div>
 		</div>
 	</section>
 	<!-- letest product section end -->
-
-
-
 	<!-- Product filter section -->
 	<section class="product-filter-section">
 		<div class="container">
 			<div class="section-title">
-				<h2>BROWSE TOP SELLING PRODUCTS</h2>
+				<h2>TOP SELLING PRODUCTS</h2>
 			</div>
 			<ul class="product-filter-menu">
-				<li><a href="#">TOPS</a></li>
-				<li><a href="#">JUMPSUITS</a></li>
-				<li><a href="#">LINGERIE</a></li>
-				<li><a href="#">JEANS</a></li>
-				<li><a href="#">DRESSES</a></li>
-				<li><a href="#">COATS</a></li>
-				<li><a href="#">JUMPERS</a></li>
-				<li><a href="#">LEGGINGS</a></li>
+				<li><a href="#">텐트/타프</a></li>
+				<li><a href="#">의자/테이블</a></li>
+				<li><a href="#">침낭/매트</a></li>
+				<li><a href="#">코펠/식기</a></li>
+				<li><a href="#">버너/난로</a></li>
+				<li><a href="#">랜턴/후레쉬</a></li>
+				<li><a href="#">가방/케이스</a></li>
+				<li><a href="#">ect</a></li>
 			</ul>
+			
 			<div class="row">
+			<%
+				rs.beforeFirst();
+				for(int i=0;i<6;i++){
+					rs.next();
+					String img="http://localhost:8080/SE_1/"+rs.getString("p_pic");
+			%>
 				<div class="col-lg-3 col-sm-6">
 					<div class="product-item">
 						<div class="pi-pic">
-							<img src="./img/product/5.jpg" alt="">
+							<img src=<%=img %> alt="">
 							<div class="pi-links">
 								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 							</div>
 						</div>
 						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
+							<h6><%=rs.getString("p_price")%>원</h6>
+							<p><%=rs.getString("p_name") %></p>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<div class="tag-sale">ON SALE</div>
-							<img src="./img/product/6.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Black and White Stripes Dress</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="./img/product/7.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="./img/product/8.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="./img/product/9.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="./img/product/10.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Black and White Stripes Dress</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="./img/product/11.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="./img/product/12.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				</div>
+			<%
+				}	
+			%>
 			</div>
 			<div class="text-center pt-5">
 				<button class="site-btn sb-line sb-dark">LOAD MORE</button>
