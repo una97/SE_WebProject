@@ -9,9 +9,9 @@ public class ProductDAO {
 	
 	public ProductDAO() {
 		try {
-			String dbURL ="jdbc:mysql://localhost:3306/sw_docamp?serverTimezone=UTC";
-			String dbID ="root";
-			String dbPassword ="anything99!";
+			String dbURL ="jdbc:mysql://docamp.cgxcxscgnhfb.us-east-2.rds.amazonaws.com:3306/docamp?serverTimezone=UTC";
+			String dbID ="egg";
+			String dbPassword ="12345678";
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 		}catch(Exception e) {
