@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,11 +45,8 @@
 	<!-- Page info -->
 	<div class="page-top-info">
 		<div class="container">
-			<h4>Your cart</h4>
-			<div class="site-pagination">
-				<a href="">Home</a> /
-				<a href="">Your cart</a>
-			</div>
+			<h4>쇼핑 카트 </h4>
+            <img src="img/cart/cart.png" alt="">
 		</div>
 	</div>
 	<!-- Page info end -->
@@ -60,15 +57,15 @@
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="cart-table">
-						<h3>Your Cart</h3>
+						<h3>담은 내역</h3>
 						<div class="cart-table-warp">
 							<table>
 							<thead>
 								<tr>
-									<th class="product-th">Product</th>
-									<th class="quy-th">Quantity</th>
-									<th class="size-th">SizeSize</th>
-									<th class="total-th">Price</th>
+									<th class="product-th">상품</th>
+									<th class="quy-th">수량</th>
+									<th class="size-th">사이즈</th>
+									<th class="total-th">가격</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -130,17 +127,13 @@
 						</table>
 						</div>
 						<div class="total-cost">
-							<h6>Total <span>$99.90</span></h6>
+							<h6>합계 <span>$99.90</span></h6>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 card-right">
-					<form class="promo-code-form">
-						<input type="text" placeholder="Enter promo code">
-						<button>Submit</button>
-					</form>
-					<a href="" class="site-btn">Proceed to checkout</a>
-					<a href="" class="site-btn sb-dark">Continue shopping</a>
+					<a href="" class="site-btn">결제 하기</a>
+					<a href="" class="site-btn sb-dark">쇼핑 계속하기</a>
 				</div>
 			</div>
 		</div>
