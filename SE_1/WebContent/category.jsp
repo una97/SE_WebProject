@@ -6,7 +6,14 @@
 <%@ include file="jsp/product_li.jsp" %>
 
 <%request.setCharacterEncoding("utf-8");%>
-
+<% 
+	int cnt;
+	try{
+	cnt = Integer.parseInt(request.getParameter("cnt"));
+	}catch(Exception e){
+		cnt = 0;
+	}
+%>
 
 <html>
 <head>
@@ -32,12 +39,10 @@
 	<link rel="stylesheet" href="css/animate.css"/>
 	<link rel="stylesheet" href="css/style.css"/>
 
-
 	<!--[if lt IE 9]>
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -200,11 +205,14 @@
 				</div>
                 <!-- 상품 판매란 -->
 				<div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
+				<input type="hidden" name="viewCount" id="viewCount" value="0">
+				<input type="hidden" name="startCount" i="startCount" value="0">
 					<div class="row">
-                        <%
-                        for(int i=0;i<pdDtos.size();i++){
+                    <%
+                        int size = pdDtos.size();
+                        for(int i=0;i<size;i++){
                             Product pdDto = pdDtos.get(i);
-                        %>
+                    %>
 						<div class="col-lg-4 col-sm-6">
 							<div class="product-item">
 								<div class="pi-pic">
@@ -223,13 +231,9 @@
 								</div>
 							</div>
 						</div>
-                        <%
+						<%
                         }
                         %>
-                        <!-- if문 -->
-						<div class="text-center w-100 pt-3">
-							<button class="site-btn sb-line sb-dark">LOAD MORE</button>
-						</div>
 					</div>
 				</div>
 			</div>
