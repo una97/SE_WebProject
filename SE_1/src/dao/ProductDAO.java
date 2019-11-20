@@ -21,7 +21,7 @@ public class ProductDAO {
 		}
 	}
         
-    public ArrayList<Product> productSelect(){
+    public ArrayList<Product> productSelect(String q){
         ResultSet rs=null;
         Statement stmt = null;
 
@@ -29,7 +29,7 @@ public class ProductDAO {
         try{
             conn = DriverManager.getConnection(url, "egg", "12345678");
             stmt = conn.createStatement();
-            rs = stmt.executeQuery("select * from product");
+            rs = stmt.executeQuery(q);
             while(rs.next()){
                 Integer idx = rs.getInt("id");
                 String name = rs.getString("p_name");

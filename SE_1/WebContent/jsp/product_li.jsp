@@ -6,6 +6,5 @@
 <%@ page import="dto.Product"%>
 <jsp:useBean id="pdDAO" class="dao.ProductDAO"/>
 <%
-    String imgPath = "dbimg/";
-    ArrayList<Product> pdDtos = pdDAO.productSelect();
+    ArrayList<Product> pdDtos = pdDAO.productSelect("select * from product");
 %>

@@ -5,7 +5,6 @@
 <%request.setCharacterEncoding("utf-8");%>
 <%@ page import="dto.Product"%>
 <%@ include file="jsp/product_li.jsp" %>
-
  
 <html>
 <head>
@@ -41,7 +40,7 @@
     	String idx_s = request.getParameter("idx");
     	out.print(idx_s);
         int idx = Integer.parseInt(idx_s);
-        Product pdDto = pdDtos.get(idx-1);
+        Product pdDto = pdDtos.get(idx);
     %>
     </script>
 </head>
@@ -64,7 +63,7 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="product-pic-zoom">
-						<img class="product-big-img" src=<%=imgPath+pdDto.getImagepath() %> alt="">
+						<img class="product-big-img" src=<%=pdDto.getP_pic() %> alt="">
 					</div>
                     <!--
 					<div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
@@ -78,8 +77,8 @@
 					-->
 				</div>
 				<div class="col-lg-6 product-details">
-					<h2 class="p-title"><%=pdDto.getName() %></h2>
-					<h3 class="p-price"><%=pdDto.getPrice() %></h3>
+					<h2 class="p-title"><%=pdDto.getP_name() %></h2>
+					<h3 class="p-price"><%=pdDto.getP_price() %></h3>
 					<h4 class="p-stock">Available: <span>In Stock</span></h4>
 					<div class="p-rating">
 						<i class="fa fa-star-o"></i>
@@ -104,41 +103,24 @@
 							</div>
 							<div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
 								<div class="panel-body">
-									<img class="product-info-img" src=<%=imgPath+pdDto.getInfo() %> alt="">
-								</div>
-							</div>
-						</div>
-						<div class="panel">
-							<div class="panel-header" id="headingTwo">
-								<button class="panel-link" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">care details </button>
-							</div>
-							<div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-								<div class="panel-body">
-									<img src="./img/cards.png" alt="">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so dales. Phasellus sagittis auctor gravida. Integer bibendum sodales arcu id te mpus. Ut consectetur lacus leo, non scelerisque nulla euismod nec.</p>
-								</div>
-							</div>
-						</div>
-						<div class="panel">
-							<div class="panel-header" id="headingThree">
-								<button class="panel-link" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">shipping & Returns</button>
-							</div>
-							<div id="collapse3" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-								<div class="panel-body">
-									<h4>7 Days Returns</h4>
-									<p>Cash on Delivery Available<br>Home Delivery <span>3 - 4 days</span></p>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so dales. Phasellus sagittis auctor gravida. Integer bibendum sodales arcu id te mpus. Ut consectetur lacus leo, non scelerisque nulla euismod nec.</p>
+									<img class="product-info-img" src=<%=pdDto.getP_info() %> alt="">
 								</div>
 							</div>
 						</div>
 					</div>
+				</div>
 			</div>
-		</div>
 	</section>
 	<!-- product section end -->
 	
+	<!-- review section -->
+	
+	<!-- review section end -->
+	
 	<!-- RELATED PRODUCTS section -->
-	<jsp:include page="jsp/relatedProducts.jsp" flush="false"/>
+	<jsp:include page="jsp/relatedProducts.jsp">
+		<jsp:param name="category" value="<%=pdDto.getP_category() %>"/> 
+	</jsp:include>
 	<!-- RELATED PRODUCTS section end -->
 	
 	<!-- Footer section -->
