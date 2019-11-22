@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="UTF-8"%>
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,9 +45,10 @@
 	<!-- Page info -->
 	<div class="page-top-info">
 		<div class="container">
-			<h4>주문/결제</h4>
+			<h4>Your cart</h4>
 			<div class="site-pagination">
-			  <img src="img/cart/order.png" alt="">
+				<a href="">Home</a> /
+				<a href="">Your cart</a>
 			</div>
 		</div>
 	</div>
@@ -59,46 +60,40 @@
 			<div class="row">
 				<div class="col-lg-8 order-2 order-lg-1">
 					<form class="checkout-form">
-                        <div class="cf-title">주문자 정보</div>
-						<div class="row address-inputs">
-							<div class="col-md-6">
-								<input type="text" placeholder="이름">
+						<div class="cf-title">Billing Address</div>
+						<div class="row">
+							<div class="col-md-7">
+								<p>*Billing Information</p>
 							</div>
-							<div class="col-md-6">
-								<input type="text" placeholder="휴대전화">
-							</div>
-							<div class="col-md-6">
-								<input type="text" placeholder="이메일">
+							<div class="col-md-5">
+								<div class="cf-radio-btns address-rb">
+									<div class="cfr-item">
+										<input type="radio" name="pm" id="one">
+										<label for="one">Use my regular address</label>
+									</div>
+									<div class="cfr-item">
+										<input type="radio" name="pm" id="two">
+										<label for="two">Use a different address</label>
+									</div>
+								</div>
 							</div>
 						</div>
-						<div class="cf-title">
-                            배송지 정보 &nbsp;
-                        <input type="radio" name="pm" id="one"> <!--이 부분 -->
-						<label for="one">주문자 정보와 동일</label>
-                        </div>
-						
 						<div class="row address-inputs">
 							<div class="col-md-12">
-								<input type="text" placeholder="도로명 주소">
-								<input type="text" placeholder="상세 주소">
+								<input type="text" placeholder="Address">
+								<input type="text" placeholder="Address line 2">
+								<input type="text" placeholder="Country">
 							</div>
 							<div class="col-md-6">
-								<input type="text" placeholder="휴대 전화">
+								<input type="text" placeholder="Zip code">
 							</div>
-                            <div class="col-md-12">
-								<input type="text" placeholder="배송 시 요구사항">
+							<div class="col-md-6">
+								<input type="text" placeholder="Phone no.">
 							</div>
-							
 						</div>
-						<div class="cf-title">쿠폰 사용</div>
+						<div class="cf-title">Delievery Info</div>
 						<div class="row shipping-btns">
-                            
-                            <!-- <h4>사용 가능한 쿠폰 조회</h4> -->
-                            	<div class="col-md-3">
-                                    <!-- <button href="#">사용가능한 쿠폰 조회 </button> -->
-								<input type="text" placeholder="사용 가능한 쿠폰 조회">
-							</div>
-							<!-- <div class="col-6">
+							<div class="col-6">
 								<h4>Standard</h4>
 							</div>
 							<div class="col-6">
@@ -119,37 +114,20 @@
 										<label for="ship-2">$3.45</label>
 									</div>
 								</div>
-							</div> -->
+							</div>
 						</div>
-						<div class="cf-title">결제</div>
+						<div class="cf-title">Payment</div>
 						<ul class="payment-list">
-							<!-- <li>신용카드(일반)<a href="#"><img src="img/cart/kb.png" alt=""><img src="img/cart/hd.png" alt=""><img src="img/cart/samsung.png" alt=""><img src="img/cart/lotte.png" alt=""><img src="img/cart/nh.png" alt=""></a></li>
-							<li>간편결제<a href="#"><img src="img/mastercart.png" alt=""></a></li> -->
-                             <input type="radio" name="pay" id="normal"> <!--이 부분 -->
-						        <label for="one">신용카드(일반)&nbsp;&nbsp;<img src="img/cart/kb.png" width="100px"height="100px"alt=""><img src="img/cart/hd.png"  width="100px"height="100px"alt=""><img src="img/cart/samsung.png" width="100px"height="100px" alt=""><img src="img/cart/lotte.png" width="100px"height="100px" alt=""></label>
-                            <br>
-                            <input type="radio" name="pay" id="easy"> <!--이 부분 -->
-						        <label for="one">간편결제</label>
-							<li>
-                                할부방식 
-                            <select>
-                              <option value="3">3개월</option>
-                              <option value="6">6개월</option>
-                              <option value="12">12개월</option>
-                              <option value="free">무이자</option>
-                            </select>
-                            </li>
+							<li>Paypal<a href="#"><img src="img/paypal.png" alt=""></a></li>
+							<li>Credit / Debit card<a href="#"><img src="img/mastercart.png" alt=""></a></li>
+							<li>Pay when you get the package</li>
 						</ul>
-						<button class="site-btn submit-order-btn">결제하기</button>
+						<button class="site-btn submit-order-btn">Place Order</button>
 					</form>
-                    
-                    
-                    
-                    
 				</div>
 				<div class="col-lg-4 order-1 order-lg-2">
 					<div class="checkout-cart">
-						<h3>장바구니</h3>
+						<h3>Your Cart</h3>
 						<ul class="product-list">
 							<li>
 								<div class="pl-thumb"><img src="img/cart/1.jpg" alt=""></div>
@@ -163,9 +141,9 @@
 							</li>
 						</ul>
 						<ul class="price-list">
-							<li>합계<span>$99.90</span></li>
-							<li>배송비<span>free</span></li>
-							<li class="total">합계<span>$99.90</span></li>
+							<li>Total<span>$99.90</span></li>
+							<li>Shipping<span>free</span></li>
+							<li class="total">Total<span>$99.90</span></li>
 						</ul>
 					</div>
 				</div>
