@@ -107,15 +107,17 @@
 								</div>
 							</div>
 						</div>
+				
+				<!-- review section -->
+						<jsp:include page="jsp/review.jsp" flush="false"/>
+						</div>
+				<!-- review section end -->
 					</div>
 				</div>
 			</div>
 	</section>
 	<!-- product section end -->
-	
-	<!-- review section -->
-	
-	<!-- review section end -->
+
 	
 	<!-- RELATED PRODUCTS section -->
 	<jsp:include page="jsp/relatedProducts.jsp">
