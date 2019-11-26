@@ -207,7 +207,7 @@
 		            <div class="products_reviews_list_review__info_title">별점</div>
 		            <div class="products_reviews_list_review__info_value">
 		              
-		                회원
+		               3개
 		              
 		            </div>
 		          </li>

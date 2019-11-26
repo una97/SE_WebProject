@@ -56,8 +56,8 @@
 			<div class="container">
 				<!-- menu -->
 				<ul class="main-menu">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Camping shop</a>
+					<li><a href="./index.jsp">Home</a></li>
+					<li><a href="./category.jsp">Camping shop</a>
 						<ul class="sub-menu">
 							<li><a href="#">텐트/타프</a></li>
 							<li><a href="#">의자/테이블</a></li>
