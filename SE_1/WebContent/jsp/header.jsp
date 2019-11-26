@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.io.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,11 +27,19 @@
 					</div>
 					<div class="col-xl-4 col-lg-5">
 						<div class="user-panel">
+						<%if(session.getAttribute("u_id")==null){ //로그인 안 된 경우 %>
 							<div class="up-item">
 								<br>
 								<i class="flaticon-profile"></i>
-								<a href="login.jsp">로그인</a> / <a href="login.jsp">회원 가입</a>
+								<a href="login.jsp">로그인</a> / <a href="register.jsp">회원 가입</a>
 							</div>
+						<%}else{ %>
+							<div class="up-item">
+								<br>
+								<i class="flaticon-profile"></i>
+								<a href="mypage.jsp"><%=session.getAttribute("u_id")%>님</a> / <a href="logoutAction.jsp">로그아웃</a>
+							</div>
+						<%} %>
 							<div class="up-item">
 								<div class="shopping-card">
 									<i class="flaticon-bag"></i>

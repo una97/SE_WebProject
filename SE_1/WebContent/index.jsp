@@ -85,40 +85,6 @@
 	<!-- Hero section end -->
 
 
-
-	<!-- Features section -->
-	<section class="features-section">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-4 p-0 feature">
-					<div class="feature-inner">
-						<div class="feature-icon">
-							<img src="img/icons/1.png" alt="#">
-						</div>
-						<h2>빠르고 안전한 결제</h2>
-					</div>
-				</div>
-				<div class="col-md-4 p-0 feature">
-					<div class="feature-inner">
-						<div class="feature-icon">
-							<img src="img/icons/2.png" alt="#">
-						</div>
-						<h2>프리미엄 상품</h2>
-					</div>
-				</div>
-				<div class="col-md-4 p-0 feature">
-					<div class="feature-inner">
-						<div class="feature-icon">
-							<img src="img/icons/3.png" alt="#">
-						</div>
-						<h2>빠른 배송</h2>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Features section end -->
-
 	<!-- letest product section -->
 	<section class="top-letest-product-section">
 		<div class="container">
@@ -205,10 +171,6 @@
 		</div>
 	</section>
 	<!-- Product filter section end -->
-
-	<!-- Banner section -->
-	<jsp:include page="jsp/banner.jsp" flush="false"/>
-	<!-- Banner section end  -->
 
 	<!-- Footer section -->
 	<jsp:include page="jsp/footer.jsp" flush="false"/>
