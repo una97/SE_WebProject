@@ -31,7 +31,7 @@ public class ProductDAO {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(q);
             while(rs.next()){
-                Integer idx = rs.getInt("id");
+                Integer idx = rs.getInt("p_id");
                 String name = rs.getString("p_name");
                 Integer price = rs.getInt("p_price");
                 String picture = rs.getString("p_pic");
@@ -60,7 +60,7 @@ public class ProductDAO {
 			Statement stmt=conn.createStatement();
 			rs=stmt.executeQuery(sql);
 		}catch(Exception e) {
-			System.out.println("DB¿¬µ¿ ¿À·ùÀÔ´Ï´Ù : "+e.getMessage());
+			System.out.println("DBï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½ : "+e.getMessage());
 		}
 		return rs;
 	}

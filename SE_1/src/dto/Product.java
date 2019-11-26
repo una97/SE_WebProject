@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Product {
 
-	private int id;
+	private int p_id;
 	private String p_name;
 	private int p_price;
 	private String p_pic;
@@ -14,7 +14,7 @@ public class Product {
     
     public Product(Integer idx, String name, Integer price, String picture, String info, Integer stock, String category)
     {
-        this.id=idx;
+        this.p_id=idx;
         this.p_name=name;
         this.p_price=price;
         this.p_pic=picture;
@@ -24,11 +24,11 @@ public class Product {
         
     }
     public int getId() {
-		return id;
+		return p_id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.p_id = id;
 	}
 
 	public String getP_name() {
