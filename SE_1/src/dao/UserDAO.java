@@ -29,15 +29,15 @@ public class UserDAO {
 		}
 		return rs;
 	}
-    public String findName(String userEmail) {
-    	String SQL = "select u_id from user where u_email = ?"; 
+    public String findName(String u_id) {
+    	String SQL = "select u_name from user where u_id = ?"; 
     	String name="";
     	   try {
     	      pstmt = conn.prepareStatement(SQL);
-    	      pstmt.setString(1, userEmail);
+    	      pstmt.setString(1, u_id);
     	      rs= pstmt.executeQuery();
     	      while(rs.next())
-    	    	  name=rs.getString("u_id");
+    	    	  name=rs.getString("u_name");
     	      return name;
     	   }catch(Exception e) {
     	      e.printStackTrace();

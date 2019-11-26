@@ -37,7 +37,7 @@
 							<div class="up-item">
 								<br>
 								<i class="flaticon-profile"></i>
-								<a href="mypage.jsp"><%=session.getAttribute("u_id")%>님</a> / <a href="logoutAction.jsp">로그아웃</a>
+								<a href="mypage.jsp"><%=session.getAttribute("u_name")%>님</a> / <a href="logoutAction.jsp">로그아웃</a>
 							</div>
 						<%} %>
 							<div class="up-item">
@@ -57,7 +57,7 @@
 				<!-- menu -->
 				<ul class="main-menu">
 					<li><a href="#">Home</a></li>
-					<li><a href="#">Camping shop</a>
+					<li><a href="category.jsp">Camping shop</a>
 						<ul class="sub-menu">
 							<li><a href="#">텐트/타프</a></li>
 							<li><a href="#">의자/테이블</a></li>
