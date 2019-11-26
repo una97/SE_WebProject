@@ -66,7 +66,7 @@ public class UserDAO {
     }
 
     public int join(User user) {//회원가입
-       String SQL = "insert into user values(?,?,?,?,?,?)";
+       String SQL = "insert into user values(?,?,?,?,?,?,?)";
        try {
           pstmt=conn.prepareStatement(SQL);
           pstmt.setString(1, user.getU_id());
@@ -75,6 +75,7 @@ public class UserDAO {
           pstmt.setString(4, user.getU_address());
           pstmt.setString(5, user.getU_tel());
           pstmt.setString(6, user.getU_email());
+          pstmt.setInt(7, user.getU_auth());
           return pstmt.executeUpdate();
        }catch(Exception e) {
           e.printStackTrace();

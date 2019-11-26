@@ -36,6 +36,7 @@
 			} else { //회원가입이 된 경우
 				session.setAttribute("u_id", user.getU_id());
 				String u_id = (String) session.getAttribute("u_id");
+				session.setAttribute("u_name",userDAO.findName(u_id));
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
 				script.println("alert('회원가입이 완료되었습니다!')");
