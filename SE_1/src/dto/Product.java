@@ -23,11 +23,11 @@ public class Product {
         this.p_category=category;
         
     }
-    public int getId() {
+    public int getP_id() {
 		return p_id;
 	}
 
-	public void setId(int id) {
+	public void setP_id(int id) {
 		this.p_id = id;
 	}
 
