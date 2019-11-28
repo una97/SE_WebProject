@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -25,9 +24,6 @@
       .review_comment_color {
         color: #6db67e;
       }
-      .products_reviews_form{
-      		margin: 0 0 30 0;
-      }
       .panel-link2{
       	text-align: left;
 		position: relative;
@@ -49,11 +45,7 @@
       	padding: 20 20 20 20;
       }
     </style>
-    
-    
 
-    
-    
     <script>
       function fimg(id, w, h) {
         var img = document.getElementById(id);
@@ -141,8 +133,8 @@
 	              </div>
 	            </a>
 	          </li>
-      
-	          <li class="score_summary__score_filter " data-score="2">
+      	      
+      	      <li class="score_summary__score_filter " data-score="2">
 	            <a class="js-link-score">
 	              <div class="score_summary__score_filter__title">2 Stars</div>
 	              <div class="score_summary__score_filter__status">
@@ -154,10 +146,9 @@
 	              </div>
 	            </a>
 	          </li>
-      
 	          <li class="score_summary__score_filter " data-score="1">
 	            <a class="js-link-score">
-	              <div class="score_summary__score_filter__title">1 Star</div>
+	              <div class="score_summary__score_filter__title">1 Stars</div>
 	              <div class="score_summary__score_filter__status">
 	                <div class="score_summary__score_filter__count">(1)</div>
 	                <div class="score_summary__score_filter__check sprites-check"></div>
@@ -167,6 +158,7 @@
 	              </div>
 	            </a>
 	          </li>
+     
     		</ul>
  		 </div>
 		</div>
@@ -188,6 +180,7 @@
   	  <div class="products_reviews_header__separator"></div>
   	</div>
   </div>
+  
   <div class="widget_reviews__body products_reviews_list__body">
     <div class="page">
   	  <ul class="reviews reviews-product">
@@ -207,7 +200,7 @@
 		            <div class="products_reviews_list_review__info_title">별점</div>
 		            <div class="products_reviews_list_review__info_value">
 		              
-		                회원
+		               3개
 		              
 		            </div>
 		          </li>
@@ -227,18 +220,11 @@
 		        </div>
 	      	  </div>
       <div class="products_reviews_list_review__content review_content ">
-        <div class="products_reviews_list_review__content_inner review_content__collapsed">
           <div class="products_reviews_list_review__message">
-            <a class="js-link-expand">
-              <div class="review_message review_message--collapsed review_message--collapsed3">
                 
                   
                   제가 진짜 종아리 알이 너무 튀어나와서 m살까 s살까 정말 많이 고민했는데 s사서 정말 다행이에요 m샀으면 너무 컸고 s도 딱 사이즈도 좋고 옆에가 트여있어서 그런지 종아리에도 안 닿아서 너무 좋아요 한가지 흠이 있다면 허리가 너무 크다는 거..? 근데 그건 벨트 하면 되니까 괜찮습니다 그거 빼곤 다 좋아요 인터넷에서 바지 처음으로 사 보는데 진짜 만족했습니다! 많이파세요♡
                 
-              </div>
- 
-            </a>
- 
           </div>
           <div class="products_reviews_list_review__foot">
             <div class="products_reviews_list_review__actions">
@@ -271,56 +257,25 @@
 			</div>
             </div>
           </div>
-        </div>
-        <div class="products_reviews_list_review__content_inner review_content__expanded">
-          <div class="products_reviews_list_review__message">
-            <div class="products_reviews_list_review__message_content">
-              제가 진짜 종아리 알이 너무 튀어나와서 m살까 s살까 정말 많이 고민했는데 s사서 정말 다행이에요 m샀으면 너무 컸고 s도 딱 사이즈도 좋고 옆에가 트여있어서 그런지 종아리에도 안 닿아서 너무 좋아요 한가지 흠이 있다면 허리가 너무 크다는 거..? 근데 그건 벨트 하면 되니까 괜찮습니다 그거 빼곤 다 좋아요 인터넷에서 바지 처음으로 사 보는데 진짜 만족했습니다! 많이파세요♡
-              
-
-            </div>
-          </div>
           <div class="products_reviews_list_review__foot">
-            <div class="products_reviews_list_review__actions">
-              <a class="products_reviews_list_review__comments_link mall-link-color js-link-collapse">리뷰 접기</a>
-              <div class="products_reviews_list_review__divider">|</div>
-              <div
-				  class="review_like_action js-like-action "
-				  data-like-action-class="review_like_action"
-				  data-url="/uniqueon.co.kr/reviews/41739/like?widget_env=100"
-				>
-			  <div class="review_like_action__label">이 리뷰가 도움이 되었나요?</div>
-			  <div class="review_like_action__buttons">
-			    <a class="review_like_action__button review_like_action__button--like js-link-like">네</a>
-			    <a class="review_like_action__button review_like_action__button--unlike js-link-unlike">아니요</a>
-			  </div>
-			  <div class="review_like_action__score">
-			    <div class="review_like_action__score_arrow"></div>
-			    <span class="review_like_action__score_text js-like-score-text">+7</span>
-			  </div>
-			</div>
-
-              
-
-            </div>
             
   <div class="comments js-comments-container js-ie-opacity-fix">
     <div class="comments__arrow_top"></div>
     <ul class="comments__list">
       
-        <li class="comment" id="comment_34491">
-  <div class="comment__inner">
-    <div class="comment__lpane" title="Docamp">Docamp</div>
-    <div class="comment__rpane">
-      <div class="comment__error_message"></div>
-      <div class="comment__message">
-        <span class="comment__message_text">센스 있는 리뷰 정말 감사합니다 ♡<br><br>받아보신 제품이 마음에 드셨다니, 정말 기쁩니다 ^0^<br><br>적립금 지급완료!!</span>
-        
-      </div>
-    </div>
-    
-  </div>
-</li>
+	<li class="comment" id="comment_34491">
+	  <div class="comment__inner">
+	    <div class="comment__lpane" title="Docamp">Docamp</div>
+	    <div class="comment__rpane">
+	      <div class="comment__error_message"></div>
+	      <div class="comment__message">
+	        <span class="comment__message_text">센스 있는 리뷰 정말 감사합니다 ♡<br><br>받아보신 제품이 마음에 드셨다니, 정말 기쁩니다 ^0^<br><br>적립금 지급완료!!</span>
+	        
+	      </div>
+	    </div>
+	    
+	  </div>
+	</li>
 
       
     </ul>
@@ -350,10 +305,8 @@
           
         </form>
       </div>
-    
-  </div>
+   
           </div>
-        </div>
       </div>
     </div>
   </div>
@@ -363,10 +316,11 @@
   </ul>
 </div>
 
-</div>    <div class="products_reviews__footer">
-      <div class="widget_reviews__footer">
-    <div class="pagination">
-    <a class="pagination__button pagination__button--prev pagination__button--disabled">&lt;</a>
+</div>    
+<div class="products_reviews__footer">
+	<div class="widget_reviews__footer">
+    	<div class="pagination">
+    	  <a class="pagination__button pagination__button--prev pagination__button--disabled">&lt;</a>
 
           <a class="pagination__button pagination__button--active" href="#">1</a>
 
@@ -374,11 +328,11 @@
 
     	  <a class="pagination__button pagination__button--next" href="/uniqueon.co.kr/products/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-product-reviews-1&amp;page=2&amp;parent_url=https%3A%2F%2Fwww.uniqueon.co.kr%2Fproduct%2F%EC%9B%8C%ED%82%A4-%EB%B0%98%ED%95%98%EC%9D%B4-%EB%84%89%EB%84%89-%EC%9D%BC%EC%9E%90%ED%95%8F-%EB%B0%91%EB%8B%A8-%EC%98%86%ED%8A%B8%EC%9E%84-%EC%B2%AD%EB%B0%94%EC%A7%80%2F8101%2Fcategory%2F1%2Fdisplay%2F7%2F&amp;product_code=8101&amp;widget_env=100" data-remote="true">&gt;</a>
 
-  	</div>
+  		</div>
 	</div>
-
-    </div>
-</div></div>
+</div>
+</div>
+</div>
 </div>
     <script src="https://assets5.cre.ma/latte/assets/pc/application-b63842ea6cce178c2a3abd02cd39570fb0794f8a7b90b23163ef30099d3f398c.js"></script>
     <!--[if IE 7]>
