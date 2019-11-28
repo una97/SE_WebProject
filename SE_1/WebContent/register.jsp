@@ -78,6 +78,7 @@
 	</tr>
     </table>
     <br>
+    <input type="hidden" name="u_auth" value="0">
     <button type="submit" class="site-btn sb-dark">회원가입</button>
     <br><br>
 	</fieldset>

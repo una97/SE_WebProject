@@ -7,7 +7,14 @@ public class User {
 	private String u_address;
 	private String u_tel;
 	private String u_email;
+	private int u_auth;
 	
+	public int getU_auth() {
+		return u_auth;
+	}
+	public void setU_auth(int u_auth) {
+		this.u_auth = u_auth;
+	}
 	public String getU_tel() {
 		return u_tel;
 	}

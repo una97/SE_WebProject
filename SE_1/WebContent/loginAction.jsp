@@ -23,6 +23,7 @@
 	if(result==1){ //로그인 성공
 		session.setAttribute("u_id", user.getU_id());
 		String userE=(String)session.getAttribute("u_id");
+		session.setAttribute("u_name",userDAO.findName(userE));
 		PrintWriter script=response.getWriter();
 		script.println("<script>");
 		script.println("location.href='/SE_1/index.jsp'");

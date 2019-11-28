@@ -37,7 +37,7 @@
 							<div class="up-item">
 								<br>
 								<i class="flaticon-profile"></i>
-								<a href="mypage.jsp"><%=session.getAttribute("u_id")%>님</a> / <a href="logoutAction.jsp">로그아웃</a>
+								<a href="mypage.jsp"><%=session.getAttribute("u_name")%>님</a> / <a href="logoutAction.jsp">로그아웃</a>
 							</div>
 						<%} %>
 							<div class="up-item">
