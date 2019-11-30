@@ -144,7 +144,7 @@
 				rs.beforeFirst();
 				for(int i=0;i<6;i++){
 					rs.next();
-					String img="http://localhost:8080/SE_1/"+rs.getString("p_pic");
+					String img="http://localhost:8080/SE_2/"+rs.getString("p_pic");
 			%>
 				<div class="col-lg-3 col-sm-6">
 					<div class="product-item">

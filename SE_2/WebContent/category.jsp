@@ -19,8 +19,6 @@
 <head>
 	<title></title>
 	<meta charset="UTF-8">
-	<meta name="description" content=" Divisima | eCommerce Template">
-	<meta name="keywords" content="divisima, eCommerce, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
 	<link href="img/favicon.ico" rel="shortcut icon"/>
@@ -224,7 +222,6 @@
 									</div>
 								</div>
 								<div class="pi-text">
-                                    
 									<h6><%=pdDto.getP_price() %></h6>
 									<p><%=pdDto.getP_name() %></p>
                                     </a>

@@ -4,10 +4,15 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="dto.Product"%>
 <%@ include file="jsp/product_li.jsp" %>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<meta name="description" content=" Divisima | eCommerce Template">
+	<meta name="keywords" content="divisima, eCommerce, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
 	<link href="img/favicon.ico" rel="shortcut icon"/>
@@ -32,10 +37,14 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-<title>상품 등록</title>
-
+<title>상품 정보 변경</title>
 </head>
 <body>
+<%
+	String idx_s = request.getParameter("idx");
+	int idx = Integer.parseInt(idx_s);
+	Product pdDto = pdDtos.get(idx);
+%>
 <!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -89,38 +98,50 @@
 				</div>
 				<div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
 					<h4>
-					상품 등록 및 정보 변경
+						상품 등록 및 정보 변경
 					</h4>
 					<hr>
 					<br>
-					<div class="row">
-                    <%
-                        int size = pdDtos.size();
-                        for(int i=0;i<size;i++){
-                            Product pdDto = pdDtos.get(i);
-                    %>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item" style="margin:10px;">
-								<div>
-									<div style="width:50%; float:left;">
-                                    <img width="200px" src=<%="http://localhost:8080/SE_2/"+pdDto.getP_pic() %> alt="">
-									</div>
-									<div style="width:50%; float:right; padding-left:5px;">
-									<%String name = pdDto.getP_name();
-									if(name.length()>15)
-										name = name.substring(0,15)+"...";
-									%>
-									<p><%=name%><br><%=pdDto.getP_price() %></p>
-									<button onclick="location.href='fixProduct.jsp?idx=<%=pdDto.getP_id() %>'" class="fix">수정하기</button>
-									</div>						
-								</div>
-							</div>
-						</div>
-						
-						<%
-                        }
-                        %>
-					</div>
+				<div class="fixproduct" align="center" style="background-color:#f0f0f0;margin: 0 auto; width:750px;">
+				<form method="post" action="fixPsave.jsp">
+				<fieldset>
+				<br><br>
+				<table height="350px">
+				<tr>
+					<td colspan="2">
+						<img src=<%="http://localhost:8080/SE_2/"+pdDto.getP_pic() %> width="300px">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input display="none" type="file" id="file" name="file" value="<%=pdDto.getP_pic()%>">
+					</td>
+				</tr>
+				<tr>
+					<td>상품명</td>
+					<td><input type= "text" name="p_name" value="<%=pdDto.getP_name()%>"></td>
+				</tr>
+				<tr>
+					<td>카테고리</td>
+					<td><input type= "text" name="p_category" value="<%=pdDto.getP_category()%>"></td>
+				</tr>
+				<tr>
+					<td>가격</td>
+					<td><input type="text" name="p_price" value=<%=pdDto.getP_price()%> maxlength="20"></td>
+					
+				</tr>
+				<tr>
+					<td>재고</td>
+					<td><input type="text" name="p_stock" value=<%=pdDto.getP_stock()%> maxlength="20"></td>
+				</tr>
+			    </table>
+			    <br>
+			    <input type="hidden" name="u_auth" value="0">
+			    <button type="submit" class="site-btn sb-dark">수정 완료</button>
+			    <br><br>
+				</fieldset>
+				</form>
+			</div>
 				</div>
 				</div>
 			</div>
