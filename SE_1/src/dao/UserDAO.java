@@ -88,13 +88,12 @@ public class UserDAO {
     {
     	try {		
     		 String SQL="update user set u_email='"+u_email+"', u_pw='"+u_pw+
-    				 "', u_address='"+u_address+"', u_tel='"+u_tel+"' where u_id=\""+u_id+"\"";
-    		 pstmt=conn.prepareStatement(SQL);
+    				 "', u_address='"+u_address+"', u_tel='"+u_tel+"' where u_id='"+u_id+"'";
+    		 	pstmt=conn.prepareStatement(SQL);
     			pstmt.executeUpdate();
     	}catch(Exception e) {
     		e.printStackTrace();
     	}
-    	
     }
     
     //È¸¿øÅ»Åð

@@ -41,7 +41,7 @@
 	<jsp:include page="jsp/header.jsp" flush="false"/>
 	<!-- Header section end -->
 	<br><br><br>
-	<div register="rform" align="center" style="background-color:#f0f0f0;margin: 0 auto; width:500px;">
+	<div class="rform" align="center" style="background-color:#f0f0f0;margin: 0 auto; width:500px;">
 	<form method="post" action="registerSave.jsp">
 	<fieldset>
 	<br><br>

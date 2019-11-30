@@ -49,7 +49,7 @@
 			<p>일반 회원</p>
 		</div>
 	</div>
-	<div float="left" style="width:30%;">
+	<div class="sidebar">
 		<br>
 		<h5>&nbsp;마이 페이지</h5>
 		<br>
@@ -65,7 +65,8 @@
 			</tr>
 		</table>
 	</div>
-	
+	<div class="contents">
+	</div>
 	<!-- Footer section -->
 	<jsp:include page="jsp/footer.jsp" flush="false"/>
 	<!-- Footer section end -->
