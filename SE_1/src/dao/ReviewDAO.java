@@ -22,7 +22,7 @@ public class ReviewDAO {
 		}
     }
     
-    public ArrayList<Review> reviewSelect(int p_id, String u_id){
+    public ArrayList<Review> reviewSelect(String p){
         ResultSet rs=null;
         Statement stmt = null;
         
@@ -31,7 +31,7 @@ public class ReviewDAO {
             conn = DriverManager.getConnection(url, "egg", "12345678");
             stmt = conn.createStatement();
             
-            rs = stmt.executeQuery("select * from review where o_id = (select o_id from `order` where p_id="+p_id+" && u_id="+u_id+")");
+            rs = stmt.executeQuery(p);
             while(rs.next()){
                 Integer r_id = rs.getInt("r_id");
                 Integer o_id = rs.getInt("o_id");
@@ -39,7 +39,9 @@ public class ReviewDAO {
                 Integer r_star = rs.getInt("r_star");
                 String r_content = rs.getString("r_content");
                 String r_reply = rs.getString("r_reply");
-                Review rdto = new Review(r_id, o_id, r_date, r_star, r_content, r_reply);
+                Integer r_like = rs.getInt("r_like");
+                Integer r_hate = rs.getInt("r_hate");
+                Review rdto = new Review(r_id, o_id, r_date, r_star, r_content, r_reply, r_like, r_hate);
                 rdtos.add(rdto);
             }
         }catch(Exception e){

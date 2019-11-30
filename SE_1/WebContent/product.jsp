@@ -45,6 +45,8 @@ String idx_s = request.getParameter("idx");
 out.print(idx_s);
 int idx = Integer.parseInt(idx_s);
 Product pdDto = pdDtos.get(idx);
+ArrayList<Review> rvDtos = rvDAO.reviewSelect("select * from review INNER JOIN `order` ON review.o_id = `order`.o_id where p_id="+idx);
+
 %>
 
 </head>
@@ -92,7 +94,7 @@ Product pdDto = pdDtos.get(idx);
 							class="fa fa-star-o fa-fade"></i>
 					</div>
 					<div class="p-review">
-						<a href="">3 리뷰</a>|<a href="">리뷰하기</a>
+						<a href="#reviewSec"><%= rvDtos.size() %> 리뷰</a>|<a href="">리뷰하기</a>
 					</div>
 					<div class="quantity">
 						<p>수량</p>
@@ -136,7 +138,11 @@ Product pdDto = pdDtos.get(idx);
 					</div>
 
 					<!-- review section -->
-					<jsp:include page="jsp/review.jsp" flush="false" />
+					<div id="reviewSec">
+					<jsp:include page="jsp/review.jsp" flush="false">
+						<jsp:param name="idx" value="<%=idx%>" />
+					</jsp:include>
+					</div>
 				</div>
 				<!-- review section end -->
 			</div>

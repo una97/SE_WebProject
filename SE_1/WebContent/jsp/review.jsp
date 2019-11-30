@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.ArrayList"%>
+<%request.setCharacterEncoding("utf-8");%>
+<%@ page import="dto.Review"%>
+<%@ page import="dao.ReviewDAO"%>
+<jsp:useBean id="rvDAO" class="dao.ReviewDAO"/>
+
 <html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
     <title>상품 리뷰</title>
     <!--[if lt IE 9]>
@@ -70,7 +73,10 @@
     <div id="content">
       
     
-
+<%
+int idx = Integer.parseInt(request.getParameter("idx"));
+ArrayList<Review> rvDtos = rvDAO.reviewSelect("select * from review INNER JOIN `order` ON review.o_id = `order`.o_id where p_id="+idx);
+%>
 <div class="products_reviews_list">
   <div class="products_reviews_form ">
   <div class="products_reviews_form__head">
@@ -170,7 +176,7 @@
     <div class="products_reviews_header">
   	  <div class="products_reviews_header__upper">
     	<span class="products_reviews_header__sort_type products_reviews_header__sort_type--selected">
-      	  <strong>추천순</strong> 리뷰 (<span class="reviews-count">212</span>)
+      	  <strong>추천순</strong> 리뷰 (<span class="reviews-count"><%= rvDtos.size()%></span>)
    	 	</span>
     	<span class="products_reviews_header__sort_type_divider"> | </span>
    		<a href="#" data-remote="true">
@@ -184,6 +190,10 @@
   <div class="widget_reviews__body products_reviews_list__body">
     <div class="page">
   	  <ul class="reviews reviews-product">
+  	  <%
+  	  for(int i=0;i<rvDtos.size();i++){
+  		Review rvDto = rvDtos.get(i);
+  	  %>
 			<li
 			  id="review_41739"
 			  class="review products_reviews_list_review product_review__container "
@@ -193,14 +203,14 @@
 			      <ul>
 			        <li>
 			          <div class="products_reviews_list_review__info_title">작성자</div>
-			          <div class="products_reviews_list_review__info_value">문유빈</div>
+			          <div class="products_reviews_list_review__info_value">정의정(이거는 order class 생기면 할거)</div>
 			        </li>
 
 		          <li>
 		            <div class="products_reviews_list_review__info_title">별점</div>
 		            <div class="products_reviews_list_review__info_value">
 		              
-		               3개
+		               <%= rvDto.getR_star() %>개
 		              
 		            </div>
 		          </li>
@@ -214,7 +224,7 @@
 		        <div class="products_reviews_list_review__score">
 		          
 		            <div class="products_reviews_list_review__score_like_result js-like-result">
-		              <span class="js-likes-html "><strong class='js-like-score-total'>25</strong>명 중 <strong class='js-like-score-plus'>16</strong>명이 이 리뷰가 도움이 된다고 선택 했습니다</span>
+		              <span class="js-likes-html "><strong class='js-like-score-total'><%=rvDto.getR_like()+rvDto.getR_hate() %></strong>명 중 <strong class='js-like-score-plus'><%= rvDto.getR_like()%></strong>명이 이 리뷰를 좋아합니다.</span>
 		            </div>
 		          
 		        </div>
@@ -223,7 +233,7 @@
           <div class="products_reviews_list_review__message">
                 
                   
-                  제가 진짜 종아리 알이 너무 튀어나와서 m살까 s살까 정말 많이 고민했는데 s사서 정말 다행이에요 m샀으면 너무 컸고 s도 딱 사이즈도 좋고 옆에가 트여있어서 그런지 종아리에도 안 닿아서 너무 좋아요 한가지 흠이 있다면 허리가 너무 크다는 거..? 근데 그건 벨트 하면 되니까 괜찮습니다 그거 빼곤 다 좋아요 인터넷에서 바지 처음으로 사 보는데 진짜 만족했습니다! 많이파세요♡
+                  <%=rvDto.getR_content() %>
                 
           </div>
           <div class="products_reviews_list_review__foot">
@@ -252,7 +262,7 @@
 			  </div>
 			  <div class="review_like_action__score">
 			    <div class="review_like_action__score_arrow"></div>
-			    <span class="review_like_action__score_text js-like-score-text">+7</span>
+			    <span class="review_like_action__score_text js-like-score-text">+<%= rvDto.getR_like()%></span>
 			  </div>
 			</div>
             </div>
@@ -269,7 +279,7 @@
 	    <div class="comment__rpane">
 	      <div class="comment__error_message"></div>
 	      <div class="comment__message">
-	        <span class="comment__message_text">센스 있는 리뷰 정말 감사합니다 ♡<br><br>받아보신 제품이 마음에 드셨다니, 정말 기쁩니다 ^0^<br><br>적립금 지급완료!!</span>
+	        <span class="comment__message_text"><%= rvDto.getR_reply() %></span>
 	        
 	      </div>
 	    </div>
@@ -291,6 +301,7 @@
           method="post"
         >
           <input name="utf8" type="hidden" value="✓">
+         
           <input
             placeholder="댓글을 작성해 주세요 :)"
             class="comments__new_comment_input js-input-block"
@@ -311,6 +322,9 @@
     </div>
   </div>
 </li>
+<%
+}
+%>
 
 
   </ul>
