@@ -24,9 +24,10 @@
 		session.setAttribute("u_id", user.getU_id());
 		String userE=(String)session.getAttribute("u_id");
 		session.setAttribute("u_name",userDAO.findName(userE));
+		session.setAttribute("u_auth",userDAO.findAuth(userE));
 		PrintWriter script=response.getWriter();
 		script.println("<script>");
-		script.println("location.href='/SE_1/index.jsp'");
+		script.println("location.href='index.jsp'");
 		script.println("</script>");
 	}
 	else if(result==0){

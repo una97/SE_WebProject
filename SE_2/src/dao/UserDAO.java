@@ -44,6 +44,21 @@ public class UserDAO {
     	   }
     	   return name;
     }
+    public int findAuth(String u_id) {
+    	String SQL = "select u_auth from user where u_id = ?"; 
+    	int auth=0;
+    	   try {
+    	      pstmt = conn.prepareStatement(SQL);
+    	      pstmt.setString(1, u_id);
+    	      rs= pstmt.executeQuery();
+    	      while(rs.next())
+    	    	  auth=rs.getInt("u_auth");
+    	      return auth;
+    	   }catch(Exception e) {
+    	      e.printStackTrace();
+    	   }
+    	   return auth;
+    }
     public int login(String u_id, String u_pw) { //·Î±×ÀÎ
        String SQL = "select u_pw from user where u_id = ?"; 
        try {
