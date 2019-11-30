@@ -45,7 +45,7 @@
 									<i class="flaticon-bag"></i>
 									<span>0</span>
 								</div>
-								<a href="#">쇼핑 카트</a>
+								<a href="cart.jsp">쇼핑 카트</a>
 							</div>
 						</div>
 					</div>
