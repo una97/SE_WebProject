@@ -40,7 +40,9 @@
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 <% 
- ctDAO.addCart("user2", 1);
+ArrayList<Cart> ctDtos = ctDAO.getCart((String)session.getAttribute("u_id"));
+Cart ctDto = ctDtos.get(0);
+out.print(ctDto.getPrice());
 %>
 </head>
 <body>
