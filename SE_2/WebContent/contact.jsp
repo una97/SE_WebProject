@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Contact Page</title>
+	<title>DOCAMP</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Contact Page">
 	<meta name="keywords" content="Contact Page, eCommerce, creative, html">

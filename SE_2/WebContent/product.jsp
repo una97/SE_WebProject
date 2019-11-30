@@ -5,8 +5,11 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<%@ page import="dto.Product"%>
+<%@ page import="dto.*"%>
+<%@ page import="dao.*"%>
 <%@ include file="jsp/product_li.jsp"%>
+<jsp:useBean id="ctDAO" class="dao.CartDAO" />
+
 
 <html>
 <head>
@@ -104,7 +107,7 @@ ArrayList<Review> rvDtos = rvDAO.reviewSelect("select * from review INNER JOIN `
 						<tr>
 							<td>
 								<form method="post" action="cart.jsp">
-									<button type="submit" class="site-btn">장바구니 담기</button>
+									<button type="submit" class="site-btn" >장바구니 담기</button>
 								</form>
 							</td>
 							<td>
