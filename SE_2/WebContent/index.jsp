@@ -100,7 +100,7 @@
 					out.println("DB 연동 오류입니다");
 				}
 				while(rs.next()){
-					String img="http://localhost:8080/SE_1/"+rs.getString("p_pic");
+					String img="http://localhost:8080/SE_2/"+rs.getString("p_pic");
 			%>
 				<div class="product-item">
 					<div class="pi-pic">

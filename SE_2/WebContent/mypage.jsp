@@ -74,11 +74,6 @@
 			</table>
 		</td>
 		<td style="padding-left:180px; valign:top;">
-			<br>
-			<h4>
-				개인 정보 수정
-			</h4>
-			<br>
 		</td>
 	</tr>
 	</table>
