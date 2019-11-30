@@ -15,7 +15,7 @@
 			<div class="product-slider owl-carousel">
 			<%
 			String category = request.getParameter("category");
-			out.print(category);
+			
 			ArrayList<Product> pdDtos = pdDAO.productSelect("select * from product where p_category=\""+category+"\"");
 			for(int i=0;i<pdDtos.size();i++){
                 Product pdDto = pdDtos.get(i);
