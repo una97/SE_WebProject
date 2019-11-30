@@ -301,6 +301,7 @@ ArrayList<Review> rvDtos = rvDAO.reviewSelect("select * from review INNER JOIN `
           method="post"
         >
           <input name="utf8" type="hidden" value="✓">
+         
           <input
             placeholder="댓글을 작성해 주세요 :)"
             class="comments__new_comment_input js-input-block"
