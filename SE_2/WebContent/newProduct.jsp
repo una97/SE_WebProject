@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="dto.Product"%>
+<%@ include file="jsp/product_li.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +34,9 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-<title>마이페이지</title>
+<meta charset="UTF-8">
+<title>상품 등록</title>
+
 </head>
 <body>
 <!-- Page Preloder -->
@@ -84,6 +90,41 @@
 						<%} %>
 					</div>
 				</div>
+				<div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
+					<h4>
+					상품 등록 및 정보 변경
+					</h4>
+					<hr>
+					<br>
+					<div class="row">
+                    <%
+                        int size = pdDtos.size();
+                        for(int i=0;i<size;i++){
+                            Product pdDto = pdDtos.get(i);
+                    %>
+						<div class="col-lg-4 col-sm-6">
+							<div class="product-item" style="margin:10px;">
+								<div>
+									<div style="width:50%; float:left;">
+                                    <img width="200px" src=<%="http://localhost:8080/SE_2/"+pdDto.getP_pic() %> alt="">
+									</div>
+									<div style="width:50%; float:right; padding-left:5px;">
+									<%String name = pdDto.getP_name();
+									if(name.length()>15)
+										name = name.substring(0,15)+"...";
+									%>
+									<p><%=name%><br><%=pdDto.getP_price() %></p>
+									<button onclick="location.href='fixProduct.jsp'" class="fix">수정하기</button>
+									</div>						
+								</div>
+							</div>
+						</div>
+						
+						<%
+                        }
+                        %>
+					</div>
+				</div>
 				</div>
 			</div>
 		</section>
@@ -93,6 +134,5 @@
 
 	<!--====== Javascripts & Jquery ======-->
 	<jsp:include page="jsp/requirejs.jsp" flush="false"/>
-	
 </body>
 </html>
