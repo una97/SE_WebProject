@@ -1,25 +1,27 @@
 package dto;
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Review {
 
-	private int r_id;
 	private int o_id;
+	private String u_id;
 	private String r_date;
 	private int r_star;
 	private String r_content;
-	private String r_reply;
+	private ArrayList<Reply> reples;
 	private int r_like;
 	private int r_hate;
     
-    public Review(int o_id, String r_date, int r_star, String r_content, String r_reply, int r_like, int r_hate)
+    public Review(int o_id, String u_id, String r_date, int r_star, String r_content, String r_reply, int r_like, int r_hate)
     {
     	this.o_id = o_id;
+    	this.u_id = u_id;
     	this.r_date = r_date;
     	this.r_star = r_star;
     	this.r_content = r_content;
-    	this.r_reply = r_reply;
+    	this.reples = setReples(r_reply);
     	this.r_like = r_like;
     	this.r_hate = r_hate;
     }
@@ -30,6 +32,14 @@ public class Review {
 
 	public void setO_id(int id) {
 		this.o_id = id;
+	}
+	
+	public String getU_id() {
+		return u_id;
+	}
+
+	public void setO_id(String id) {
+		this.u_id = id;
 	}
 	
 	public String getR_date() {
@@ -55,14 +65,6 @@ public class Review {
 	public void setR_content(String r_content) {
 		this.r_content = r_content;
 	}
-
-	public String getR_reply() {
-		return r_reply;
-	}
-
-	public void setR_reply(String r_reply) {
-		this.r_reply = r_reply;
-	}
 	
     public int getR_like() {
 		return r_like;
@@ -77,7 +79,26 @@ public class Review {
 	}
 
 	public void setR_hate(int r_hate) {
-		this.r_id = r_hate;
+		this.r_hate = r_hate;
+	}
+
+	public ArrayList<Reply> setReples(String reply) {
+		String[] rep = (reply==null)? null: reply.split(";");
+		try {
+			reples = new ArrayList<Reply>();
+			for(int i=0;i<rep.length;i++) {
+				String[] inp = rep[i].split(",");
+				Reply tmp = new Reply(inp[0], inp[1]);
+				reples.add(tmp);
+		}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return reples;
+	}
+
+	public ArrayList<Reply> getReples() {
+		return reples;
 	}
 
 }

@@ -124,7 +124,7 @@ padding-left: 20px;
 						<th class="product-th"><%= odDtos.getString("o_id")%> </th>
 						<th class="quy-th"><%=odDtos.getString("o_date")%></th>
 						<th class="pic-th"><img src=<%=odDtos.getString("p_pic") %> width="50" height="50"/></th>
-						<th class="pdname-th"><%=odDtos.getString("p_name")%></th>
+						<th class="pdname-th"><a href="product.jsp?idx=<%= odDtos.getString("o.p_id")%>"> <%=odDtos.getString("p_name")%> </a></th>
 						<th class="price-th"><%=odDtos.getInt("total_price")%></th>
 						<th class="total-th"><button class="site-btn submit-order-btn" onclick="window.open('jsp/writeReview.jsp?o_id=<%=odDtos.getString("o_id") %>', '_blank', 'width=450px,height=350px,toolbars=no,scrollbars=no'); return false;">리뷰 쓰기</button></th>
 					</tr>

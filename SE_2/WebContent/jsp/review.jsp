@@ -3,6 +3,7 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.ArrayList"%>
 <%request.setCharacterEncoding("utf-8");%>
+<%@ page import="dto.Reply"%>
 <%@ page import="dto.Review"%>
 <%@ page import="dao.ReviewDAO"%>
 <jsp:useBean id="rvDAO" class="dao.ReviewDAO"/>
@@ -97,7 +98,7 @@ ArrayList<Review> rvDtos = rvDAO.reviewSelect("select * from review INNER JOIN o
   		  <div class="score_summary__body">
     		<div class="score_summary__avg_score">
       			<div class="score_summary__average">4.8</div>
-      			<div class="score_summary__reviews_count">rvDtos.size()개 리뷰 평점</div>
+      			<div class="score_summary__reviews_count"><%= rvDtos.size()%>개 리뷰 평점</div>
     		</div>
     		
     		<ul class="score_summary__score_filters">
@@ -203,7 +204,7 @@ ArrayList<Review> rvDtos = rvDAO.reviewSelect("select * from review INNER JOIN o
 			      <ul>
 			        <li>
 			          <div class="products_reviews_list_review__info_title">작성자</div>
-			          <div class="products_reviews_list_review__info_value">정의정(이거는 order class 생기면 할거)</div>
+			          <div class="products_reviews_list_review__info_value"><%= rvDto.getU_id()%></div>
 			        </li>
 
 		          <li>
@@ -245,8 +246,8 @@ ArrayList<Review> rvDtos = rvDAO.reviewSelect("select * from review INNER JOIN o
                   
                 </span>
                 <span class="js-comments-link-count-text ">
-                  
-                  <span class="comments-count">1</span>개의 댓글이 있습니다
+                  <% ArrayList<Reply> rpList = rvDto.getReples();   %>
+                  <span class="comments-count"><%= rpList.size()%></span>개의 댓글이 있습니다
                 </span>
               </a>
               <div class="products_reviews_list_review__divider">|</div>
@@ -271,15 +272,22 @@ ArrayList<Review> rvDtos = rvDAO.reviewSelect("select * from review INNER JOIN o
             
   <div class="comments js-comments-container js-ie-opacity-fix">
     <div class="comments__arrow_top"></div>
+          <%
+        
+      	 for(int j=0;j<rpList.size();j++){
+      		 Reply rp = rpList.get(j);
+      		 String comment_id = rvDto.getO_id()+"_"+Integer.toString(j);
+      	 
+      %>
     <ul class="comments__list">
-      
-	<li class="comment" id="comment_34491">
+
+	<li class="comment" id=<%=comment_id %> >
 	  <div class="comment__inner">
-	    <div class="comment__lpane" title="Docamp">Docamp</div>
+	    <div class="comment__lpane"><%= rp.getU_id()%> </div>
 	    <div class="comment__rpane">
 	      <div class="comment__error_message"></div>
 	      <div class="comment__message">
-	        <span class="comment__message_text"><%= rvDto.getR_reply() %></span>
+	        <span class="comment__message_text"><%=rp.getR_reply() %></span>
 	        
 	      </div>
 	    </div>
@@ -287,36 +295,39 @@ ArrayList<Review> rvDtos = rvDAO.reviewSelect("select * from review INNER JOIN o
 	  </div>
 	</li>
 
+
       
     </ul>
-    
+       	<%
+      	 }
+	%>
       <div class="comments__new_comment js-ie-opacity-fix">
         <form
           novalidate="novalidate"
           class="new_comment"
           data-login-required="true"
           data-remote="true"
-          action="/uniqueon.co.kr/comments?widget_env=100&amp;widget_id=2"
+          action="/SE_2/WriteReply.do"
           accept-charset="UTF-8"
           method="post"
         >
-          <input name="utf8" type="hidden" value="✓">
          
           <input
             placeholder="댓글을 작성해 주세요 :)"
             class="comments__new_comment_input js-input-block"
             data-login-required="true"
             type="text"
-            name="comment[message]"
-            data-validate="true"
+            name="comment"
           >
-          <input value="41739" type="hidden" name="comment[review_id]">
+          
           <button class="comments__new_comment_submit_button js-ie-opacity-fix" type="submit">등록</button>
-          <input type="hidden" name="tracking_id">
+          <input type="hidden" name="u_id" value=<%=(String) session.getAttribute("u_id") %>>
+          <input type="hidden" name="o_id" value=<%=rvDto.getO_id() %>>
+          <input type="hidden" name="p_id" value=<%=request.getParameter("idx") %>>
           
         </form>
       </div>
-   
+
           </div>
       </div>
     </div>
@@ -348,6 +359,16 @@ ArrayList<Review> rvDtos = rvDAO.reviewSelect("select * from review INNER JOIN o
 </div>
 </div>
 </div>
+<script>
+var value=null;
+var r_content=null;
+var o_id=null;
+function clickRadio(val){
+	value=val.getAttribute("data-value");
+	
+	console.log(value);
+}
+</script>
     <script src="https://assets5.cre.ma/latte/assets/pc/application-b63842ea6cce178c2a3abd02cd39570fb0794f8a7b90b23163ef30099d3f398c.js"></script>
     <!--[if IE 7]>
       <script src="//assets5.cre.ma/m/widgets/javascripts/ie7.js"></script>
