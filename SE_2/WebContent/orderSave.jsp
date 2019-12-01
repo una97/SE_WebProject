@@ -48,7 +48,7 @@
 	ArrayList<Cart> ctDtos = ctDAO.getCart((String) session.getAttribute("u_id"));
 	int sum = 0;
 	int shipCost = 2500;
-	
+	String o_name = request.getParameter("order_name");
 %>
 </head>
 <body>
@@ -69,7 +69,7 @@
 					<td><img src="img/cart/cart.png" width="50" alt="">
 						&nbsp;&nbsp;</td>
 					<td>
-						<h4>주문/결제</h4>
+						<h4>주문완료</h4>
 					</td>
 				</tr>
 			</table>
@@ -79,10 +79,10 @@
 					<td><img src="img/cart/1.png" width="30" alt=""></td>
 					<td><h5>장바구니</h5></td>
 					<td><img src="img/cart/right_arrow.png" width="30" alt=""></td>
-					<td><img src="img/cart/2_R.png" width="30" alt=""></td>
+					<td><img src="img/cart/2.png" width="30" alt=""></td>
 					<td><h5>주문/결제</h5></td>
 					<td><img src="img/cart/right_arrow.png" width="30" alt=""></td>
-					<td><img src="img/cart/3.png" width="30" alt=""></td>
+					<td><img src="img/cart/3_R.png" width="30" alt=""></td>
 					<td><h5>주문완료</h5></td>
 
 				</tr>
@@ -92,7 +92,117 @@
 	<!-- Page info end -->
 
 	<!-- checkout section  -->
-	<section class="checkout-section spad">
+	<section class="cart-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="cart-table">
+						<h3>주문 내역</h3>
+						<div class="cart-table-warp">
+							<table>
+								<thead>
+									<th class="product-th">주문자 이름</th>
+									<th class="quy-th">주문자 주소</th>
+								</thead>
+								<tbody>
+									<tr>
+										<%=o_name%>
+										<td></td>
+										<td></td>
+									</tr>
+								</tbody>
+
+							</table>
+							<table>
+								<thead>
+									<tr>
+										<th class="product-th">상품</th>
+										<th class="quy-th">수량</th>
+										<th class="total-th">가격</th>
+									</tr>
+								</thead>
+								<tbody>
+
+									<%
+										for (int i = 0; i < ctDtos.size(); i++) {
+											Cart ctDto = ctDtos.get(i);
+											ArrayList<Product> pdDtos = ptDAO.productSelect(
+													"select * from product INNER JOIN cart ON cart.c_p_id where c_p_id=" + ctDto.getP_id());
+											Product pdDto = pdDtos.get(i);
+											sum += pdDto.getP_price();
+									%>
+									<tr>
+										<td class="product-col"><img src=<%=pdDto.getP_pic()%>
+											alt="">
+											<div class="pc-title">
+												<h4><%=pdDto.getP_name()%></h4>
+												<p><%=pdDto.getP_price()%></p>
+											</div></td>
+										<td class="quy-col">
+											<div class="quantity">
+												<div class="pro-qty">
+													<input type="text" id="quantity" value="1">
+												</div>
+											</div>
+										</td>
+
+										<td class="total-col"><h4><%=pdDto.getP_price()%></h4></td>
+									</tr>
+									<%
+										}
+									%>
+									<script type="text/javascript">
+										var value = $('#quantity').val();
+										document.write(value);
+									</script>
+								</tbody>
+							</table>
+						</div>
+						<div class="total-cost">
+							<h6>
+								합계 <span><%=sum%> </span>
+							</h6>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<%-- <div class="col-lg-4 order-1 order-lg-2">
+	<div class="checkout-cart">
+		<h3>장바구니</h3>
+		<ul class="product-list">
+			<%
+				for (int i = 0; i < ctDtos.size(); i++) {
+					Cart ctDto = ctDtos.get(i);
+					ArrayList<Product> pdDtos = ptDAO.productSelect(
+							"select * from product INNER JOIN cart ON cart.c_p_id where c_p_id=" + ctDto.getP_id());
+					Product pdDto = pdDtos.get(i);
+					sum += pdDto.getP_price();
+			%>
+			<li>
+				<div class="pl-thumb">
+					<img src=<%=pdDto.getP_pic()%> alt="">
+				</div>
+				<h6><%=pdDto.getP_name()%></h6>
+				<p><%=pdDto.getP_price()%></p>
+			</li>
+			<%
+				}
+			%>
+		</ul>
+		<ul class="price-list">
+			<li>합계<span><%=sum%></span></li>
+			<li>배송비<span><%=shipCost%></span></li>
+			<%
+				sum = sum + shipCost;
+			%>
+			<li class="total">합계<span><%=sum%></span></li>
+		</ul>
+	</div>
+	</div> --%>
+	<%-- 	<section class="checkout-section spad">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 order-2 order-lg-1">
@@ -182,8 +292,8 @@
 							</select>
 							</li>
 						</ul>
-						<!-- <button class="site-btn submit-order-btn">결제하기</button>
-					</form> -->
+						<button class="site-btn submit-order-btn">결제하기</button>
+					</form>
 					
 				</div>
 				<div class="col-lg-4 order-1 order-lg-2">
@@ -218,12 +328,10 @@
 							<li class="total">합계<span><%=sum%></span></li>
 						</ul>
 					</div>
-					<button class="site-btn submit-order-btn">결제하기</button>
-					</form>
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> --%>
 	<!-- checkout section end -->
 
 	<!-- Footer section -->

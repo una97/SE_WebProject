@@ -19,8 +19,6 @@
 <head>
 	<title></title>
 	<meta charset="UTF-8">
-	<meta name="description" content=" Divisima | eCommerce Template">
-	<meta name="keywords" content="divisima, eCommerce, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
 	<link href="img/favicon.ico" rel="shortcut icon"/>
@@ -217,14 +215,13 @@
 							<div class="product-item">
 								<div class="pi-pic">
 									<!--<div class="tag-sale">ON SALE</div>-->
-                                    <a href=product.jsp?idx=<%=pdDto.getP_id() %>><img src=<%="http://localhost:8080/SE_1/"+pdDto.getP_pic() %> alt=""></a>
+                                    <a href=product.jsp?idx=<%=pdDto.getP_id() %>><img src=<%="http://localhost:8080/SE_2/"+pdDto.getP_pic() %> alt=""></a>
 									<div class="pi-links">
 										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>장바구니</span></a>
 										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 									</div>
 								</div>
 								<div class="pi-text">
-                                    
 									<h6><%=pdDto.getP_price() %></h6>
 									<p><%=pdDto.getP_name() %></p>
                                     </a>

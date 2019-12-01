@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="dao.UserDAO" %>
 <%@ page import="java.sql.*" %>
-<%request.setCharacterEncoding("UTF-8"); %>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="dto.Product"%>
+<%@ include file="jsp/product_li.jsp" %>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<meta name="description" content=" Divisima | eCommerce Template">
+	<meta name="keywords" content="divisima, eCommerce, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
 	<link href="img/favicon.ico" rel="shortcut icon"/>
@@ -31,9 +37,14 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-<title>마이페이지</title>
+<title>상품 정보 변경</title>
 </head>
 <body>
+<%
+	String idx_s = request.getParameter("idx");
+	int idx = Integer.parseInt(idx_s);
+	Product pdDto = pdDtos.get(idx);
+%>
 <!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -85,53 +96,43 @@
 						<%} %>
 					</div>
 				</div>
-			<div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
-				<h4>
-				개인 정보 수정
-				</h4>
-				<hr>
-				<br>
-			<%
-				String u_id = (String)session.getAttribute("u_id");
-				String sql ="select * from user where u_id='"+u_id+"'";
-				UserDAO userDAO = new UserDAO();
-				ResultSet rs = userDAO.getResult(sql);
-				rs.next();
-			%>
-			
-			<div class="change" align="center" style="background-color:#f0f0f0;margin: 0 auto; width:750px;">
-				<form method="post" action="changeSave.jsp">
+				<div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
+					<h4>
+						상품 등록 및 정보 변경
+					</h4>
+					<hr>
+					<br>
+				<div class="fixproduct" align="center" style="background-color:#f0f0f0;margin: 0 auto; width:750px;">
+				<form method="post" action="fixPsave.jsp">
 				<fieldset>
 				<br><br>
 				<table height="350px">
 				<tr>
-					<td>아이디</td>
-					<td><input type= "text" name="u_id" value=<%=u_id%> readonly></td>
+					<td colspan="2">
+						<img src=<%="http://localhost:8080/SE_2/"+pdDto.getP_pic() %> width="300px">
+					</td>
 				</tr>
 				<tr>
-					<td>비밀번호</td>
-					<td><input type="password" name="u_pw" value=<%=rs.getString("u_pw") %> maxlength="20"></td>
+					<td colspan="2">
+						<input display="none" type="file" id="file" name="file" value="<%=pdDto.getP_pic()%>">
+					</td>
+				</tr>
+				<tr>
+					<td>상품명</td>
+					<td><input type= "text" name="p_name" value="<%=pdDto.getP_name()%>"></td>
+				</tr>
+				<tr>
+					<td>카테고리</td>
+					<td><input type= "text" name="p_category" value="<%=pdDto.getP_category()%>"></td>
+				</tr>
+				<tr>
+					<td>가격</td>
+					<td><input type="text" name="p_price" value=<%=pdDto.getP_price()%> maxlength="20"></td>
 					
 				</tr>
 				<tr>
-					<td></td>
-					<td>*4자 이상을 입력해주세요</td>
-				</tr>
-				<tr>
-					<td>이름</td>
-					<td><input type="text" name="u_name" value=<%=rs.getString("u_name") %> maxlength="20" readonly></td>
-				</tr>
-			    <tr>
-					<td>주소</td>
-					<td><input type="text" name="u_address" value="<%=rs.getString("u_address") %>" maxlength="100"></td>
-				</tr>
-				<tr>
-					<td>이메일</td>
-					<td><input type="email" name="u_email" value=<%=rs.getString("u_email") %> maxlength="100"></td>
-				</tr>
-				<tr>
-					<td>핸드폰</td>
-					<td><input type="text" name="u_tel" value=<%=rs.getString("u_tel") %> maxlength="100"></td>
+					<td>재고</td>
+					<td><input type="text" name="p_stock" value=<%=pdDto.getP_stock()%> maxlength="20"></td>
 				</tr>
 			    </table>
 			    <br>
@@ -141,16 +142,15 @@
 				</fieldset>
 				</form>
 			</div>
+				</div>
+				</div>
 			</div>
-		</div>
-	</div>
-	</section>
+		</section>
 	<!-- Footer section -->
 	<jsp:include page="jsp/footer.jsp" flush="false"/>
 	<!-- Footer section end -->
 
 	<!--====== Javascripts & Jquery ======-->
 	<jsp:include page="jsp/requirejs.jsp" flush="false"/>
-	
 </body>
 </html>

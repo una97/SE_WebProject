@@ -4,3 +4,12 @@ a:hover{
 a{
 	color:black;
 }
+.sidebar td:hover{
+	background-color:#f8f7f7;
+}
+.fix{
+	border: none;
+	background-color:#413a3a;
+	color:#fff;
+	border-radius:5px;
+}

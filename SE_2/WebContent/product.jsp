@@ -5,15 +5,16 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<%@ page import="dto.Product"%>
+<%@ page import="dto.*"%>
+<%@ page import="dao.*"%>
 <%@ include file="jsp/product_li.jsp"%>
+<jsp:useBean id="ctDAO" class="dao.CartDAO" />
+
 
 <html>
 <head>
 <title></title>
 <meta charset="UTF-8">
-<meta name="description" content=" Divisima | eCommerce Template">
-<meta name="keywords" content="divisima, eCommerce, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Favicon -->
 <link href="img/favicon.ico" rel="shortcut icon" />
@@ -104,7 +105,7 @@ Product pdDto = pdDtos.get(idx);
 						<tr>
 							<td>
 								<form method="post" action="cart.jsp">
-									<button type="submit" class="site-btn">장바구니 담기</button>
+									<button type="submit" class="site-btn" >장바구니 담기</button>
 								</form>
 							</td>
 							<td>
