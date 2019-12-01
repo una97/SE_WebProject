@@ -45,11 +45,12 @@ String idx_s = request.getParameter("idx");
 out.print(idx_s);
 int idx = Integer.parseInt(idx_s);
 Product pdDto = pdDtos.get(idx);
-ArrayList<Review> rvDtos = rvDAO.reviewSelect("select * from review INNER JOIN `order` ON review.o_id = `order`.o_id where p_id="+idx);
 
 %>
 
 </head>
+
+
 <body>
 	<!-- Page Preloder -->
 	<div id="preloder">
@@ -92,9 +93,6 @@ ArrayList<Review> rvDtos = rvDAO.reviewSelect("select * from review INNER JOIN `
 						<i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
 							class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
 							class="fa fa-star-o fa-fade"></i>
-					</div>
-					<div class="p-review">
-						<a href="#reviewSec"><%= rvDtos.size() %> 리뷰</a>|<a href="">리뷰하기</a>
 					</div>
 					<div class="quantity">
 						<p>수량</p>

@@ -75,7 +75,7 @@
     
 <%
 int idx = Integer.parseInt(request.getParameter("idx"));
-ArrayList<Review> rvDtos = rvDAO.reviewSelect("select * from review INNER JOIN `order` ON review.o_id = `order`.o_id where p_id="+idx);
+ArrayList<Review> rvDtos = rvDAO.reviewSelect("select * from review INNER JOIN orders ON review.o_id = orders.o_id where p_id="+idx);
 %>
 <div class="products_reviews_list">
   <div class="products_reviews_form ">
@@ -97,7 +97,7 @@ ArrayList<Review> rvDtos = rvDAO.reviewSelect("select * from review INNER JOIN `
   		  <div class="score_summary__body">
     		<div class="score_summary__avg_score">
       			<div class="score_summary__average">4.8</div>
-      			<div class="score_summary__reviews_count">212개 리뷰 평점</div>
+      			<div class="score_summary__reviews_count">rvDtos.size()개 리뷰 평점</div>
     		</div>
     		
     		<ul class="score_summary__score_filters">
