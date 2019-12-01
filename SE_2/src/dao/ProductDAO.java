@@ -64,4 +64,21 @@ public class ProductDAO {
 		}
 		return rs;
 	}
+    public int upload(Product product) {
+    	String SQL = "insert into user values(?,?,?,?,?,?,?)";
+        try {
+           pstmt=conn.prepareStatement(SQL);
+           pstmt.setInt(1, product.getP_id());
+           pstmt.setString(2, product.getP_name());
+           pstmt.setInt(3, product.getP_price());
+           pstmt.setString(4, product.getP_pic());
+           pstmt.setInt(5, product.getP_stock());
+           pstmt.setString(6, product.getP_info());
+           pstmt.setString(7, product.getP_category());
+           return pstmt.executeUpdate();
+        }catch(Exception e) {
+        	e.printStackTrace();
+        }
+        return -1;
+    }
 }
