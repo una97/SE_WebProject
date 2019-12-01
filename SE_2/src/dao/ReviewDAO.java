@@ -30,7 +30,7 @@ public class ReviewDAO {
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String to = transFormat.format(from);
 
-    	String SQL = "insert into reveiw (o_id, r_date, r_star, r_content) values(?,?,?,?)";
+    	String SQL = "insert into review (o_id, r_date, r_star, r_content) values(?,?,?,?);";
     	try {
     		pstmt=conn.prepareStatement(SQL);
     		pstmt.setInt(1, o_id);

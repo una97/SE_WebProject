@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class WriteReview
  */
-@WebServlet("/WriteReview")
+//@WebServlet("/WriteReview")
 public class WriteReview extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,26 +36,34 @@ public class WriteReview extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String r_content = request.getParameter("txt");
+		request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        
+		String r_content = request.getParameter("r_content");
 		int r_star = Integer.parseInt(request.getParameter("r_star"));
-		response.setCharacterEncoding("utf-8");
+		int o_id = Integer.parseInt(request.getParameter("o_id"));
+		
+
+
 		ReviewDAO rvDAO = new ReviewDAO();
-		int result = rvDAO.addReview(1, r_star, r_content);
+		int result = rvDAO.addReview(o_id, r_star, r_content);
+		
 		if(result==-1) {
 			PrintWriter script = response.getWriter();
+			
 			script.println("<script>");
 			script.println("alert('이미 리뷰를 작성하셨습니다.')");
-			script.println("history.back()");
+			script.println("window.close()");
 			script.println("</script>");
 		}
 		else {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('리뷰 작성이 완료되었습니다!')");
-			script.println("location.href='cart.jsp'");
+			script.println("window.close()");
 			script.println("</script>");
 		}
-		
 	}
 	
 }

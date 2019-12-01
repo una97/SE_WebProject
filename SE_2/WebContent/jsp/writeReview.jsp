@@ -238,6 +238,16 @@
     	background-color: #000000;
      }
      </style>
+     <!--====== Javascripts & Jquery ======-->
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery.slicknav.min.js"></script>
+	<script src="../js/owl.carousel.min.js"></script>
+	<script src="../js/jquery.nicescroll.min.js"></script>
+	<script src="../js/jquery.zoom.min.js"></script>
+	<script src="../js/jquery-ui.min.js"></script>
+	<script src="../js/main.js"></script>
+	
 </head>
 <body style="overflow-y:scroll">
 <div id="MainContent">
@@ -248,25 +258,26 @@
 	<a href="#" role="button" class="_2GFmOgYde3 N=a:wrtrv.hdcls" onclick="window.close()">
 	</a>
 </header>
-<form action="WriteReview" method="post">
+<form action="/SE_2/WriteReview.do" method="post">
+<input type="hidden" name="o_id" value=<%=request.getParameter("o_id") %> />
 <div class ="-OcYLr6Qe6">
 	<div class="oViOeBoH3d">
 		<strong class="_3y9Ly2IiVh">상품은 만족하셨나요?</strong>
 		<div class="_1FcR2l9t3Q">
 			<div class="OO02FTHqZp" role="radiogroup">
-				<a href="#" class="_92gtIHEDor VsNxhfpqhM" onclick="clickRadio(this.data-value)" role="radio" aria-checked="false" data-value="5">
+				<a href="#" class="_92gtIHEDor VsNxhfpqhM" data-value="5" onclick="clickRadio(this)" role="radio" aria-checked="false">
 				<span class="blind">5</span>
 				</a>
-				<a href="#" class="_92gtIHEDor VsNxhfpqhM" onclick="clickRadio(this.data-value)" role="radio" aria-checked="false" data-value="4">
+				<a href="#" class="_92gtIHEDor VsNxhfpqhM" data-value="4" onclick="clickRadio(this)" role="radio" aria-checked="false">
 				<span class="blind">4</span>
 				</a>
-				<a href="#" class="_92gtIHEDor VsNxhfpqhM" onclick="clickRadio(this.data-value)" role="radio" aria-checked="false" data-value="3">
+				<a href="#" class="_92gtIHEDor VsNxhfpqhM" data-value="3" onclick="clickRadio(this)" role="radio" aria-checked="false">
 				<span class="blind">3</span>
 				</a>
-				<a href="#" class="_92gtIHEDor VsNxhfpqhM" onclick="clickRadio(this.data-value)" role="radio" aria-checked="false" data-value="2">
+				<a href="#" class="_92gtIHEDor VsNxhfpqhM" data-value="2" onclick="clickRadio(this)" role="radio" aria-checked="false">
 				<span class="blind">2</span>
 				</a>
-				<a href="#" class="_92gtIHEDor VsNxhfpqhM" onclick="clickRadio(this.data-value)" role="radio" aria-checked="false" data-value="1">
+				<a href="#" class="_92gtIHEDor VsNxhfpqhM" data-value="1" onclick="clickRadio(this)" role="radio" aria-checked="false" >
 				<span class="blind">1</span>
 				</a>
 			</div>
@@ -275,7 +286,7 @@
 	<div class="oViOeBoH3d">
 		<div class="ystMZ36gvH">
 			<div class="_30-j0z23yB _2CEGIJbJ0M">
-				<textarea class="_2mqbEheJIc" id="reviewInput" cols="30" style="height: 100px;"></textarea>
+				<textarea name="r_content" class="_2mqbEheJIc" id="reviewInput" cols="30" style="height: 100px;"></textarea>
 			</div>
 		</div>
 	</div>
@@ -296,32 +307,36 @@
 <script>
 var value=null;
 var r_content=null;
+var o_id=null;
 function clickRadio(val){
-	value=val;
+	value=val.getAttribute("data-value");
+	
+	console.log(value);
 }
 function submit(){
-	canClose();
 	r_content = $("#reviewInput").val();
 	
-	var f = document.getElementsByTagName("form"); // form 엘리멘트 생성 
-
-	var i = document.createElement("input"); // input 엘리멘트 생성 
-	i.setAttribute("type","hidden"); // type 속성을 hidden으로 설정
-	i.setAttribute("name","star"); // name 속성을 'm_nickname'으로 설정 
-	i.setAttribute("value",value); // value 속성을 neilong에 담겨있는 값으로 설정 
-	f.appendChild(i); // form 엘리멘트에 input 엘리멘트 추가 
-
-	f.submit(); // form 태그 서브밋 실행
-	
-}
-function canClose(){
 	if(value==null)
 		alert("별점을 선택해주세요.");
 	else if(r_content==null)
 		alert("리뷰를 작성해주세요.");
-	else
-		window.close();
+	else{
+		var f = document.getElementsByTagName("form")[0]; // form 엘리멘트 생성 
+	
+		var i = document.createElement("input"); // input 엘리멘트 생성 
+		i.setAttribute("type","hidden"); // type 속성을 hidden으로 설정
+		i.setAttribute("name","r_star"); // name 속성을 'm_nickname'으로 설정 
+		i.setAttribute("value",value); // value 속성을 neilong에 담겨있는 값으로 설정
+		
+		f.appendChild(i); // form 엘리멘트에 input 엘리멘트 추가 
+
+		f.submit(); // form 태그 서브밋 실행
+		console.log("여기까지");
+		
+	}
 }
+
 </script>
+
 </body>
 </html>

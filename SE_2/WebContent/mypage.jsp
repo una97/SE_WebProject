@@ -14,10 +14,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="description" content=" Divisima | eCommerce Template">
-<meta name="keywords" content="divisima, eCommerce, creative, html">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Favicon -->
 <link href="img/favicon.ico" rel="shortcut icon" />
 
@@ -45,8 +42,13 @@
 	<![endif]-->
 <title>마이페이지</title>
 <%
-ArrayList<Order> odDtos = odDAO.getOrder((String)session.getAttribute("u_id"));
+ResultSet odDtos = odDAO.getResult((String)session.getAttribute("u_id"));
 %>
+<style>
+th {
+padding-left: 20px;
+}
+</style>
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -115,13 +117,16 @@ ArrayList<Order> odDtos = odDAO.getOrder((String)session.getAttribute("u_id"));
 			<table>
 				<thead>
 					<%
-										for (int i = 0; i < odDtos.size(); i++) {
-											Order odDto = odDtos.get(i);
+										while(odDtos.next()) {
+											
 											%>
 					<tr>
-						<th class="product-th">주문번호 </th>
-						<th class="quy-th">상품명의정아 졸려</th>
-						<th class="total-th"><button class="site-btn submit-order-btn">리뷰 쓰기</button></th>
+						<th class="product-th"><%= odDtos.getString("o_id")%> </th>
+						<th class="quy-th"><%=odDtos.getString("o_date")%></th>
+						<th class="pic-th"><img src=<%=odDtos.getString("p_pic") %> width="50" height="50"/></th>
+						<th class="pdname-th"><%=odDtos.getString("p_name")%></th>
+						<th class="price-th"><%=odDtos.getInt("total_price")%></th>
+						<th class="total-th"><button class="site-btn submit-order-btn" onclick="window.open('jsp/writeReview.jsp?o_id=<%=odDtos.getString("o_id") %>', '_blank', 'width=450px,height=350px,toolbars=no,scrollbars=no'); return false;">리뷰 쓰기</button></th>
 					</tr>
 					<%
 										}

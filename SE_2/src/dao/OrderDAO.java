@@ -23,13 +23,13 @@ public class OrderDAO {
 	}
 
 	public int addOrder(String u_id, int p_id, String o_u_name, String o_u_address, String totalPrice) {
-		String SQL = "insert into cart values(?,?,?,?,?,?,?,?)";
+		String SQL = "insert into orders values(?,?,?,?,?,?,?,?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 //    		pstmt.setString(1, u_id);
 			pstmt.setString(2, u_id);
-			pstmt.setInt(3, p_id); // ï¿½ë‹”ï¿½ì›¾ ç•°ë·€ì‘ æ€¨ê¾©ê¶›
-			pstmt.setString(4, "2019-12-01");// åª›ï¿½å¯ƒï¿½ æ€¨ê¾©ê¶›
+			pstmt.setInt(3, p_id); 
+			pstmt.setString(4, "2019-12-01");
 			pstmt.setString(5, o_u_name);
 			pstmt.setString(6, o_u_address);
 			pstmt.setString(7, totalPrice);
@@ -60,7 +60,6 @@ public class OrderDAO {
 				String u_address = rs.getString("u_address");
 				String total_price = rs.getString("total_price");
 				String o_status = rs.getString("o_status");
-				
 				Order order = new Order(o_id, u_id, p_id, o_date, u_name, u_address, total_price, o_status);
 				orderList.add(order);
 				
@@ -82,6 +81,18 @@ public class OrderDAO {
 		}
 		return orderList;
 
+	}
+    public ResultSet getResult(String id) {
+		ResultSet rs=null;
+		String sql="select o_id, u_id, o.p_id, o_date, u_name, u_address, total_price, o_status, p_pic, p_name from orders as o inner join product as p on o.p_id=p.p_id where u_id=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+		}catch(Exception e) {
+			System.out.println("DB¿¬°á ¹®Á¦: "+e.getMessage());
+		}
+		return rs;
 	}
 
 }
