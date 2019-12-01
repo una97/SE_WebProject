@@ -16,7 +16,7 @@
 				<div class="col-lg-3 col-sm-6">
 					<div class="footer-widget about-widget">
 						<h2>About</h2>
-						<p>Donec vitae purus nunc. Morbi faucibus erat sit amet congue mattis. Nullam frin-gilla faucibus urna, id dapibus erat iaculis ut. Integer ac sem.</p>
+						<p>Docamp는 합리적인 가격으로 캠핑을 사랑하는 사람들을 위해 최상품질의 상품을 소개합니다. 당신이 행복한 캠핑을 하는 그 날까지 Docamp가 함께할게요.</p>
 						<img src="img/cards.png" alt="">
 					</div>
 				</div>
@@ -26,21 +26,17 @@
 						<ul>
 							<li><a href="">About Us</a></li>
 							<li><a href="">Track Orders</a></li>
-							<li><a href="">Returns</a></li>
-							<li><a href="">Jobs</a></li>
 							<li><a href="">Shipping</a></li>
-							<li><a href="">Blog</a></li>
+							
 						</ul>
 						<ul>
 							<li><a href="">Partners</a></li>
-							<li><a href="">Bloggers</a></li>
 							<li><a href="">Support</a></li>
 							<li><a href="">Terms of Use</a></li>
-							<li><a href="">Press</a></li>
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-3 col-sm-6">
+		<!-- 		<div class="col-lg-3 col-sm-6">
 					<div class="footer-widget about-widget">
 						<h2>Questions</h2>
 						<div class="fw-latest-post-widget">
@@ -62,25 +58,25 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="col-lg-3 col-sm-6">
 					<div class="footer-widget contact-widget">
 						<h2>Questions</h2>
 						<div class="con-info">
 							<span>C.</span>
-							<p>Your Company Ltd </p>
+							<p>Docamp(주)</p>
 						</div>
 						<div class="con-info">
 							<span>B.</span>
-							<p>1481 Creekside Lane  Avila Beach, CA 93424, P.O. BOX 68 </p>
+							<p>서울시 중구 필동로 1길-30 동국대학교</p>
 						</div>
 						<div class="con-info">
 							<span>T.</span>
-							<p>+53 345 7953 32453</p>
+							<p>+02 596 9015</p>
 						</div>
 						<div class="con-info">
 							<span>E.</span>
-							<p>office@youremail.com</p>
+							<p>yoona@dongguk.edu</p>
 						</div>
 					</div>
 				</div>

@@ -17,11 +17,11 @@
 
 <html>
 <head>
-	<title></title>
+	<title>Docamp</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
-	<link href="img/favicon.ico" rel="shortcut icon"/>
+	<link href="img/logo.png" rel="shortcut icon"/>
 
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -161,7 +161,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="filter-widget mb-0">
+		<!-- 			<div class="filter-widget mb-0">
 						<h2 class="fw-title">크기</h2>
 						<div class="fw-size-choose">
 							<div class="sc-item">
@@ -199,7 +199,7 @@
 							<li><a href="#">Missguided<span>(27)</span></a></li>
 							<li><a href="#">Zara<span>(19)</span></a></li>
 						</ul>
-					</div>
+					</div> -->
 				</div>
                 <!-- 상품 판매란 -->
 				<div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
