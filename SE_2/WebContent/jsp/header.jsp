@@ -70,7 +70,7 @@
 						</ul>
 					</li>
 					<li><a href="#">Sharing</a></li>
-					<li><a href="#">Event
+					<li><a href="eventList.jsp">Event
 						<span class="new">New</span>
 					</a></li>
 					<li><a href="#">Community</a></li>
