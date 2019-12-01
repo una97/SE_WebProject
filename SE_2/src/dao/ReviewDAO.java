@@ -3,6 +3,9 @@ import dto.Product;
 import dto.Review;
 import java.util.*;
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.time.*;
 
 public class ReviewDAO {
 	private Connection conn;
@@ -22,18 +25,37 @@ public class ReviewDAO {
 		}
     }
     
+	public int addReview(int o_id, int r_star, String r_content){
+		Date from = new Date();
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String to = transFormat.format(from);
+
+    	String SQL = "insert into reveiw (o_id, r_date, r_star, r_content) values(?,?,?,?)";
+    	try {
+    		pstmt=conn.prepareStatement(SQL);
+    		pstmt.setInt(1, o_id);
+    		pstmt.setString(2, to);
+    		pstmt.setInt(3, r_star);
+    		pstmt.setString(4, r_content);
+    		
+    		return pstmt.executeUpdate();
+    		
+    	}catch (Exception e) {
+			e.printStackTrace();		
+			}
+    	return -1;
+    }
+	
     public ArrayList<Review> reviewSelect(String p){
         ResultSet rs=null;
         Statement stmt = null;
         
         ArrayList<Review> rdtos = new ArrayList<Review>();
         try{
-            conn = DriverManager.getConnection(url, "egg", "12345678");
             stmt = conn.createStatement();
             
             rs = stmt.executeQuery(p);
             while(rs.next()){
-                Integer r_id = rs.getInt("r_id");
                 Integer o_id = rs.getInt("o_id");
                 String r_date = rs.getString("r_date");
                 Integer r_star = rs.getInt("r_star");
@@ -41,7 +63,7 @@ public class ReviewDAO {
                 String r_reply = rs.getString("r_reply");
                 Integer r_like = rs.getInt("r_like");
                 Integer r_hate = rs.getInt("r_hate");
-                Review rdto = new Review(r_id, o_id, r_date, r_star, r_content, r_reply, r_like, r_hate);
+                Review rdto = new Review(o_id, r_date, r_star, r_content, r_reply, r_like, r_hate);
                 rdtos.add(rdto);
             }
         }catch(Exception e){

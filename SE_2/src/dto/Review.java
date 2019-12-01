@@ -13,9 +13,8 @@ public class Review {
 	private int r_like;
 	private int r_hate;
     
-    public Review(int r_id, int o_id, String r_date, int r_star, String r_content, String r_reply, int r_like, int r_hate)
+    public Review(int o_id, String r_date, int r_star, String r_content, String r_reply, int r_like, int r_hate)
     {
-    	this.r_id = r_id;
     	this.o_id = o_id;
     	this.r_date = r_date;
     	this.r_star = r_star;
@@ -24,14 +23,7 @@ public class Review {
     	this.r_like = r_like;
     	this.r_hate = r_hate;
     }
-    public int getR_id() {
-		return r_id;
-	}
 
-	public void setR_id(int id) {
-		this.r_id = id;
-	}
-	
     public int getO_id() {
 		return o_id;
 	}
