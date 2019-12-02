@@ -48,8 +48,20 @@
 	ArrayList<Cart> ctDtos = ctDAO.getCart((String) session.getAttribute("u_id"));
 	int sum = 0;
 	int shipCost = 2500;
+	String u_id = (String)session.getAttribute("u_id");
 	String o_name = request.getParameter("order_name");
+	String o_phone = request.getParameter("phone");
+	String o_email = request.getParameter("email");
+	String b_address = request.getParameter("basicAddress");
+	String d_address = request.getParameter("detailAddress");
+	String o_mention = request.getParameter("mention");
+	String o_pay = request.getParameter("pay");
+	String o_divide = request.getParameter("divide");
+	
+	
 %>
+
+
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -66,7 +78,7 @@
 		<div class="container">
 			<table>
 				<tr>
-					<td><img src="img/cart/cart.png" width="50" alt="">
+					<td><img src="img/cart/check.png" width="50" alt="">
 						&nbsp;&nbsp;</td>
 					<td>
 						<h4>주문완료</h4>
@@ -92,7 +104,9 @@
 	<!-- Page info end -->
 
 	<!-- checkout section  -->
+
 	<section class="cart-section spad">
+
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8">
@@ -101,15 +115,58 @@
 						<div class="cart-table-warp">
 							<table>
 								<thead>
-									<th class="product-th">주문자 이름</th>
-									<th class="quy-th">주문자 주소</th>
+									<th class="product-th">주문자 정보</th>
+									<!-- <th class="quy-th">주문자 주소</th> -->
 								</thead>
 								<tbody>
 									<tr>
-										<%=o_name%>
-										<td></td>
-										<td></td>
+										<td>주문자 이름</td>
+										<td><%=o_name%></td>
 									</tr>
+									<tr>
+										<td>주문자 휴대전화</td>
+										<td><%=o_phone%></td>
+									</tr>
+									<tr>
+										<td>주문자 이메일</td>
+										<td><%=o_email%></td>
+									</tr>
+								</tbody>
+							</table>
+							<table>
+								<thead>
+									<th class="product-th">배송지 정보</th>
+								</thead>
+								<tbody>
+									<tr>
+										<td>배송지 주소</td>
+										<td><%=b_address%></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td><%=d_address%></td>
+									</tr>
+									<tr>
+										<td>배송시 요구사항</td>
+										<td><%=o_mention%></td>
+									</tr>
+								</tbody>
+
+							</table>
+							<table>
+								<thead>
+									<th class="product-th">결제 정보</th>
+								</thead>
+								<tbody>
+									<tr>
+										<td>결제 방법</td>
+										<td><%=o_pay%></td>
+									</tr>
+									<tr>
+										<td>할부 방식</td>
+										<td><%=o_divide%>개월</td>
+									</tr>
+
 								</tbody>
 
 							</table>
@@ -138,16 +195,14 @@
 												<h4><%=pdDto.getP_name()%></h4>
 												<p><%=pdDto.getP_price()%></p>
 											</div></td>
-										<td class="quy-col">
-											<div class="quantity">
-												<div class="pro-qty">
-													<input type="text" id="quantity" value="1">
-												</div>
-											</div>
+
+										<td>
+											<h5>1</h5>
 										</td>
 
 										<td class="total-col"><h4><%=pdDto.getP_price()%></h4></td>
 									</tr>
+
 									<%
 										}
 									%>
@@ -165,174 +220,19 @@
 						</div>
 					</div>
 				</div>
-
+				
+				<%
+				
+				
+				%>
+				<div class="col-lg-4 card-right">
+		
+					<a href="index.jsp" class="site-btn sb-dark">주문 내역 확인하기</a>
+				</div>
 			</div>
 		</div>
+
 	</section>
-	<%-- <div class="col-lg-4 order-1 order-lg-2">
-	<div class="checkout-cart">
-		<h3>장바구니</h3>
-		<ul class="product-list">
-			<%
-				for (int i = 0; i < ctDtos.size(); i++) {
-					Cart ctDto = ctDtos.get(i);
-					ArrayList<Product> pdDtos = ptDAO.productSelect(
-							"select * from product INNER JOIN cart ON cart.c_p_id where c_p_id=" + ctDto.getP_id());
-					Product pdDto = pdDtos.get(i);
-					sum += pdDto.getP_price();
-			%>
-			<li>
-				<div class="pl-thumb">
-					<img src=<%=pdDto.getP_pic()%> alt="">
-				</div>
-				<h6><%=pdDto.getP_name()%></h6>
-				<p><%=pdDto.getP_price()%></p>
-			</li>
-			<%
-				}
-			%>
-		</ul>
-		<ul class="price-list">
-			<li>합계<span><%=sum%></span></li>
-			<li>배송비<span><%=shipCost%></span></li>
-			<%
-				sum = sum + shipCost;
-			%>
-			<li class="total">합계<span><%=sum%></span></li>
-		</ul>
-	</div>
-	</div> --%>
-	<%-- 	<section class="checkout-section spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 order-2 order-lg-1">
-					<form action="orderSave.jsp" method="post" class="checkout-form"  >
-						<div class="cf-title">주문자 정보</div>
-						<div class="row address-inputs">
-							<div class="col-md-6">
-								<input type="text" placeholder="이름" name="order_name">
-							</div>
-							<div class="col-md-6">
-								<input type="text" placeholder="휴대전화">
-							</div>
-							<div class="col-md-6">
-								<input type="text" placeholder="이메일">
-							</div>
-						</div>
-						<div class="cf-title">
-							배송지 정보 &nbsp; <input type="radio" name="pm" id="one">
-							<!--이 부분 -->
-							<label for="one">주문자 정보와 동일</label>
-						</div>
-
-						<div class="row address-inputs">
-							<div class="col-md-12">
-								<input type="text" placeholder="도로명 주소"> <input
-									type="text" placeholder="상세 주소">
-							</div>
-							<div class="col-md-6">
-								<input type="text" placeholder="휴대 전화">
-							</div>
-							<div class="col-md-12">
-								<input type="text" placeholder="배송 시 요구사항">
-							</div>
-
-						</div>
-						<div class="cf-title">쿠폰 사용</div>
-						<div class="row shipping-btns">
-
-							<!-- <h4>사용 가능한 쿠폰 조회</h4> -->
-							<div class="col-md-3">
-								<!-- <button href="#">사용가능한 쿠폰 조회 </button> -->
-								<input type="text" placeholder="사용 가능한 쿠폰 조회">
-							</div>
-							<!-- <div class="col-6">
-								<h4>Standard</h4>
-							</div>
-							<div class="col-6">
-								<div class="cf-radio-btns">
-									<div class="cfr-item">
-										<input type="radio" name="shipping" id="ship-1">
-										<label for="ship-1">Free</label>
-									</div>
-								</div>
-							</div>
-							<div class="col-6">
-								<h4>Next day delievery  </h4>
-							</div>
-							<div class="col-6">
-								<div class="cf-radio-btns">
-									<div class="cfr-item">
-										<input type="radio" name="shipping" id="ship-2">
-										<label for="ship-2">$3.45</label>
-									</div>
-								</div>
-							</div> -->
-						</div>
-						<div class="cf-title">결제</div>
-						<ul class="payment-list">
-							<!-- <li>신용카드(일반)<a href="#"><img src="img/cart/kb.png" alt=""><img src="img/cart/hd.png" alt=""><img src="img/cart/samsung.png" alt=""><img src="img/cart/lotte.png" alt=""><img src="img/cart/nh.png" alt=""></a></li>
-							<li>간편결제<a href="#"><img src="img/mastercart.png" alt=""></a></li> -->
-							<input type="radio" name="pay" id="normal">
-							<!--이 부분 -->
-							<label for="one">신용카드(일반)&nbsp;&nbsp;<img
-								src="img/cart/kb.png" width="100px" height="100px" alt=""><img
-								src="img/cart/hd.png" width="100px" height="100px" alt=""><img
-								src="img/cart/samsung.png" width="100px" height="100px" alt=""><img
-								src="img/cart/lotte.png" width="100px" height="100px" alt=""></label>
-							<br>
-							<input type="radio" name="pay" id="easy">
-							<!--이 부분 -->
-							<label for="one">간편결제</label>
-							<li>할부방식 <select>
-									<option value="3">3개월</option>
-									<option value="6">6개월</option>
-									<option value="12">12개월</option>
-									<option value="free">무이자</option>
-							</select>
-							</li>
-						</ul>
-						<button class="site-btn submit-order-btn">결제하기</button>
-					</form>
-					
-				</div>
-				<div class="col-lg-4 order-1 order-lg-2">
-					<div class="checkout-cart">
-						<h3>장바구니</h3>
-						<ul class="product-list">
-							<%
-								for (int i = 0; i < ctDtos.size(); i++) {
-									Cart ctDto = ctDtos.get(i);
-									ArrayList<Product> pdDtos = ptDAO.productSelect(
-											"select * from product INNER JOIN cart ON cart.c_p_id where c_p_id=" + ctDto.getP_id());
-									Product pdDto = pdDtos.get(i);
-									sum += pdDto.getP_price();
-							%>
-							<li>
-								<div class="pl-thumb">
-									<img src=<%=pdDto.getP_pic()%> alt="">
-								</div>
-								<h6><%=pdDto.getP_name()%></h6>
-								<p><%=pdDto.getP_price()%></p>
-							</li>
-							<%
-								}
-							%>
-						</ul>
-						<ul class="price-list">
-							<li>합계<span><%=sum%></span></li>
-							<li>배송비<span><%=shipCost%></span></li>
-							<%
-								sum = sum + shipCost;
-							%>
-							<li class="total">합계<span><%=sum%></span></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> --%>
-	<!-- checkout section end -->
 
 	<!-- Footer section -->
 	<jsp:include page="jsp/footer.jsp" flush="false" />

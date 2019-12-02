@@ -2,8 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.ArrayList"%>
+
 <%@ page import="dto.Product"%>
-<%@ include file="jsp/product_li.jsp" %>
+<%@ page import="dto.Review"%>
+<%@ page import="dao.ReviewDAO"%>
+<jsp:useBean id="rvDAO" class="dao.ReviewDAO"/>
+<jsp:useBean id="pdDAO" class="dao.ProductDAO"/>
 
 <%request.setCharacterEncoding("utf-8");%>
 <% 
@@ -13,6 +17,20 @@
 	}catch(Exception e){
 		cnt = 0;
 	}
+	String p_cate = request.getParameter("p_cate");
+	String p_sm_cate = request.getParameter("p_sm_cate");
+	ArrayList<Product> pdDtos;
+	if(p_cate==null) {
+		pdDtos = pdDAO.productSelect("select * from product");
+	}
+	else if(p_sm_cate==null){
+		pdDtos = pdDAO.productSelect("select * from product where p_category='"+p_cate+"'");
+	}
+	else{
+		pdDtos = pdDAO.productSelect("select * from product where p_category='"+p_cate+"' and "+"p_sm_category='"+p_sm_cate+"'");
+	}
+		
+
 %>
 
 <html>
@@ -72,20 +90,20 @@
 					<div class="filter-widget">
 						<h2 class="fw-title">카테고리 목록</h2>
 						<ul class="category-menu">
-							<li><a href="#">텐트/타프</a>
+							<li><a href="/category.jsp?p_cate=tent">텐트/타프</a>
 								<ul class="sub-menu">
-									<li><a href="#">텐트<span>(2)</span></a></li>
-									<li><a href="#">텐트 악세서리<span>(56)</span></a></li>
-									<li><a href="#">타프<span>(36)</span></a></li>
+									<li><a href="category.jsp?p_cate=tent&p_sm_cate=tent">텐트<span>(2)</span></a></li>
+									<li><a href="category.jsp?p_cate=tent">텐트 악세서리<span>(56)</span></a></li>
+									<li><a href="category.jsp?p_cate=tent&p_sm_cate=tarp">타프<span>(36)</span></a></li>
 								</ul>
 							</li>
-							<li><a href="#">의자/테이블/가구</a>
+							<li><a href="">의자/테이블/가구</a>
 								<ul class="sub-menu">
 									<li><a href="#">의자<span>(2)</span></a></li>
 									<li><a href="#">테이블<span>(56)</span></a></li>
 									<li><a href="#">야전침대<span>(36)</span></a></li>
 								</ul></li>
-							<li><a href="#">침낭/매트</a>
+							<li><a href="">침낭/매트</a>
                             	<ul class="sub-menu">
 									<li><a href="#">침낭<span>(2)</span></a></li>
 									<li><a href="#">매트<span>(56)</span></a></li>
