@@ -43,11 +43,11 @@ public class WriteReview extends HttpServlet {
 		String r_content = request.getParameter("r_content");
 		int r_star = Integer.parseInt(request.getParameter("r_star"));
 		int o_id = Integer.parseInt(request.getParameter("o_id"));
-		
+		String u_id = request.getParameter("u_id");
 
 
 		ReviewDAO rvDAO = new ReviewDAO();
-		int result = rvDAO.addReview(o_id, r_star, r_content);
+		int result = rvDAO.addReview(o_id, u_id, r_star, r_content);
 		
 		if(result==-1) {
 			PrintWriter script = response.getWriter();

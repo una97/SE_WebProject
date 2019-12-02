@@ -260,6 +260,8 @@
 </header>
 <form action="/SE_2/WriteReview.do" method="post">
 <input type="hidden" name="o_id" value=<%=request.getParameter("o_id") %> />
+<input type="hidden" name="u_id" value=<%=(String)session.getAttribute("u_id") %> />
+
 <div class ="-OcYLr6Qe6">
 	<div class="oViOeBoH3d">
 		<strong class="_3y9Ly2IiVh">상품은 만족하셨나요?</strong>

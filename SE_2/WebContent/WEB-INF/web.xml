@@ -18,4 +18,13 @@
   <servlet-name>WriteReview</servlet-name>
   <url-pattern>/WriteReview.do</url-pattern>
 </servlet-mapping>
+<servlet>
+  <servlet-name>WriteReply</servlet-name>
+  <servlet-class>service.WriteReply</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>WriteReply</servlet-name>
+  <url-pattern>/WriteReply.do</url-pattern>
+</servlet-mapping>
+
 </web-app>

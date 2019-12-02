@@ -25,12 +25,12 @@ public class ReviewDAO {
 		}
     }
     
-	public int addReview(int o_id, int r_star, String r_content){
+	public int addReview(int o_id, String u_id, int r_star, String r_content){
 		Date from = new Date();
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String to = transFormat.format(from);
 
-    	String SQL = "insert into review (o_id, r_date, r_star, r_content) values(?,?,?,?);";
+    	String SQL = "insert into review (o_id, u_id, r_date, r_star, r_content) values(?,?,?,?);";
     	try {
     		pstmt=conn.prepareStatement(SQL);
     		pstmt.setInt(1, o_id);
@@ -46,6 +46,21 @@ public class ReviewDAO {
     	return -1;
     }
 	
+	public int addReply(int o_id, String u_id, String comment){
+		String newComment = u_id+","+comment+";";
+    	String SQL = "UPDATE review SET r_reply = CONCAT(r_reply, ?) WHERE o_id=?";
+    	try {
+    		pstmt=conn.prepareStatement(SQL);
+    		pstmt.setString(1, newComment);
+    		pstmt.setInt(2, o_id);
+    		
+    		return pstmt.executeUpdate();
+    		
+    	}catch (Exception e) {
+			e.printStackTrace();		
+			}
+    	return -1;
+    }
     public ArrayList<Review> reviewSelect(String p){
         ResultSet rs=null;
         Statement stmt = null;
@@ -57,13 +72,14 @@ public class ReviewDAO {
             rs = stmt.executeQuery(p);
             while(rs.next()){
                 Integer o_id = rs.getInt("o_id");
+                String u_id = rs.getString("u_id");
                 String r_date = rs.getString("r_date");
                 Integer r_star = rs.getInt("r_star");
                 String r_content = rs.getString("r_content");
                 String r_reply = rs.getString("r_reply");
                 Integer r_like = rs.getInt("r_like");
                 Integer r_hate = rs.getInt("r_hate");
-                Review rdto = new Review(o_id, r_date, r_star, r_content, r_reply, r_like, r_hate);
+                Review rdto = new Review(o_id,u_id, r_date, r_star, r_content, r_reply, r_like, r_hate);
                 rdtos.add(rdto);
             }
         }catch(Exception e){
