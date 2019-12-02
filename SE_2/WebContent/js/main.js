@@ -1,10 +1,3 @@
-/* =================================
-------------------------------------
-	Divisima | eCommerce Template
-	Version: 1.0
- ------------------------------------
- ====================================*/
-
 
 'use strict';
 
@@ -190,6 +183,8 @@ $(window).on('load', function() {
 		var oldValue = $button.parent().find('input').val();
 		if ($button.hasClass('inc')) {
 			var newVal = parseFloat(oldValue) + 1;
+			console.log(newVal);
+			
 		} else {
 			// Don't allow decrementing below zero
 			if (oldValue > 0) {
@@ -199,6 +194,7 @@ $(window).on('load', function() {
 			}
 		}
 		$button.parent().find('input').val(newVal);
+		
 	});
 
 

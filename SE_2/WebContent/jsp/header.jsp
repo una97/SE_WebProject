@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@page import="java.io.*" %>
+	pageEncoding="UTF-8"%>
+<%@page import="java.io.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,39 +14,45 @@
 				<div class="row">
 					<div class="col-lg-2 text-center text-lg-left">
 						<!-- logo -->
-						<a href="./index.jsp" class="site-logo">
-							<img src="img/logo.png" alt="" width="130px">
+						<a href="./index.jsp" class="site-logo"> <img
+							src="img/logo.png" alt="" width="130px">
 						</a>
 					</div>
 					<div class="col-xl-6 col-lg-5">
-					<br>
+						<br>
 						<form class="header-search-form">
 							<input type="text" placeholder="Search ....">
-							<button><i class="flaticon-search"></i></button>
+							<button>
+								<i class="flaticon-search"></i>
+							</button>
 						</form>
 					</div>
 					<div class="col-xl-4 col-lg-5">
 						<div class="user-panel">
-						<%if(session.getAttribute("u_id")==null){ //로그인 안 된 경우 %>
+							<%
+								if (session.getAttribute("u_id") == null) { //로그인 안 된 경우
+							%>
 							<div class="up-item">
-								<br>
-								<i class="flaticon-profile"></i>
-								<a href="login.jsp">로그인</a> / <a href="register.jsp">회원 가입</a>
+								<br> <i class="flaticon-profile"></i> <a href="login.jsp">로그인</a>
+								/ <a href="register.jsp">회원 가입</a>
 							</div>
-						<%}else{ %>
+							<%
+								} else {
+							%>
 							<div class="up-item">
-								<br>
-								<i class="flaticon-profile"></i>
-								<a href="mypage.jsp"><%=session.getAttribute("u_name")%>님</a> / <a href="logoutAction.jsp">로그아웃</a>
+								<br> <i class="flaticon-profile"></i> <a href="mypage.jsp"><%=session.getAttribute("u_name")%>님</a>
+								/ <a href="logoutAction.jsp">로그아웃</a>
 							</div>
-						<%} %>
 							<div class="up-item">
 								<div class="shopping-card">
-									<i class="flaticon-bag"></i>
-									<span>0</span>
+									<i class="flaticon-bag"></i> <span>0</span>
 								</div>
 								<a href="cart.jsp">쇼핑 카트</a>
 							</div>
+							<%
+								}
+							%>
+							
 						</div>
 					</div>
 				</div>
@@ -67,13 +73,9 @@
 							<li><a href="#">랜턴/후레쉬</a></li>
 							<li><a href="#">화로대/가스/연료/장작</a></li>
 							<li><a href="#">가방/케이스</a></li>
-						</ul>
-					</li>
-					<li><a href="#">Sharing</a></li>
-					<li><a href="eventList.jsp">Event
-						<span class="new">New</span>
+						</ul></li>
+					<li><a href="eventList.jsp">Event <span class="new">New</span>
 					</a></li>
-					<li><a href="#">Community</a></li>
 					<li><a href="#">Pages</a>
 						<ul class="sub-menu">
 							<li><a href="./product.jsp">Product Page</a></li>
@@ -81,8 +83,7 @@
 							<li><a href="./cart.jsp">Cart Page</a></li>
 							<li><a href="./checkout.jsp">Checkout Page</a></li>
 							<li><a href="./contact.jsp">Contact Page</a></li>
-						</ul>
-					</li>
+						</ul></li>
 				</ul>
 			</div>
 		</nav>
