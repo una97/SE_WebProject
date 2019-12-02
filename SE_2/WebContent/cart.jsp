@@ -113,8 +113,7 @@
 											sum += pdDto.getP_price();
 									%>
 									<tr>
-										<td class="product-col"><img src=<%=pdDto.getP_pic()%>
-											alt="">
+										<td class="product-col"><img src=<%=pdDto.getP_pic()%> alt="">
 											<div class="pc-title">
 												<h4><%=pdDto.getP_name()%></h4>
 												<p><%=pdDto.getP_price()%></p>

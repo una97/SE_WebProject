@@ -4,9 +4,6 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="dto.Product"%>
 <%@ include file="jsp/product_li.jsp" %>
-<%
-	request.setCharacterEncoding("utf-8");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,11 +68,7 @@
 		});
 	}
 </script>
-<%
-	String idx_s = request.getParameter("idx");
-	int idx = Integer.parseInt(idx_s);
-	Product pdDto = pdDtos.get(idx);
-%>
+
 <!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -134,7 +127,7 @@
 					<hr>
 					<br>
 				<div class="fixproduct" align="center" style="background-color:#f0f0f0;margin: 0 auto; width:750px;">
-				<form method="post" action="fixPsave.jsp" enctype="multipart/form-data" >
+				<form method="post" action="addPsave.jsp" enctype="multipart/form-data" >
 				<fieldset>
 				<br><br>
 				<table id="ftable">
@@ -144,14 +137,13 @@
 				</tr>
 				<tr>
 					<td align="center">
-						<input type="hidden" name="p_id" value=<%=idx %>>
 						<div class="selector">
-							<img id="preview" src=<%="http://localhost:8080/SE_2/"+pdDto.getP_pic() %>>
+							<img id="preview" src="">
 						</div>
 					</td>
 					<td align="center">
 						<div class="selector">
-							<img id="preview2" src=<%="http://localhost:8080/SE_2/"+pdDto.getP_info() %>>
+							<img id="preview2" src="">
 						</div>
 					</td>
 				</tr>
@@ -159,36 +151,36 @@
 					<td>
 						<div class="filebox" align="center">
 						<label for="pp">이미지 업로드</label>
-						<input type="file" id="pp" name="p_pic" value="<%=pdDto.getP_pic()%>">
+						<input type="file" id="pp" name="p_pic">
 						</div>
 					</td>
 					<td>
 						<div class="filebox" align="center">
 						<label for="pi">이미지 업로드</label>
-						<input type="file" id="pi" name="p_info" value="<%=pdDto.getP_info()%>">
+						<input type="file" id="pi" name="p_info">
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td align ="center">상품명</td>
-					<td align="left"><input type= "text" name="p_name" value="<%=pdDto.getP_name()%>"></td>
+					<td align="left"><input type= "text" name="p_name"></td>
 				</tr>
 				<tr>
 					<td align ="center">대카테고리</td>
-					<td align="left"><input type= "text" name="p_category" value="<%=pdDto.getP_category()%>"></td>
+					<td align="left"><input type= "text" name="p_category"></td>
 				</tr>
 				<tr>
 					<td align ="center">소카테고리</td>
-					<td align="left"><input type= "text" name="p_sm_category" value="<%=pdDto.getP_sm_category()%>"></td>
+					<td align="left"><input type= "text" name="p_sm_category"></td>
 				</tr>
 				<tr>
 					<td align ="center">가격</td>
-					<td align="left"><input type="text" name="p_price" value=<%=pdDto.getP_price()%> maxlength="20"></td>
+					<td align="left"><input type="text" name="p_price" maxlength="20"></td>
 					
 				</tr>
 				<tr>
 					<td align ="center">재고</td>
-					<td align="left"><input type="text" name="p_stock" value=<%=pdDto.getP_stock()%> maxlength="20"></td>
+					<td align="left"><input type="text" name="p_stock" maxlength="20"></td>
 				</tr>
 			    </table>
 			    <br>

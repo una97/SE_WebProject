@@ -7,5 +7,5 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/Users/yooso/Desktop/유소영/동국대 3-2/소프트웨어공학개론/과제/SE_WebProject/SE_2/WebContent/WEB-INF/lib/mysql-connector-java-8.0.13.jar"/>
 	<classpathentry kind="lib" path="C:/Users/yooso/Desktop/유소영/동국대 3-2/소프트웨어공학개론/과제/SE_WebProject/SE_2/WebContent/WEB-INF/lib/cos.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="output" path="build/classes"/>
 </classpath>

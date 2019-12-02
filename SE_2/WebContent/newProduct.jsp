@@ -89,9 +89,13 @@
 				</div>
 				<div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
 					<h4>
-					상품 등록 및 정보 변경
+						상품 등록 및 정보 변경
 					</h4>
 					<hr>
+					<br>
+					<div align="right">
+						<button class="fix2" onclick="location.href='addProduct.jsp'">+새로운 상품 등록하기</button>
+					<div>
 					<br>
 					<div class="row">
                     <%

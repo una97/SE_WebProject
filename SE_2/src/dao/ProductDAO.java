@@ -38,7 +38,8 @@ public class ProductDAO {
                 String info = rs.getString("p_info");
                 Integer stock = rs.getInt("p_stock");
                 String category = rs.getString("p_category");
-                Product pdto = new Product(idx, name, price, picture, info, stock, category);
+                String sm_category = rs.getString("p_sm_category");
+                Product pdto = new Product(idx, name, price, picture, info, stock, category,sm_category);
                 pdtos.add(pdto);
             }
         }catch(Exception e){
@@ -64,21 +65,41 @@ public class ProductDAO {
 		}
 		return rs;
 	}
-    public int upload(Product product) {
-    	String SQL = "insert into user values(?,?,?,?,?,?,?)";
-        try {
-           pstmt=conn.prepareStatement(SQL);
-           pstmt.setInt(1, product.getP_id());
-           pstmt.setString(2, product.getP_name());
-           pstmt.setInt(3, product.getP_price());
-           pstmt.setString(4, product.getP_pic());
-           pstmt.setInt(5, product.getP_stock());
-           pstmt.setString(6, product.getP_info());
-           pstmt.setString(7, product.getP_category());
-           return pstmt.executeUpdate();
-        }catch(Exception e) {
-        	e.printStackTrace();
-        }
-        return -1;
+    public int upload(int p_id, String p_name, int p_price, String p_pic, int p_stock, String p_info, String p_category, String p_sm_category) {
+    	String SQL="";
+    	try {
+    		if(p_info!=null) {
+    			SQL="update product set p_name='"+p_name+"', p_pic='"+p_pic+"', p_stock="+p_stock+
+   				 ", p_info='"+p_info+"', p_category='"+p_category+"', p_sm_category='"+p_sm_category+"', p_price="+p_price+" where p_id="+p_id;
+    		}
+    		else {
+    			SQL="update product set p_name='"+p_name+"', p_pic='"+p_pic+"', p_stock="+p_stock+
+    	   				 ", p_category='"+p_category+"', p_sm_category='"+p_sm_category+"', p_price="+p_price+" where p_id="+p_id;
+    		}
+   		 	pstmt=conn.prepareStatement(SQL);
+   			return pstmt.executeUpdate();
+	   	}catch(Exception e) {
+	   		e.printStackTrace();
+	   	}
+    	return -1;
+    }
+    public int add(int p_id, String p_name, int p_price, String p_pic, int p_stock, String p_info, String p_category, String p_sm_category) {
+    	String SQL="insert into product values(?,?,?,?,?,?,?,?)";
+    	try {
+    		 pstmt=conn.prepareStatement(SQL);
+    		 pstmt.setInt(1, p_id);
+             pstmt.setString(2, p_name);
+             pstmt.setInt(3, p_price);
+             pstmt.setString(4, p_pic);
+             pstmt.setString(5, p_info);
+             pstmt.setInt(6, p_stock);
+             pstmt.setString(7, p_category);
+             pstmt.setString(8, p_sm_category);
+   		 	
+   			return pstmt.executeUpdate();
+	   	}catch(Exception e) {
+	   		e.printStackTrace();
+	   	}
+    	return -1;
     }
 }

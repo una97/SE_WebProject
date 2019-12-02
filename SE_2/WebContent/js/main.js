@@ -198,7 +198,6 @@ $(window).on('load', function() {
 	});
 
 
-
 	/*------------------
 		Single Product
 	--------------------*/

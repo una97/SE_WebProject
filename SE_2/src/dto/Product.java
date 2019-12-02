@@ -13,7 +13,7 @@ public class Product {
 	private String p_category;
 	private String p_sm_category;
     
-    public Product(Integer idx, String name, Integer price, String picture, String info, Integer stock, String category)
+    public Product(Integer idx, String name, Integer price, String picture, String info, Integer stock, String category, String sm_category)
     {
         this.p_id=idx;
         this.p_name=name;
@@ -22,7 +22,7 @@ public class Product {
         this.p_info=info;
         this.p_stock = stock;
         this.p_category=category;
-        
+        this.p_sm_category = sm_category;
     }
     public int getP_id() {
 		return p_id;
