@@ -3,7 +3,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Product {
-
+	
 	private int p_id;
 	private String p_name;
 	private int p_price;
@@ -11,6 +11,7 @@ public class Product {
 	private int p_stock;
 	private String p_info;
 	private String p_category;
+	private String p_sm_category;
     
     public Product(Integer idx, String name, Integer price, String picture, String info, Integer stock, String category)
     {
@@ -77,6 +78,12 @@ public class Product {
 
 	public void setP_category(String p_category) {
 		this.p_category = p_category;
+	}
+	public String getP_sm_category() {
+		return p_sm_category;
+	}
+	public void setP_sm_category(String p_sm_category) {
+		this.p_sm_category = p_sm_category;
 	}
 
 }

@@ -59,7 +59,7 @@
 					<li><a href="./index.jsp">Home</a></li>
 					<li><a href="./category.jsp">Camping shop</a>
 						<ul class="sub-menu">
-							<li><a href="#">텐트/타프</a></li>
+							<li><a href="../category.jsp?p_cate=tent">텐트/타프</a></li>
 							<li><a href="#">의자/테이블</a></li>
 							<li><a href="#">침낭/매트</a></li>
 							<li><a href="#">코펠/식기</a></li>
