@@ -122,7 +122,8 @@
 										<td class="quy-col">
 											<div class="quantity">
 												<div class="pro-qty">
-													<input type="text" id="quantity" value="1">
+												<form action = "checkout.jsp" method = "post">
+													<input type="text"  name = "quantity" id="quantity" value="1">
 												</div>
 											</div>
 										</td>
@@ -132,10 +133,7 @@
 									<%
 										}
 									%>
-									<script type="text/javascript">
-										var value = $('#quantity').val();
-										document.write(value);
-									</script>
+								
 								</tbody>
 							</table>
 						</div>
@@ -147,9 +145,13 @@
 					</div>
 				</div>
 				<div class="col-lg-4 card-right">
-					<a href="checkout.jsp" class="site-btn">결제 하기</a> <a href="index.jsp"
-						class="site-btn sb-dark">쇼핑 계속하기</a>
+				<button class="site-btn">주문 하기</button>
+			<!-- 		<a href="checkout.jsp" class="site-btn">결제 하기</a>  -->
+					</form>
+					<a href="index.jsp" class="site-btn sb-dark">쇼핑 계속하기</a>
+				
 				</div>
+			
 			</div>
 		</div>
 	</section>
