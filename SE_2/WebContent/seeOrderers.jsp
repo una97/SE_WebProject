@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*" %>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="dto.Product"%>
+<%@page import="java.sql.*" %>
+<%@page import="java.io.*" %>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
+<%@ page import="dto.*"%>
+<%@ page import="dao.*"%>
+<jsp:useBean id="odDAO" class="dao.OrderDAO"></jsp:useBean>
 <%@ include file="jsp/product_li.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
 	<link href="img/favicon.ico" rel="shortcut icon"/>
 
@@ -32,11 +37,17 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-<title>상품 등록</title>
-
+<title>주문자 조회</title>
 </head>
 <body>
-<!-- Page Preloder -->
+<%
+
+	String idx_s = request.getParameter("idx");
+	int idx = Integer.parseInt(idx_s);
+	Product pdDto = pdDtos.get(idx);
+	ResultSet odDtos = odDAO.getOrderer(idx);
+%>
+	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
@@ -75,7 +86,7 @@
 						<ul class="category-menu">
 							<li><a href="mypage.jsp">주문자 조회</a>
 							</li>
-							<li><a href="#">회원 조회</a>
+							<li><a href="seeMembers.jsp">회원 조회</a>
 							</li>
 							<li><a href="eventUpload.jsp">이벤트 등록</a>
 							</li>
@@ -89,42 +100,30 @@
 				</div>
 				<div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
 					<h4>
-						상품 등록 및 정보 변경
+						주문자 조회
 					</h4>
 					<hr>
 					<br>
-					<div align="right">
-						<button class="fix2" onclick="location.href='addProduct.jsp'">+새로운 상품 등록하기</button>
-					<div>
-					<br>
-					<div class="row">
-                    <%
-                        int size = pdDtos.size();
-                        for(int i=0;i<size;i++){
-                            Product pdDto = pdDtos.get(i);
-                    %>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item" style="margin:10px;">
-								<div>
-									<div style="width:50%; float:left;">
-                                    <img width="200px" src=<%="http://localhost:8080/SE_2/"+pdDto.getP_pic() %> alt="">
-									</div>
-									<div style="width:50%; float:right; padding-left:5px;">
-									<%String name = pdDto.getP_name();
-									if(name.length()>15)
-										name = name.substring(0,15)+"...";
-									%>
-									<p><%=name%><br><%=pdDto.getP_price() %></p>
-									<button onclick="location.href='fixProduct.jsp?idx=<%=pdDto.getP_id() %>'" class="fix">수정하기</button>
-									</div>						
-								</div>
-							</div>
-						</div>
-						
-						<%
-                        }
-                        %>
-					</div>
+					<div class="change" align="center" style="background-color: #f0f0f0; margin: 0 auto; width: 750px;">
+				<table class="ordert" width="700px">
+					<thead>
+					<% while(odDtos.next()) {%>
+					<tr>
+						<th class="product-th"><%= odDtos.getString("o_id")%>&nbsp;</th>
+						<th class="quy-th"><small><%=odDtos.getString("o_date")%></small></th>
+						<th class="pdname-th"><small><%= odDtos.getString("u_name")%></small></th>
+						<th class="pdname-th"><small><%= odDtos.getString("u_address")%></small></th>
+						<th class="price-th"><small><%=odDtos.getInt("total_price")%>원</small></th>
+						<th class="total-th">
+						<button class="site-btn" onclick="location.href='showOrderer.jsp?idx=<%=odDtos.getString("u_id")%>'">
+						조회 하기</button></th>
+					</tr>
+					<%}%>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
 				</div>
 				</div>
 			</div>

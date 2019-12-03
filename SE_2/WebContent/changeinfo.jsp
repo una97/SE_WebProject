@@ -65,17 +65,17 @@
 						<ul class="category-menu">
 							<li><a href="mypage.jsp">주문 내역</a>
 							</li>
-							<li><a href="#">상품 후기</a>
-							</li>
 							<li><a href="changeinfo.jsp">개인 정보 수정</a>
                             </li>
 						</ul>
 						<%} else{ %>
 						<h2 class="fw-title">관리 페이지</h2>
 						<ul class="category-menu">
-							<li><a href="mypage.jsp">주문 내역</a>
+							<li><a href="mypage.jsp">주문자 조회</a>
 							</li>
-							<li><a href="#">상품 후기</a>
+							<li><a href="seeMembers.jsp">회원 조회</a>
+							</li>
+							<li><a href="eventUpload.jsp">이벤트 등록</a>
 							</li>
 							<li><a href="newProduct.jsp">상품 등록 및 정보 변경</a>
 							</li>
@@ -106,11 +106,11 @@
 				<table height="350px">
 				<tr>
 					<td>아이디</td>
-					<td><input type= "text" name="u_id" value=<%=u_id%> readonly></td>
+					<td><input type= "text" style="width:300px;" name="u_id" value=<%=u_id%> readonly></td>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="u_pw" value=<%=rs.getString("u_pw") %> maxlength="20"></td>
+					<td><input type="password" style="width:300px;" name="u_pw" value=<%=rs.getString("u_pw") %> maxlength="20"></td>
 					
 				</tr>
 				<tr>
@@ -119,19 +119,19 @@
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" name="u_name" value=<%=rs.getString("u_name") %> maxlength="20" readonly></td>
+					<td><input type="text" style="width:300px;" name="u_name" value=<%=rs.getString("u_name") %> maxlength="20" readonly></td>
 				</tr>
 			    <tr>
 					<td>주소</td>
-					<td><input type="text" name="u_address" value="<%=rs.getString("u_address") %>" maxlength="100"></td>
+					<td><input type="text" style="width:300px;" name="u_address" value="<%=rs.getString("u_address") %>" maxlength="100"></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
-					<td><input type="email" name="u_email" value=<%=rs.getString("u_email") %> maxlength="100"></td>
+					<td><input type="email" style="width:300px;" name="u_email" value=<%=rs.getString("u_email") %> maxlength="100"></td>
 				</tr>
 				<tr>
 					<td>핸드폰</td>
-					<td><input type="text" name="u_tel" value=<%=rs.getString("u_tel") %> maxlength="100"></td>
+					<td><input type="text" style="width:300px;" name="u_tel" value=<%=rs.getString("u_tel") %> maxlength="100"></td>
 				</tr>
 			    </table>
 			    <br>

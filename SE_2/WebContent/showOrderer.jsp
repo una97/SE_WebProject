@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*" %>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="dto.Product"%>
-<%@ include file="jsp/product_li.jsp" %>
+<%@page import="java.sql.*" %>
+<%@page import="java.io.*" %>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
+<%@ page import="dto.*"%>
+<%@ page import="dao.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
 	<link href="img/favicon.ico" rel="shortcut icon"/>
 
@@ -33,43 +35,13 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-<title>상품 정보 변경</title>
+<title>주문자 조회</title>
 </head>
 <body>
-<script type="text/javascript">
-	var sel_file;
-	
-	$(document).ready(function(){
-		$("#pp").on('change',handleImgFileSelect);
-		$("#pi").on('change',handleImgFileSelect2);
-	});
-	function handleImgFileSelect(e){
-		var files = e.target.files;
-		var filesArr = Array.prototype.slice.call(files);
-		filesArr.forEach(function(f){
-			sel_file =f;
-			var reader = new FileReader();
-			reader.onload = function(e){
-				$("#preview").attr("src",e.target.result);
-			}
-			reader.readAsDataURL(f);
-		});
-	}
-	function handleImgFileSelect2(e){
-		var files = e.target.files;
-		var filesArr = Array.prototype.slice.call(files);
-		filesArr.forEach(function(f){
-			sel_file =f;
-			var reader = new FileReader();
-			reader.onload = function(e){
-				$("#preview2").attr("src",e.target.result);
-			}
-			reader.readAsDataURL(f);
-		});
-	}
-</script>
-
-<!-- Page Preloder -->
+<%
+	String idx_s = request.getParameter("idx");
+%>
+	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
@@ -100,8 +72,6 @@
 						<ul class="category-menu">
 							<li><a href="mypage.jsp">주문 내역</a>
 							</li>
-							<li><a href="#">상품 후기</a>
-							</li>
 							<li><a href="changeinfo.jsp">개인 정보 수정</a>
                             </li>
 						</ul>
@@ -110,7 +80,7 @@
 						<ul class="category-menu">
 							<li><a href="mypage.jsp">주문자 조회</a>
 							</li>
-							<li><a href="seeMembers.jsp">회원 조회</a>
+							<li><a href="#">회원 조회</a>
 							</li>
 							<li><a href="eventUpload.jsp">이벤트 등록</a>
 							</li>
@@ -124,73 +94,50 @@
 				</div>
 				<div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
 					<h4>
-						상품 등록 및 정보 변경
+						주문자 조회
 					</h4>
 					<hr>
 					<br>
-				<div class="fixproduct" align="center" style="background-color:#f0f0f0;margin: 0 auto; width:750px;">
-				<form method="post" action="addPsave.jsp" enctype="multipart/form-data" >
+					<%
+				String u_id = idx_s;
+				String sql ="select * from user where u_id='"+u_id+"'";
+				UserDAO userDAO = new UserDAO();
+				ResultSet rs = userDAO.getResult(sql);
+				rs.next();
+			%>
+			
+			<div class="change" align="center" style="background-color:#f0f0f0;margin: 0 auto; width:750px;">
+				<form method="post" action="changeSave.jsp">
 				<fieldset>
 				<br><br>
-				<table id="ftable">
+				<table height="300px">
 				<tr>
-					<td align="center">상품 이미지</td>
-					<td align="center">상품 상세 정보</td>		
+					<td>아이디</td>
+					<td><input type= "text" style="width:300px;" name="u_id" value=<%=u_id%> readonly></td>
 				</tr>
 				<tr>
-					<td align="center">
-						<div class="selector">
-							<img id="preview" src="">
-						</div>
-					</td>
-					<td align="center">
-						<div class="selector">
-							<img id="preview2" src="">
-						</div>
-					</td>
+					<td>이름</td>
+					<td><input type="text" style="width:300px;" name="u_name" value=<%=rs.getString("u_name") %> maxlength="20" readonly></td>
+				</tr>
+			    <tr>
+					<td>주소</td>
+					<td><input type="text" style="width:300px;" name="u_address" value="<%=rs.getString("u_address") %>" maxlength="100" readonly></td>
 				</tr>
 				<tr>
-					<td>
-						<div class="filebox" align="center">
-						<label for="pp">이미지 업로드</label>
-						<input type="file" id="pp" name="p_pic">
-						</div>
-					</td>
-					<td>
-						<div class="filebox" align="center">
-						<label for="pi">이미지 업로드</label>
-						<input type="file" id="pi" name="p_info">
-						</div>
-					</td>
+					<td>이메일</td>
+					<td><input type="email" style="width:300px;" name="u_email" value=<%=rs.getString("u_email") %> maxlength="100" readonly></td>
 				</tr>
 				<tr>
-					<td align ="center">상품명</td>
-					<td align="left"><input type= "text" name="p_name"></td>
-				</tr>
-				<tr>
-					<td align ="center">대카테고리</td>
-					<td align="left"><input type= "text" name="p_category"></td>
-				</tr>
-				<tr>
-					<td align ="center">소카테고리</td>
-					<td align="left"><input type= "text" name="p_sm_category"></td>
-				</tr>
-				<tr>
-					<td align ="center">가격</td>
-					<td align="left"><input type="text" name="p_price" maxlength="20"></td>
-					
-				</tr>
-				<tr>
-					<td align ="center">재고</td>
-					<td align="left"><input type="text" name="p_stock" maxlength="20"></td>
+					<td>핸드폰</td>
+					<td><input type="text" style="width:300px;" name="u_tel" value=<%=rs.getString("u_tel") %> maxlength="100" readonly></td>
 				</tr>
 			    </table>
 			    <br>
-			    <button type="submit" class="site-btn sb-dark">수정 완료</button>
 			    <br><br>
 				</fieldset>
 				</form>
 			</div>
+			<br>
 				</div>
 				</div>
 			</div>

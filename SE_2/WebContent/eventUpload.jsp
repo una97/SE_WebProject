@@ -33,7 +33,7 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-<title>상품 정보 변경</title>
+<title>이벤트 등록</title>
 </head>
 <body>
 <script type="text/javascript">
@@ -124,18 +124,18 @@
 				</div>
 				<div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
 					<h4>
-						상품 등록 및 정보 변경
+						이벤트 등록
 					</h4>
 					<hr>
 					<br>
-				<div class="fixproduct" align="center" style="background-color:#f0f0f0;margin: 0 auto; width:750px;">
-				<form method="post" action="addPsave.jsp" enctype="multipart/form-data" >
+				<div class="eventU" align="center" style="background-color:#f0f0f0;margin: 0 auto; width:750px;">
+				<form method="post" action="#" enctype="multipart/form-data" >
 				<fieldset>
 				<br><br>
 				<table id="ftable">
 				<tr>
-					<td align="center">상품 이미지</td>
-					<td align="center">상품 상세 정보</td>		
+					<td align="center">이벤트 배너 이미지</td>
+					<td align="center">이벤트 상세 정보</td>		
 				</tr>
 				<tr>
 					<td align="center">
@@ -153,40 +153,47 @@
 					<td>
 						<div class="filebox" align="center">
 						<label for="pp">이미지 업로드</label>
-						<input type="file" id="pp" name="p_pic">
+						<input type="file" id="pp" name="e_pic">
 						</div>
 					</td>
 					<td>
 						<div class="filebox" align="center">
 						<label for="pi">이미지 업로드</label>
-						<input type="file" id="pi" name="p_info">
+						<input type="file" id="pi" name="e_info">
 						</div>
 					</td>
 				</tr>
 				<tr>
-					<td align ="center">상품명</td>
-					<td align="left"><input type= "text" name="p_name"></td>
+					<td align ="center">이벤트명</td>
+					<td align="left"><input type= "text" name="e_name"></td>
+				</tr>
+				<tr>
+					<td align ="center">이벤트 시작</td>
+					<td align="left"><input type="date" name=""></td>
+				</tr>
+				<tr>
+					<td align ="center">이벤트 종료</td>
+					<td align="left"><input type="date" name=""></td>
 				</tr>
 				<tr>
 					<td align ="center">대카테고리</td>
-					<td align="left"><input type= "text" name="p_category"></td>
+					<td align="left"><input type= "text" name="e_category"></td>
 				</tr>
 				<tr>
 					<td align ="center">소카테고리</td>
-					<td align="left"><input type= "text" name="p_sm_category"></td>
+					<td align="left"><input type= "text" name="e_sm_category"></td>
 				</tr>
 				<tr>
 					<td align ="center">가격</td>
-					<td align="left"><input type="text" name="p_price" maxlength="20"></td>
-					
+					<td align="left"><input type="text" name="e_price" maxlength="20"></td>
 				</tr>
 				<tr>
 					<td align ="center">재고</td>
-					<td align="left"><input type="text" name="p_stock" maxlength="20"></td>
+					<td align="left"><input type="text" name="e_stock" maxlength="20"></td>
 				</tr>
 			    </table>
 			    <br>
-			    <button type="submit" class="site-btn sb-dark">수정 완료</button>
+			    <button type="submit" class="site-btn sb-dark">등록하기</button>
 			    <br><br>
 				</fieldset>
 				</form>

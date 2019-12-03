@@ -65,17 +65,17 @@
 						<ul class="category-menu">
 							<li><a href="mypage.jsp">주문 내역</a>
 							</li>
-							<li><a href="#">상품 후기</a>
-							</li>
 							<li><a href="changeinfo.jsp">개인 정보 수정</a>
                             </li>
 						</ul>
 						<%} else{ %>
 						<h2 class="fw-title">관리 페이지</h2>
 						<ul class="category-menu">
-							<li><a href="mypage.jsp">주문 내역</a>
+							<li><a href="mypage.jsp">주문자 조회</a>
 							</li>
-							<li><a href="#">상품 후기</a>
+							<li><a href="seeMembers.jsp">회원 조회</a>
+							</li>
+							<li><a href="eventUpload.jsp">이벤트 등록</a>
 							</li>
 							<li><a href="newProduct.jsp">상품 등록 및 정보 변경</a>
 							</li>
@@ -90,13 +90,14 @@
 				회원 탈퇴 하기
 				</h4>
 				<hr>
-				*본인 확인을 위해 아이디와 비밀번호를 입력해주세요.
+				회원정보는 모두 삭제되며 삭제된 데이터는 복구되지 않습니다.<br><br>
+				<small>*본인 확인을 위해 아이디와 비밀번호를 입력해주세요.</small>
 				<br><br>
-			<div class="change" align="center" style="background-color:#f0f0f0;margin: 0 auto; width:750px; height:270px;">
+			<div class="change" align="center" style="background-color:#f0f0f0;margin: 0 auto; width:750px; height:400px;">
 				<form method="post" action="cancelSave.jsp">
 				<fieldset>
 				<br><br>
-				<table height="130px">
+				<table height="130px" width="385px">
 				<tr>
 					<td>아이디</td>
 					<td><input type= "text" name="u_id"></td>
@@ -106,6 +107,15 @@
 					<td><input type="password" name="u_pw"></td>				
 				</tr>
 				</table>
+				<table>
+					<tr>
+						<td><br><small>*더 나은 서비스를 위해 불편했던 사항을 적어주세요</small></td>				
+					</tr>
+					<tr>
+						<td align="center"><textarea cols="50" rows="3"></textarea></td>
+					</tr>
+				</table>
+				<br>
 				<button type="submit" class="site-btn sb-dark">탈퇴</button>
 				<br><br>
 				</fieldset>

@@ -23,7 +23,15 @@
 			script.println("alert('입력하지 않은 값이 있습니다!')");
 			script.println("history.back()");
 			script.println("</script>");
-		} else {
+		}
+		else if(user.getU_pw().length()<4){
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('비밀번호는 4자리 이상 입력해주세요.')");
+			script.println("history.back()");
+			script.println("</script>");
+		}
+		else {
 			response.setCharacterEncoding("utf-8");
 			UserDAO userDAO = new UserDAO();
 			int result = userDAO.join(user);
