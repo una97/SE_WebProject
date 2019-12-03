@@ -87,64 +87,31 @@
 				</div>
 			<div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
 				<h4>
-				개인 정보 수정
+				회원 탈퇴 하기
 				</h4>
 				<hr>
-				<br>
-			<%
-				String u_id = (String)session.getAttribute("u_id");
-				String sql ="select * from user where u_id='"+u_id+"'";
-				UserDAO userDAO = new UserDAO();
-				ResultSet rs = userDAO.getResult(sql);
-				rs.next();
-			%>
-			
-			<div class="change" align="center" style="background-color:#f0f0f0;margin: 0 auto; width:750px;">
-				<form method="post" action="changeSave.jsp">
+				*본인 확인을 위해 아이디와 비밀번호를 입력해주세요.
+				<br><br>
+			<div class="change" align="center" style="background-color:#f0f0f0;margin: 0 auto; width:750px; height:270px;">
+				<form method="post" action="cancelSave.jsp">
 				<fieldset>
 				<br><br>
-				<table height="350px">
+				<table height="130px">
 				<tr>
 					<td>아이디</td>
-					<td><input type= "text" name="u_id" value=<%=u_id%> readonly></td>
+					<td><input type= "text" name="u_id"></td>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="u_pw" value=<%=rs.getString("u_pw") %> maxlength="20"></td>
-					
+					<td><input type="password" name="u_pw"></td>				
 				</tr>
-				<tr>
-					<td></td>
-					<td>*4자 이상을 입력해주세요</td>
-				</tr>
-				<tr>
-					<td>이름</td>
-					<td><input type="text" name="u_name" value=<%=rs.getString("u_name") %> maxlength="20" readonly></td>
-				</tr>
-			    <tr>
-					<td>주소</td>
-					<td><input type="text" name="u_address" value="<%=rs.getString("u_address") %>" maxlength="100"></td>
-				</tr>
-				<tr>
-					<td>이메일</td>
-					<td><input type="email" name="u_email" value=<%=rs.getString("u_email") %> maxlength="100"></td>
-				</tr>
-				<tr>
-					<td>핸드폰</td>
-					<td><input type="text" name="u_tel" value=<%=rs.getString("u_tel") %> maxlength="100"></td>
-				</tr>
-			    </table>
-			    <br>
-			    <input type="hidden" name="u_auth" value="0">
-			    <button type="submit" class="site-btn sb-dark">수정 완료</button>
-			    <br><br>
+				</table>
+				<button type="submit" class="site-btn sb-dark">탈퇴</button>
+				<br><br>
 				</fieldset>
 				</form>
 			</div>
 			<br>
-			<div class="out" align="right">
-				<p>Docamp를 더 이상 이용하지 않는다면 <a href="cancelMem.jsp">회원 탈퇴 바로가기</a>
-			</div>
 			</div>
 		</div>
 	</div>

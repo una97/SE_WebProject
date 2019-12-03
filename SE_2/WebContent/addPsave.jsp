@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.io.*" %>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="dto.Product"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 <%@page import="com.oreilly.servlet.MultipartRequest" %>
 <%@page import="dao.ProductDAO" %>
@@ -13,12 +15,14 @@
 <body>
 	<%
 	   request.setCharacterEncoding("UTF-8");
-	   
+	   ArrayList<Product> pdDtos;
+	   ProductDAO pd = new ProductDAO();
+	   pdDtos = pd.productSelect("select * from product");
 	   String directory=application.getRealPath("/img/product");
 	   int maxSize=1024*1024*100;
 	   String encoding="UTF-8";
 	   MultipartRequest multi=new MultipartRequest(request,directory,maxSize,encoding,new DefaultFileRenamePolicy());
-	   int p_id=0;
+	   int p_id=pdDtos.size();
 	   int p_price=Integer.parseInt(multi.getParameter("p_price"));
 	   int p_stock=Integer.parseInt(multi.getParameter("p_stock"));
 	   String p_name=multi.getParameter("p_name");
@@ -30,7 +34,7 @@
 	   if(p_info!=null){
 		   p_info="img/product/"+p_info;
 	   }
-	   ProductDAO pd = new ProductDAO();
+	   ProductDAO pd2 = new ProductDAO();
 	   if (p_pic == null || p_category == null || p_name == null || p_sm_category == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
@@ -39,7 +43,7 @@
 			script.println("</script>");
 		} else {
 			response.setCharacterEncoding("utf-8");
-			pd.add(p_id,p_name,p_price,p_pic,p_stock,p_info,p_category,p_sm_category);
+			pd2.add(p_id,p_name,p_price,p_pic,p_stock,p_info,p_category,p_sm_category);
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('새로운 상품이 등록되었습니다')");

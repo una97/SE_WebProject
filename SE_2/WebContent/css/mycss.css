@@ -56,3 +56,6 @@ a{
 .ftable{
 	border-spacing:5px;
 }
+.out a, a:hover{
+	color:#f51167;
+}
