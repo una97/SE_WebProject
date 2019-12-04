@@ -119,8 +119,8 @@ public class ProductDAO {
 	   	}
     	return -1;
     }
-    public int add(int p_id, String p_name, int p_price, String p_pic, int p_stock, String p_info, String p_category, String p_sm_category) {
-    	String SQL="insert into product values(?,?,?,?,?,?,?,?)";
+    public int add(int p_id, String p_name, int p_price, String p_pic, int p_stock, String p_info, String p_category, String p_sm_category, int shared) {
+    	String SQL="insert into product values(?,?,?,?,?,?,?,?,?)";
     	try {
     		 pstmt=conn.prepareStatement(SQL);
     		 pstmt.setInt(1, p_id);
@@ -131,7 +131,7 @@ public class ProductDAO {
              pstmt.setInt(6, p_stock);
              pstmt.setString(7, p_category);
              pstmt.setString(8, p_sm_category);
-   		 	
+             pstmt.setInt(9, shared);
    			return pstmt.executeUpdate();
 	   	}catch(Exception e) {
 	   		e.printStackTrace();

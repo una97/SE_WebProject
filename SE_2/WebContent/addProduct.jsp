@@ -182,7 +182,10 @@
 				</tr>
 				<tr>
 					<td align ="center">재고</td>
-					<td align="left"><input type="text" name="p_stock" maxlength="20"></td>
+					<td align="left">
+					<input type="text" name="p_stock" maxlength="20">
+					<input type="hidden" name="isShared" value=0>
+					</td>
 				</tr>
 			    </table>
 			    <br>
