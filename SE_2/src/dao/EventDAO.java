@@ -36,13 +36,11 @@ public class EventDAO {
             while(rs.next()){
                 Integer idx = rs.getInt("e_id");
                 String name = rs.getString("e_name");
-                Integer price = rs.getInt("e_price");
                 String picture = rs.getString("e_pic");
                 String info = rs.getString("e_info");
-                Integer stock = rs.getInt("e_stock");
                 String sdate = rs.getString("e_sdate");
                 String edate = rs.getString("e_edate");
-                Event pdto = new Event(idx, name, price, picture, info, stock, sdate,edate);
+                Event pdto = new Event(idx, name, picture, info, sdate, edate);
                 edtos.add(pdto);
             }
         }catch(Exception e){
@@ -68,18 +66,16 @@ public class EventDAO {
 		}
 		return rs;
 	}
-	public int add(int e_id, String e_name, int e_price, String e_pic, String e_info, int e_stock, String e_sdate, String e_edate) {
-		String SQL = "insert into event values(?,?,?,?,?,?,?,?)";
+	public int add(int e_id, String e_name, String e_pic, String e_info, String e_sdate, String e_edate) {
+		String SQL = "insert into event values(?,?,?,?,?,?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, e_id);
-			pstmt.setString(2, e_name);
-			pstmt.setInt(3, e_price); 
-			pstmt.setString(4, e_pic);
-			pstmt.setString(5, e_info);
-			pstmt.setInt(6, e_stock);
-			pstmt.setString(7, e_sdate);
-			pstmt.setString(8, e_edate);
+			pstmt.setString(2, e_name); 
+			pstmt.setString(3, e_pic);
+			pstmt.setString(4, e_info);
+			pstmt.setString(5, e_sdate);
+			pstmt.setString(6, e_edate);
 			return pstmt.executeUpdate();
 
 		} catch (Exception e) {

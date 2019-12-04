@@ -21,8 +21,6 @@
 	   String encoding="UTF-8";
 	   MultipartRequest multi=new MultipartRequest(request,directory,maxSize,encoding,new DefaultFileRenamePolicy());
 	   int e_id=0;
-	   int e_price=Integer.parseInt(multi.getParameter("e_price"));
-	   int e_stock=Integer.parseInt(multi.getParameter("e_stock"));
 	   String e_name=multi.getParameter("e_name");
 	   String e_sdate=multi.getParameter("e_sdate");
 	   String e_edate=multi.getParameter("e_edate");
@@ -40,7 +38,7 @@
 			script.println("</script>");
 		} else {
 			response.setCharacterEncoding("utf-8");
-			ed.add(e_id, e_name,e_price,e_pic,e_info,e_stock,e_sdate,e_edate);
+			ed.add(e_id, e_name,e_pic,e_info,e_sdate,e_edate);
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('새로운 이벤트가 등록되었습니다')");

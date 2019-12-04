@@ -174,14 +174,6 @@
 					<td align ="center">이벤트 종료</td>
 					<td align="left"><input type="date" name="e_edate"></td>
 				</tr>
-				<tr>
-					<td align ="center">가격</td>
-					<td align="left"><input type="text" name="e_price" maxlength="20"></td>
-				</tr>
-				<tr>
-					<td align ="center">재고</td>
-					<td align="left"><input type="text" name="e_stock" maxlength="20"></td>
-				</tr>
 			    </table>
 			    <br>
 			    <button type="submit" class="site-btn sb-dark">등록하기</button>
