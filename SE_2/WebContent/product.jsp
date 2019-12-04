@@ -111,7 +111,8 @@ Product pdDto = pdDtos.get(idx);
 					<table>
 						<tr>
 							<td>
-								<form method="post" action="cart.jsp">
+								<form method="post" action="cartAction.jsp">
+									<input type="hidden" name="p_id" value=<%=idx %> />
 									<button type="submit" class="site-btn" >장바구니 담기</button>
 								</form>
 							</td>
