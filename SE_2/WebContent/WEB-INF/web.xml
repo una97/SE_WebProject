@@ -26,4 +26,18 @@
     <url-pattern>/WriteQuestion.do</url-pattern>
   </servlet-mapping>
   
+  
+<servlet>
+<servlet-name> SharingCheck </servlet-name>
+<servlet-class> service.SharingCheck </servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>SharingCheck</servlet-name>
+  <url-pattern>/checkSharing</url-pattern>
+
+</servlet-mapping>
+  
+  
+  
 </web-app>

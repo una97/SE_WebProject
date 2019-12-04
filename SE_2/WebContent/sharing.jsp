@@ -63,7 +63,6 @@ table.type04 td {
 
 <%
 	ArrayList<Sharing> shDtos = pdDAO.getSharing();
-
 %>
 </head>
 <body>
@@ -93,10 +92,12 @@ table.type04 td {
 					<tr>
 						<th scope="cols"></th>
 						<th scope="cols">상품명</th>
+
 						<th scope="cols">가격</th>
+						<th scope="cols">할인율</th>
+
 						<th scope="cols">신청시작일</th>
 						<th scope="cols">신청종료일</th>
-						<th scope="cols">예약 현황</th>
 						<th scope="cols">신 청</th>
 					</tr>
 				</thead>
@@ -105,24 +106,30 @@ table.type04 td {
 						Sharing shDto = shDtos.get(i);
 				%>
 				<tr>
-					
-					<td><img src=<%=shDto.getS_p_img()%> width="300px" alt=""></td>
-					<td><%=shDto.getS_p_name() %></td>
-					<td><%=shDto.getS_p_price() %></td>
 
-					<td><input type="date"></td>
+					<form action="/SE_2/checkSharing" method="post">
+						<td><img src=<%=shDto.getS_p_img()%> width="200px" alt=""></td>
+						<td><%=shDto.getS_p_name()%></td>
+						<td><%=shDto.getS_p_price()%></td>
+						<td><%=shDto.getDiscount()%>%</td>
 
-					<td><input type="date"></td>
-					<td>4</td>
-					<td><button>신청</button></td>
+						<td><input type="date" value="start"></td>
 
+						<td><input type="date" value="end"></td>
+
+						<td>
+							<button type="submit">신청</button>
+						</td> <input type="hidden" name="s_p_id" value=<%=shDto.getS_p_id()%> />
+
+					</form>
 				</tr>
 
 				<%
 					}
 				%>
-				
+
 			</table>
+
 
 
 

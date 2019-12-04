@@ -28,7 +28,7 @@ public class SharingCheck extends HttpServlet {
 
 		int s_p_id = Integer.parseInt(request.getParameter("s_p_id"));
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		String strDate = dateFormat.format(	request.getDateHeader("start"));
+		String strDate = dateFormat.format(	request.getParameter("start"));
 //		
 		String strDate1= request.getParameter("start");
 	
