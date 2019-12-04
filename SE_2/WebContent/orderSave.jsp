@@ -9,6 +9,7 @@
 <%@ page import="dao.*"%>
 <jsp:useBean id="ctDAO" class="dao.CartDAO" />
 <jsp:useBean id="ptDAO" class="dao.ProductDAO" />
+<jsp:useBean id="odDAO" class="dao.OrderDAO" />
 <jsp:useBean id="user" class="dto.User" />
 
 <!DOCTYPE html>
@@ -45,10 +46,12 @@
 	<![endif]-->
 
 <%
+	String u_id=(String) session.getAttribute("u_id");
+	ResultSet rs = ptDAO.getResult("select * from product INNER JOIN cart ON cart.c_p_id = product.p_id where c_u_id=\""+u_id+"\"");
 	ArrayList<Cart> ctDtos = ctDAO.getCart((String) session.getAttribute("u_id"));
 	int sum = 0;
 	int shipCost = 2500;
-	String u_id = (String)session.getAttribute("u_id");
+	
 	String o_name = request.getParameter("order_name");
 	String o_phone = request.getParameter("phone");
 	String o_email = request.getParameter("email");
@@ -57,8 +60,14 @@
 	String o_mention = request.getParameter("mention");
 	String o_pay = request.getParameter("pay");
 	String o_divide = request.getParameter("divide");
+	String total_price = request.getParameter("sum");
+	String o_status="상품준비중";
 	
-	
+	for(int i=0;i<ctDtos.size();i++){
+		Cart ctDto = ctDtos.get(i);
+		odDAO.addOrder(u_id, ctDto.getP_id(), o_name, b_address, total_price,
+				o_status, o_phone, o_email, d_address, o_pay, o_divide, o_mention);
+	}
 %>
 
 
@@ -181,26 +190,22 @@
 								<tbody>
 
 									<%
-										for (int i = 0; i < ctDtos.size(); i++) {
-											Cart ctDto = ctDtos.get(i);
-											ArrayList<Product> pdDtos = ptDAO.productSelect(
-													"select * from product INNER JOIN cart ON cart.c_p_id where c_p_id=" + ctDto.getP_id());
-											Product pdDto = pdDtos.get(i);
-											sum += pdDto.getP_price();
+									while(rs.next()){
+										sum+=Integer.parseInt(rs.getString("p_price"));
 									%>
 									<tr>
-										<td class="product-col"><img src=<%=pdDto.getP_pic()%>
+										<td class="product-col"><img src=<%=rs.getString("p_pic")%>
 											alt="">
 											<div class="pc-title">
-												<h4><%=pdDto.getP_name()%></h4>
-												<p><%=pdDto.getP_price()%></p>
+												<h4><%=rs.getString("p_name")%></h4>
+												<p><%=rs.getString("p_price")%></p>
 											</div></td>
 
 										<td>
 											<h5>1</h5>
 										</td>
 
-										<td class="total-col"><h4><%=pdDto.getP_price()%></h4></td>
+										<td class="total-col"><h4><%=rs.getString("p_price")%></h4></td>
 									</tr>
 
 									<%
@@ -227,7 +232,7 @@
 				%>
 				<div class="col-lg-4 card-right">
 		
-					<a href="index.jsp" class="site-btn sb-dark">주문 내역 확인하기</a>
+					<a href="mypage.jsp" class="site-btn sb-dark">주문 내역 확인하기</a>
 				</div>
 			</div>
 		</div>

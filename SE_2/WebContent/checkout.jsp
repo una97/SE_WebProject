@@ -46,6 +46,9 @@
 
 <%
 	ArrayList<Cart> ctDtos = ctDAO.getCart((String) session.getAttribute("u_id"));
+	String u_id=(String) session.getAttribute("u_id");
+	ResultSet rs = ptDAO.getResult("select * from product INNER JOIN cart ON cart.c_p_id = product.p_id where c_u_id=\""+u_id+"\"");
+
 	int sum = 0;
 	int shipCost = 2500;
 /* 	int quantity = Integer.parseInt(request.getParameter("quantity")); */
@@ -158,25 +161,23 @@
 						<h3>장바구니</h3>
 						<ul class="product-list">
 							<%
-								for (int i = 0; i < ctDtos.size(); i++) {
-									Cart ctDto = ctDtos.get(i);
-									ArrayList<Product> pdDtos = ptDAO.productSelect(
-											"select * from product INNER JOIN cart ON cart.c_p_id where c_p_id=" + ctDto.getP_id());
-									Product pdDto = pdDtos.get(i);
-									sum += pdDto.getP_price();
+							while(rs.next()){
+								sum+=Integer.parseInt(rs.getString("p_price"));
 							%>
 							<li>
 								<div class="pl-thumb">
-									<img src=<%=pdDto.getP_pic()%> alt="">
+									<img src=<%=rs.getString("p_pic")%> alt="">
 								</div>
-								<h6><%=pdDto.getP_name()%></h6>
-								<p><%=pdDto.getP_price()%></p>
+								<h6><%=rs.getString("p_name")%></h6>
+								<p><%=rs.getString("p_price")%></p>
 							</li>
 							<%
 								}
 							%>
 						</ul>
 						<ul class="price-list">
+							<input type="hidden" name="sum" value=<%=sum %> />
+						
 							<li>합계<span><%=sum%></span></li>
 							<li>배송비<span><%=shipCost%></span></li>
 							<%

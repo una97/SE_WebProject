@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
@@ -113,9 +112,9 @@ table.type04 td {
 						<td><%=shDto.getS_p_price()%></td>
 						<td><%=shDto.getDiscount()%>%</td>
 
-						<td><input type="date" value="start"></td>
+						<td><input type="date" name="start"></td>
 
-						<td><input type="date" value="end"></td>
+						<td><input type="date" name="end"></td>
 
 						<td>
 							<button type="submit">신청</button>
