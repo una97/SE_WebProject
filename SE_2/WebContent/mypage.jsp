@@ -9,8 +9,7 @@
 <%@ page import="dao.*"%>
 <jsp:useBean id="odDAO" class="dao.OrderDAO"></jsp:useBean>
 <%@ page import="dto.Product"%>
-<%@ include file="jsp/product_li.jsp" %>
-
+<jsp:useBean id="pdDAO" class="dao.ProductDAO"/>
 
 <!DOCTYPE html>
 <html>
@@ -43,7 +42,18 @@
 	<![endif]-->
 <title>마이페이지</title>
 <%
-ResultSet odDtos = odDAO.getResult((String)session.getAttribute("u_id"));
+	ResultSet odDtos = odDAO.getResult((String)session.getAttribute("u_id"));
+	String search = request.getParameter("search");
+	String swhat = request.getParameter("swhat");
+	ArrayList<Product> pdDtos = pdDAO.productSelect("select * from product");
+	if(search!=null){
+		if(swhat.equals("pid")){
+			pdDtos = pdDAO.productSelect("select * from product where p_id = "+search);
+		}
+		else if(swhat.equals("pname")){
+			pdDtos = pdDAO.productSelect("select * from product where p_name like '%"+search+"%'");
+		}
+	}
 %>
 <style>
 th {
@@ -174,6 +184,25 @@ padding-left: 20px;
 				주문자 조회
 				</h4>
 				<hr>
+				<div>
+				
+				<form class="search-form" method="get" action="mypage.jsp">
+						<table width="100%">
+						<th width="20%">
+						<select name="swhat">
+							   <option value="pname" selected>상품명</option>
+							   <option value="pid">상품아이디</option>
+						</select>
+						</th>
+						<th width="80%">
+						<input width="300px" id="search" type="text" name="search" value="" placeholder="Search ....">
+						<button hidden>
+							<i class="flaticon-search"></i>
+						</button>
+						</th>
+						</table>
+				</form>
+				</div>
 				<br>
 				<div class="row">
                     <%

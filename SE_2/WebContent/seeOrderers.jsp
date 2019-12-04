@@ -41,7 +41,6 @@
 </head>
 <body>
 <%
-
 	String idx_s = request.getParameter("idx");
 	int idx = Integer.parseInt(idx_s);
 	Product pdDto = pdDtos.get(idx);

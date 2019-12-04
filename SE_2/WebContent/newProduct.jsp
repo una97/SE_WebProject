@@ -2,8 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="dto.Product"%>
-<%@ include file="jsp/product_li.jsp" %>
+<%@ page import="dto.*"%>
+<%@ page import="dao.*"%>
+<jsp:useBean id="pdDAO" class="dao.ProductDAO"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +34,20 @@
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 <title>상품 등록</title>
-
+<%
+	request.setCharacterEncoding("utf-8");
+	String search = request.getParameter("search");
+	String swhat = request.getParameter("swhat");
+	ArrayList<Product> pdDtos = pdDAO.productSelect("select * from product");
+	if(search!=null){
+		if(swhat.equals("pid")){
+			pdDtos = pdDAO.productSelect("select * from product where p_id = "+search);
+		}
+		else if(swhat.equals("pname")){
+			pdDtos = pdDAO.productSelect("select * from product where p_name like '%"+search+"%'");
+		}
+	}
+%>
 </head>
 <body>
 <!-- Page Preloder -->
@@ -75,7 +89,7 @@
 						<ul class="category-menu">
 							<li><a href="mypage.jsp">주문자 조회</a>
 							</li>
-							<li><a href="#">회원 조회</a>
+							<li><a href="seeMembers.jsp">회원 조회</a>
 							</li>
 							<li><a href="eventUpload.jsp">이벤트 등록</a>
 							</li>
@@ -92,6 +106,26 @@
 						상품 등록 및 정보 변경
 					</h4>
 					<hr>
+					<br>
+					<div>
+				
+				<form class="search-form" method="get" action="newProduct.jsp">
+						<table width="100%">
+						<th width="20%">
+						<select name="swhat">
+							   <option value="pname" selected>상품명</option>
+							   <option value="pid">상품아이디</option>
+						</select>
+						</th>
+						<th width="80%">
+						<input width="300px" id="search" type="text" name="search" value="" placeholder="Search ....">
+						<button hidden>
+							<i class="flaticon-search"></i>
+						</button>
+						</th>
+						</table>
+				</form>
+				</div>
 					<br>
 					<div align="right">
 						<button class="fix2" onclick="location.href='addProduct.jsp'">+새로운 상품 등록하기</button>
