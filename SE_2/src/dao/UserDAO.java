@@ -1,5 +1,5 @@
 package dao;
-import dto.User;
+import dto.*;
 import java.sql.*;
 
 public class UserDAO {
@@ -25,7 +25,7 @@ public class UserDAO {
 			Statement stmt=conn.createStatement();
 			rs=stmt.executeQuery(sql);
 		}catch(Exception e) {
-			System.out.println("DB¿¬µ¿ ¿À·ùÀÔ´Ï´Ù : "+e.getMessage());
+			System.out.println("DB ì—°ë™ ì˜¤ë¥˜ì…ë‹ˆë‹¤ : "+e.getMessage());
 		}
 		return rs;
 	}
@@ -59,7 +59,7 @@ public class UserDAO {
     	   }
     	   return auth;
     }
-    public int login(String u_id, String u_pw) { //·Î±×ÀÎ
+    public int login(String u_id, String u_pw) {
        String SQL = "select u_pw from user where u_id = ?"; 
        try {
           pstmt = conn.prepareStatement(SQL);
@@ -68,19 +68,19 @@ public class UserDAO {
           
           if(rs.next()) {
              if(rs.getString(1).equals(u_pw)) {
-                return 1; //·Î±×ÀÎ ¼º°ø
+                return 1;
              }
              else
-                return 0; //ºñ¹Ğ¹øÈ£ ºÒÀÏÄ¡
+                return 0;
           }
-          return -1; //¾ÆÀÌµğ ¾øÀ½
+          return -1; 
        }catch(Exception e) {
           e.printStackTrace();
        }
-       return -2; //µ¥ÀÌÅÍ º£ÀÌ½º ¿À·ù
+       return -2; 
     }
 
-    public int join(User user) {//È¸¿ø°¡ÀÔ
+    public int join(User user) {
        String SQL = "insert into user values(?,?,?,?,?,?,?)";
        try {
           pstmt=conn.prepareStatement(SQL);
@@ -98,7 +98,7 @@ public class UserDAO {
        return -1;
     }
     
-    //È¸¿øÁ¤º¸ ¼öÁ¤
+  
     public void modifyInfo (String u_id, String u_email, String u_pw, String u_address, String u_tel)
     {
     	try {		
@@ -111,7 +111,7 @@ public class UserDAO {
     	}
     }
     
-    //È¸¿øÅ»Åğ
+
     public int out(String u_id ,String u_pw) {
     	 String SQL = "select u_pw from user where u_id = ?"; 
          try {
@@ -124,25 +124,24 @@ public class UserDAO {
             	 SQL="delete from user where u_id=\""+u_id+"\"";
       			 pstmt=conn.prepareStatement(SQL);
       			 pstmt.executeUpdate();
-                  return 1; //Å»Åğ ¼º°ø
+                  return 1; 
                }
                else
-                  return 0; //ºñ¹Ğ¹øÈ£ ºÒÀÏÄ¡
+                  return 0; 
             }
-            return -1; //¾ÆÀÌµğ ¾øÀ½
+            return -1; 
          }catch(Exception e) {
             e.printStackTrace();
          }
-         return -2; //µ¥ÀÌÅÍ º£ÀÌ½º ¿À·ù
+         return -2; 
     } 
 
-}
 
 
 
 public Sharing getSharing(int p_id) {
    String sql = "select p.p_name,p.p_pic, s.s_p_price  from shar_product s , product p where s_p_id=?";
-   Sharing shto;
+   Sharing shto=null;
    try {
        pstmt = conn.prepareStatement(sql);
            pstmt.setInt(1, p_id);
@@ -164,12 +163,4 @@ public Sharing getSharing(int p_id) {
          } 
 
 
-
-         INSERT INTO shar_product(s_p_id,s_p_name, s_p_price) VALUES(1, 'ºñÆ²½¦ÀÌµå II',22000 );
-         INSERT INTO shar_product(s_p_id,s_p_name, s_p_price) VALUES(3, '·ºÅ¸ Å¸ÇÁ ¿ÍÀÌµå ½ºÅ©¸° ¥±', 140000);
-         INSERT INTO shar_product(s_p_id,s_p_name, s_p_price) VALUES(5, '·ºÅ¸ Å¸ÇÁ ¼¼Æ®',320400 );
-
-         Insert into shar_reservation(s_r_u_id, s_r_p_id, s_r_start,s_r_end) values ('user1',1,'2019-12-13','2019-12-17');
-         Insert into shar_reservation(s_r_u_id, s_r_p_id, s_r_start,s_r_end) values ('user1',2,'2019-12-25','2019-12-27');
-         
-
+}
