@@ -87,7 +87,6 @@ public class WriteReply extends HttpServlet {
     		
     		if(u_id == null) {
     			PrintWriter script = response.getWriter();
-    			System.out.println("****");
     			script.println("<script>");
     			script.println("alert('로그인을 해주세요')");
     			script.println("history.back()");
@@ -110,7 +109,7 @@ public class WriteReply extends HttpServlet {
 	    			PrintWriter script = response.getWriter();
 	    			script.println("<script>");
 	    			script.println("alert('댓글 작성이 완료되었습니다!')");
-	    			script.println("location.href='product.jsp?idx='"+p_id);
+	    			script.println("location.href='product.jsp?idx="+p_id+"'");
 	    			script.println("</script>");
 	    		}
     		}

@@ -45,7 +45,7 @@ public class SharingCheck extends HttpServlet {
 
 		if (result == 0) {
 			script.println("<script>");
-			script.println("alert('ê²¹ì¹˜ëŠ” ì‚¬ëŒì´ ì¡´ì¬í•©ë‹ˆë‹¤.')");
+			script.println("alert('°ãÄ¡´Â »ç¶÷ÀÌ Á¸ÀçÇÕ´Ï´Ù.')");
 			script.println("history.back()");
 			script.println("window.close()");
 			script.println("</script>");
@@ -59,7 +59,7 @@ public class SharingCheck extends HttpServlet {
 
 		} else {
 			script.println("<script>");
-			script.println("alert('ì˜¤ë¥˜')");
+			script.println("alert('¿À·ù')");
 			script.println("window.close()");
 			script.println("</script>");
 		}

@@ -21,7 +21,7 @@ public class Review {
     	this.r_date = r_date;
     	this.r_star = r_star;
     	this.r_content = r_content;
-    	this.reples = setReples(r_reply);
+    	this.reples = (r_reply==null)? null: setReples(r_reply);
     	this.r_like = r_like;
     	this.r_hate = r_hate;
     }

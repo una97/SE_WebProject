@@ -1,4 +1,5 @@
 package dao;
+
 import dto.*;
 import java.sql.*;
 
@@ -138,7 +139,6 @@ public class UserDAO {
 
 
 
-
 public Sharing getSharing(int p_id) {
    String sql = "select p.p_name,p.p_pic, s.s_p_price  from shar_product s , product p where s_p_id=?";
    Sharing shto=null;
@@ -162,5 +162,5 @@ public Sharing getSharing(int p_id) {
             return shto;
          } 
 
-
 }
+

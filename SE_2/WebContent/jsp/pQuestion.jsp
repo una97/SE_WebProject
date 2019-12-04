@@ -123,12 +123,12 @@ for(int i=0;i<qDtos.size();i++){
                                     <td></td>
                                     <td class="subject">
                                     
-	                                    <div class="q_title_click" id="q_title_click" style="display:block">
-	                                    <a href="javascript:clickTitle();"><%= qDto.getTitle()%></a>
+	                                    <div class="q_title_click" id="q_title_click_<%=i %>" style="display:block">
+	                                    <a href="javascript:clickTitle(<%=i%>);"><%= qDto.getTitle()%></a>
 	                                    </div>
-	                                    <div class="q_content_click" id="q_content_click" style="display:none">
+	                                    <div class="q_content_click" id="q_content_click_<%=i %>" style="display:none">
 	                                    <%=qDto.getContent() %>
-	                                    <div class="products_reviews_list_review__foot" id="q_reples" style="display:none">
+	                                    <div class="products_reviews_list_review__foot" id="q_reples_<%=i %>" style="display:none">
             
 										  <div class="comments js-comments-container js-ie-opacity-fix">
 										    <div class="comments__arrow_top"></div>
@@ -236,9 +236,9 @@ for(int i=0;i<qDtos.size();i++){
 var q_t=null;
 var q_c=null;
 function clickTitle(val){
-	q_t = document.getElementById("q_title_click");
-	q_c = document.getElementById("q_content_click");
-	q_r = document.getElementById("q_reples");
+	q_t = document.getElementById("q_title_click_"+val);
+	q_c = document.getElementById("q_content_click_"+val);
+	q_r = document.getElementById("q_reples_"+val);
 	
 	if(q_c.style.display=='none'){
 		q_c.style.display='block';

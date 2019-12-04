@@ -39,6 +39,8 @@ div {
 	text-align: center;
 }
 </style>
+
+
 </head>
 <body>
 <%
@@ -70,12 +72,11 @@ div {
 			</div> -->
 		</div>
 	</div>
-	<div>
+	<div><a href="sharing.jsp">
 		<img src=<%=rs.getString("e_info") %> usemap="#head-login-btn"
 			align="center" width="74%" alt="">
-		<map name="head-login-btn">
-			<area shape="rect" coords="300,2000,750,2100" href="sharing.jsp">
-		</map>
+
+		</a>
 	</div>
 	<%}else{ %>
 	<div class="page-top-info">
@@ -96,7 +97,17 @@ div {
 	</div>
 	<%} %>
 </body>
+<script>
 
+$(function(){
+
+	$('img[usemap]').rwdImageMaps();
+
+	$("#img").width("100%");
+
+});
+
+</script>
 
 
 
