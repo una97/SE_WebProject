@@ -189,8 +189,11 @@
 					
 				</tr>
 				<tr>
+					
 					<td align ="center">재고</td>
-					<td align="left"><input type="text" name="p_stock" value=<%=pdDto.getP_stock()%> maxlength="20"></td>
+					<td align="left">
+					<input type="text" name="p_stock" value=<%=pdDto.getP_stock()%> maxlength="20">
+					</td>
 				</tr>
 			    </table>
 			    <br>
