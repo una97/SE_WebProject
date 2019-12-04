@@ -136,7 +136,7 @@
 				<li><a href="#">버너/난로</a></li>
 				<li><a href="#">랜턴/후레쉬</a></li>
 				<li><a href="#">가방/케이스</a></li>
-				<li><a href="#">ect</a></li>
+				
 			</ul>
 			
 			<div class="row">
