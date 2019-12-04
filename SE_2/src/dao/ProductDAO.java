@@ -1,5 +1,5 @@
 package dao;
-import dto.Product;
+import dto.*;
 import java.util.*;
 import java.sql.*;
 
@@ -55,26 +55,24 @@ public class ProductDAO {
         }
         return pdtos;
     }
-    public ArrayList<Product> getSharing(){
+    public ArrayList<Sharing> getSharing(){
         ResultSet rs=null;
         Statement stmt = null;
         String sql =  "select * from product where isShared=1";
-        ArrayList<Product> pdtos = new ArrayList<Product>();
+        ArrayList<Sharing> shtos = new ArrayList<Sharing>();
         try{
-           
+   
             stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);
             while(rs.next()){
-//                Integer idx = rs.getInt("p_id");
-//                String name = rs.getString("p_name");
-//                Integer price = rs.getInt("p_price");
-//                String picture = rs.getString("p_pic");
-//                String info = rs.getString("p_info");
-//                Integer stock = rs.getInt("p_stock");
-//                String category = rs.getString("p_category");
-//                String sm_category = rs.getString("p_sm_category");
-//                Product pdto = new Product(idx, name, price, picture, info, stock, category,sm_category);
-//                pdtos.add(pdto);
+            	  Integer s_p_id = rs.getInt("p_id");
+            	  String s_p_name = rs.getString("p_name");
+            	  String s_p_img  = rs.getString("p_pic");
+            	  Integer s_p_price =rs.getInt("p_price")* (s_p_id +1)*10/100 ;
+            	  Integer discount = (s_p_id +1)*10;
+            	  Sharing shto = new Sharing(s_p_id,s_p_name,s_p_img,s_p_price,discount);
+            	  shtos.add(shto);
+           
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -87,7 +85,7 @@ public class ProductDAO {
                 e.printStackTrace();
             }
         }
-        return pdtos;
+        return shtos;
     }
     
     
@@ -141,3 +139,6 @@ public class ProductDAO {
     	return -1;
     }
 }
+
+
+

@@ -5,7 +5,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="dto.*"%>
 <%@ page import="dao.*"%>
-<jsp:useBean id="ptDAO" class="dao.ProductDAO" />
+<jsp:useBean id="pdDAO" class="dao.ProductDAO" />
 <html>
 <head>
 <title>Docamp</title>
@@ -62,7 +62,7 @@ table.type04 td {
 </style>
 
 <%
-ArrayList<pro
+	ArrayList<Sharing> shDtos = pdDAO.getSharing();
 %>
 </head>
 <body>
@@ -99,36 +99,28 @@ ArrayList<pro
 						<th scope="cols">신 청</th>
 					</tr>
 				</thead>
-
+				<%
+					for (int i = 0; i < shDtos.size(); i++) {
+						Sharing shDto = shDtos.get(i);
+				%>
 				<tr>
-					<!-- <th scope="row"><img src="img/product/chair1.jpg" alt=""></th> -->
-					<td><img src="img/product/chair1.jpg" width="300px" alt=""></td>
-					<td></td>
-					<td>내용이 들어갑니다.</td>
+					
+					<td><img src=<%=shDto.getS_p_img()%> width="300px" alt=""></td>
+					<td><%=shDto.getS_p_name() %></td>
+					<td><%=shDto.getS_p_price() %></td>
 
 					<td><input type="date"></td>
 
 					<td><input type="date"></td>
-					<td>내용이 들어갑니다.</td>
-					<td>내용이 들어갑니다.</td>
+					<td>4</td>
+					<td><button>신청</button></td>
 
 				</tr>
-				<tr>
-					<!-- <th scope="row"><img src="img/product/chair1.jpg" alt=""></th> -->
-					<td><img src="img/product/chair1.jpg" alt=""></td>
-					<td>내용이 들어갑니다.</td>
-					<td>내용이 들어갑니다.</td>
 
-					<td>내용이 들어갑니다.</td>
-
-					<td>내용이 들어갑니다.</td>
-
-
-				</tr>
-				<tr>
-					<th scope="row"><img src="img/product/chair1.jpg" alt=""></th>
-					<td>내용이 들어갑니다.</td>
-				</tr>
+				<%
+					}
+				%>
+				
 			</table>
 
 
