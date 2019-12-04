@@ -104,7 +104,7 @@
 					<div class="filter-widget">
 						<h2 class="fw-title">카테고리 목록</h2>
 						<ul class="category-menu">
-							<li><a href="/category.jsp?p_cate=tent">텐트/타프</a>
+							<li><a href="category.jsp?p_cate=tent">텐트/타프</a>
 								<ul class="sub-menu">
 									<li><a href="category.jsp?p_cate=tent&p_sm_cate=tent">텐트<span>(2)</span></a></li>
 									<li><a href="category.jsp?p_cate=tent&p_sm_cate=tarp">타프<span>(36)</span></a></li>
