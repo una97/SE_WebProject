@@ -38,17 +38,7 @@ public class SharingCheck extends HttpServlet {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		//		
-	//	String strDate1= request.getParameter("start").toString();
-	
-		
-//		 DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
-//         String strDate = dateFormat.format(request.getParameter("start"));  
-//         String endDate = dateFormat.format(request.getParameter("end"));
-////		String startDay = new SimpleDateFormat("yyyy-MM-dd").format(request.getParameter("start"));
-//
-////		String endDay = new SimpleDateFormat("yyyy-MM-dd").format(request.getParameter("end"));
-//
+
 		PrintWriter script = response.getWriter();
 		SharingDAO shrDAO = new SharingDAO();
 		int result = shrDAO.checkDuplication(s_p_id, strDate, endDate);
@@ -62,7 +52,7 @@ public class SharingCheck extends HttpServlet {
 
 		} else if (result == 1 || result == -1) {
 			script.println("<script>");
-			script.println("location.href='sharingReservation.jsp'");
+			script.println("location.href='sharingReservation.jsp?p_id="+s_p_id+"&sDate="+strDate+"&eDate="+endDate+"'");
 			script.println("window.close()");
 			script.println("</script>");
 			
