@@ -48,7 +48,7 @@ public class ReviewDAO {
 	
 	public int addReply(int o_id, String u_id, String comment){
 		String newComment = u_id+","+comment+";";
-    	String SQL = "UPDATE review SET r_reply = CONCAT(r_reply, ?) WHERE o_id=?";
+    	String SQL = "UPDATE review SET r_reply = CONCAT(IFNULL(r_reply,\"\"), ?) WHERE o_id=?";
     	try {
     		pstmt=conn.prepareStatement(SQL);
     		pstmt.setString(1, newComment);
