@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="dao.*"%>
 <html>
 <head>
 <title>Docamp</title>
@@ -13,7 +15,9 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i"
 	rel="stylesheet">
-
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 
 <!-- Stylesheets -->
 <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -37,6 +41,14 @@ div {
 </style>
 </head>
 <body>
+<%
+	String idx_s = request.getParameter("idx");
+	int idx = Integer.parseInt(idx_s);
+	EventDAO ed = new EventDAO();
+	ResultSet rs = ed.getResult("select * from event where e_id="+idx);
+	rs.next();
+	int id = Integer.parseInt(rs.getString("e_id"));
+%>
 	<!-- Page Preloder -->
 	<!-- 	<div id="preloder">
 		<div class="loader"></div>
@@ -47,6 +59,8 @@ div {
 	<!-- Header section end -->
 
 	<!-- Page info -->
+	<%
+		if(id==2){ %>
 	<div class="page-top-info">
 		<div class="container">
 			<h4>Sharing Event</h4>
@@ -57,14 +71,30 @@ div {
 		</div>
 	</div>
 	<div>
-		<img src="img/event/event_page.png" usemap="#head-login-btn"
+		<img src=<%=rs.getString("e_info") %> usemap="#head-login-btn"
 			align="center" width="80%" alt="">
 		<map name="head-login-btn">
 			<area shape="rect" coords="350,2800,1100,3090" href="category.jsp">
 		</map>
-
 	</div>
-
+	<%}else{ %>
+	<div class="page-top-info">
+		<div class="container">
+			<h4>Docamp Deals!</h4>
+			<h5>무료 배송 이벤트</h5>
+			<!-- <div class="site-pagination">
+				<a href="">Home</a> / <a href="">Event</a> /
+			</div> -->
+		</div>
+	</div>
+	<div>
+		<img src=<%=rs.getString("e_info") %> usemap="#head-login-btn"
+			align="center" width="80%" alt="">
+		<map name="head-login-btn">
+			<area shape="rect" coords="350,2800,1100,3090" href="category.jsp">
+		</map>
+	</div>
+	<%} %>
 </body>
 
 

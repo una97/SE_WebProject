@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="dto.Product"%>
-<%@ include file="jsp/product_li.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,7 +128,7 @@
 					<hr>
 					<br>
 				<div class="eventU" align="center" style="background-color:#f0f0f0;margin: 0 auto; width:750px;">
-				<form method="post" action="#" enctype="multipart/form-data" >
+				<form method="post" action="eventSave.jsp" enctype="multipart/form-data" >
 				<fieldset>
 				<br><br>
 				<table id="ftable">
@@ -169,19 +168,11 @@
 				</tr>
 				<tr>
 					<td align ="center">이벤트 시작</td>
-					<td align="left"><input type="date" name=""></td>
+					<td align="left"><input type="date" name="e_sdate"></td>
 				</tr>
 				<tr>
 					<td align ="center">이벤트 종료</td>
-					<td align="left"><input type="date" name=""></td>
-				</tr>
-				<tr>
-					<td align ="center">대카테고리</td>
-					<td align="left"><input type= "text" name="e_category"></td>
-				</tr>
-				<tr>
-					<td align ="center">소카테고리</td>
-					<td align="left"><input type= "text" name="e_sm_category"></td>
+					<td align="left"><input type="date" name="e_edate"></td>
 				</tr>
 				<tr>
 					<td align ="center">가격</td>
