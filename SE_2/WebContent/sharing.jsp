@@ -1,6 +1,11 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="dto.*"%>
+<%@ page import="dao.*"%>
+<jsp:useBean id="ptDAO" class="dao.ProductDAO" />
 <html>
 <head>
 <title>Docamp</title>
@@ -34,7 +39,7 @@
 table.type04 {
 	border-collapse: separate;
 	border-spacing: 1px;
-	text-align: left;
+	text-align: center;
 	line-height: 1.5;
 	border-top: 1px solid #ccc;
 	margin: 20px 10px;
@@ -55,6 +60,10 @@ table.type04 td {
 	border-bottom: 1px solid #ccc;
 }
 </style>
+
+<%
+ArrayList<pro
+%>
 </head>
 <body>
 
@@ -86,8 +95,8 @@ table.type04 td {
 						<th scope="cols">가격</th>
 						<th scope="cols">신청시작일</th>
 						<th scope="cols">신청종료일</th>
-						<th scope="cols">신청종료일</th>
-						<th scope="cols">예약 수</th>
+						<th scope="cols">예약 현황</th>
+						<th scope="cols">신 청</th>
 					</tr>
 				</thead>
 

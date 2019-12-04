@@ -55,6 +55,44 @@ public class ProductDAO {
         }
         return pdtos;
     }
+    public ArrayList<Product> getSharing(){
+        ResultSet rs=null;
+        Statement stmt = null;
+        String sql =  "select * from product where isShared=1";
+        ArrayList<Product> pdtos = new ArrayList<Product>();
+        try{
+           
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(sql);
+            while(rs.next()){
+//                Integer idx = rs.getInt("p_id");
+//                String name = rs.getString("p_name");
+//                Integer price = rs.getInt("p_price");
+//                String picture = rs.getString("p_pic");
+//                String info = rs.getString("p_info");
+//                Integer stock = rs.getInt("p_stock");
+//                String category = rs.getString("p_category");
+//                String sm_category = rs.getString("p_sm_category");
+//                Product pdto = new Product(idx, name, price, picture, info, stock, category,sm_category);
+//                pdtos.add(pdto);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            try{
+                if(rs!=null)rs.close();
+                if(stmt!=null)stmt.close();
+                if(conn!=null)conn.close();
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        return pdtos;
+    }
+    
+    
+    
+    
     public ResultSet getResult(String sql) {
 		ResultSet rs=null;
 		try {
