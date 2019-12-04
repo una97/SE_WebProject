@@ -240,10 +240,10 @@
 				<%
 					
 				%>
-				<div class="col-lg-4 card-right">
+			<!-- 	<div class="col-lg-4 card-right">
 
 					<a href="mypage.jsp" class="site-btn sb-dark">주문 내역 확인하기</a>
-				</div>
+				</div> -->
 			</div>
 		</div>
 
