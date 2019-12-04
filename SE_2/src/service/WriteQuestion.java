@@ -42,7 +42,7 @@ public class WriteQuestion extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
-        
+      
         int p_id = Integer.parseInt(request.getParameter("p_id"));
 		String u_id = request.getParameter("u_id");
 
