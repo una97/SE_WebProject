@@ -137,3 +137,39 @@ public class UserDAO {
     } 
 
 }
+
+
+
+public Sharing getSharing(int p_id) {
+   String sql = "select p.p_name,p.p_pic, s.s_p_price  from shar_product s , product p where s_p_id=?";
+   Sharing shto;
+   try {
+       pstmt = conn.prepareStatement(sql);
+           pstmt.setInt(1, p_id);
+           rs= pstmt.executeQuery();
+            while(rs.next()) {
+               int s_p_id= p_id;
+               String s_p_name = rs.getString(1);
+               String s_p_img= rs.getString(2);
+               int s_p_price = rs.getInt(3);
+               int discount = (s_p_id +1)*10;
+                shto = new Sharing(s_p_id, s_p_name, s_p_img, s_p_price, discount);
+               
+            }
+         }   
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            return shto;
+         } 
+
+
+
+         INSERT INTO shar_product(s_p_id,s_p_name, s_p_price) VALUES(1, '비틀쉐이드 II',22000 );
+         INSERT INTO shar_product(s_p_id,s_p_name, s_p_price) VALUES(3, '렉타 타프 와이드 스크린 Ⅱ', 140000);
+         INSERT INTO shar_product(s_p_id,s_p_name, s_p_price) VALUES(5, '렉타 타프 세트',320400 );
+
+         Insert into shar_reservation(s_r_u_id, s_r_p_id, s_r_start,s_r_end) values ('user1',1,'2019-12-13','2019-12-17');
+         Insert into shar_reservation(s_r_u_id, s_r_p_id, s_r_start,s_r_end) values ('user1',2,'2019-12-25','2019-12-27');
+         
+

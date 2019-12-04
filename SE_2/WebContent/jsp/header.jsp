@@ -78,11 +78,11 @@
 					</a></li>
 					<li><a href="#">Pages</a>
 						<ul class="sub-menu">
-							<li><a href="./product.jsp">Product Page</a></li>
+					
 							<li><a href="./category.jsp">Category Page</a></li>
 							<li><a href="./cart.jsp">Cart Page</a></li>
-							<li><a href="./checkout.jsp">Checkout Page</a></li>
-							<li><a href="./contact.jsp">Contact Page</a></li>
+						<!-- 	<li><a href="./checkout.jsp">Checkout Page</a></li>
+							<li><a href="./contact.jsp">Contact Page</a></li> -->
 						</ul></li>
 				</ul>
 			</div>
