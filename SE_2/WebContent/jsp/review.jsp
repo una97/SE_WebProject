@@ -47,6 +47,7 @@
       
       .products_liviews_body{
       	padding: 20 20 20 20;
+      	border-bottom-color:#e1e1e1;
       }
     </style>
 

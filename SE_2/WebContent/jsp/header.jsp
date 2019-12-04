@@ -20,8 +20,8 @@
 					</div>
 					<div class="col-xl-6 col-lg-5">
 						<br>
-						<form class="header-search-form">
-							<input type="text" placeholder="Search ....">
+						<form class="header-search-form" method="get" action="category.jsp">
+							<input id="search" type="text" name="search" value="" placeholder="Search ....">
 							<button>
 								<i class="flaticon-search"></i>
 							</button>
@@ -65,8 +65,8 @@
 					<li><a href="./index.jsp">Home</a></li>
 					<li><a href="./category.jsp">Camping shop</a>
 						<ul class="sub-menu">
-							<li><a href="../category.jsp?p_cate=tent">텐트/타프</a></li>
-							<li><a href="#">의자/테이블</a></li>
+							<li><a href="/SE_2/category.jsp?p_cate=tent">텐트/타프</a></li>
+							<li><a href="/SE_2/category.jsp?p_cate=chair">의자/테이블</a></li>
 							<li><a href="#">침낭/매트</a></li>
 							<li><a href="#">코펠/식기</a></li>
 							<li><a href="#">버너/난로</a></li>
@@ -89,4 +89,5 @@
 		</nav>
 	</header>
 </body>
+
 </html>
