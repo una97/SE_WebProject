@@ -1,4 +1,5 @@
 package dao;
+import dto.Sharing;
 import dto.User;
 import java.sql.*;
 
@@ -136,13 +137,11 @@ public class UserDAO {
          return -2; //데이터 베이스 오류
     } 
 
-}
-
 
 
 public Sharing getSharing(int p_id) {
    String sql = "select p.p_name,p.p_pic, s.s_p_price  from shar_product s , product p where s_p_id=?";
-   Sharing shto;
+   Sharing shto=null;
    try {
        pstmt = conn.prepareStatement(sql);
            pstmt.setInt(1, p_id);
@@ -163,13 +162,4 @@ public Sharing getSharing(int p_id) {
             return shto;
          } 
 
-
-
-         INSERT INTO shar_product(s_p_id,s_p_name, s_p_price) VALUES(1, '비틀쉐이드 II',22000 );
-         INSERT INTO shar_product(s_p_id,s_p_name, s_p_price) VALUES(3, '렉타 타프 와이드 스크린 Ⅱ', 140000);
-         INSERT INTO shar_product(s_p_id,s_p_name, s_p_price) VALUES(5, '렉타 타프 세트',320400 );
-
-         Insert into shar_reservation(s_r_u_id, s_r_p_id, s_r_start,s_r_end) values ('user1',1,'2019-12-13','2019-12-17');
-         Insert into shar_reservation(s_r_u_id, s_r_p_id, s_r_start,s_r_end) values ('user1',2,'2019-12-25','2019-12-27');
-         
-
+}

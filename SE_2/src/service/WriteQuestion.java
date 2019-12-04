@@ -73,7 +73,7 @@ public class WriteQuestion extends HttpServlet {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('문의 작성이 완료되었습니다!')");
-			script.println("window.close()");
+			script.println("location.href='product.jsp?idx='"+p_id);
 			script.println("</script>");
 		}
 	}
