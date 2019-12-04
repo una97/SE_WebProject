@@ -162,6 +162,7 @@
 						<div class="filebox" align="center">
 						<label for="pp">이미지 업로드</label>
 						<input type="file" id="pp" name="p_pic" value="<%=pdDto.getP_pic()%>">
+						<input type="hidden" id="pp" name="p_pic1" value="<%=pdDto.getP_pic()%>">
 						</div>
 					</td>
 					<td>
