@@ -34,7 +34,15 @@
 <link rel="stylesheet" href="css/owl.carousel.min.css" />
 <link rel="stylesheet" href="css/animate.css" />
 <link rel="stylesheet" href="css/style.css" />
-
+<style>
+     #reviewSec{
+     	border-bottom: 2px inset #e1e1e1;
+     }
+     #accordion{
+     	border-bottom: 2px inset #e1e1e1;
+     	margin-bottom: 10px;
+     }
+</style>
 
 <!--[if lt IE 9]>
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -43,7 +51,6 @@
 
 <%
 String idx_s = request.getParameter("idx");
-out.print(idx_s);
 int idx = Integer.parseInt(idx_s);
 Product pdDto = pdDtos.get(idx);
 
@@ -139,6 +146,12 @@ Product pdDto = pdDtos.get(idx);
 					<!-- review section -->
 					<div id="reviewSec">
 					<jsp:include page="jsp/review.jsp" flush="false">
+						<jsp:param name="idx" value="<%=idx%>" />
+					</jsp:include>
+					</div>
+					
+					<div id="questionSec">
+					<jsp:include page="jsp/pQuestion.jsp" flush="false">
 						<jsp:param name="idx" value="<%=idx%>" />
 					</jsp:include>
 					</div>

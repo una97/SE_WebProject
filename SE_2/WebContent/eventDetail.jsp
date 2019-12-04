@@ -58,7 +58,7 @@ div {
 	</div>
 	<div>
 		<img src="img/event/event_page.png" usemap="#head-login-btn"
-			align="center" width="80%" alt="">
+			align="center" width="100%" alt="">
 		<map name="head-login-btn">
 			<area shape="rect" coords="350,2800,1100,3090" href="category.jsp">
 		</map>

@@ -2,8 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<%@ page import="java.io.*" %>
 <%@ page import="java.util.ArrayList"%>
 <%request.setCharacterEncoding("utf-8");%>
+<%response.setCharacterEncoding("utf-8");
+response.setContentType("text/html; charset=UTF-8"); %>
 <%@ page import="dto.Review"%>
 <%@ page import="dao.ReviewDAO"%>
 <jsp:useBean id="rvDAO" class="dao.ReviewDAO"/>
@@ -57,6 +60,7 @@
 	        display: block;
 	        content: ''; }
 	  .oViOeBoH3d {
+	  		margin-top: 20px;
 		    border-top: 1px solid #eee;
 		    background-color: #fff;
 		    text-align: center; }
@@ -258,37 +262,29 @@
 	<a href="#" role="button" class="_2GFmOgYde3 N=a:wrtrv.hdcls" onclick="window.close()">
 	</a>
 </header>
-<form action="/SE_2/WriteReview.do" method="post">
-<input type="hidden" name="o_id" value=<%=request.getParameter("o_id") %> />
+<%
+String u_id=(String)session.getAttribute("u_id");
+if(u_id==null){
+	PrintWriter script = response.getWriter();
+	
+	script.println("<script>");
+	script.println("alert('로그인이 필요합니다.')");
+	script.println("history.back()");
+	script.println("</script>");
+}
+%>
+<form action="/SE_2/WriteQuestion.do" method="post">
+<input type="hidden" name="p_id" value=<%=request.getParameter("p_id") %> />
 <input type="hidden" name="u_id" value=<%=(String)session.getAttribute("u_id") %> />
 
 <div class ="-OcYLr6Qe6">
 	<div class="oViOeBoH3d">
-		<strong class="_3y9Ly2IiVh">상품은 만족하셨나요?</strong>
-		<div class="_1FcR2l9t3Q">
-			<div class="OO02FTHqZp" role="radiogroup">
-				<a href="#" class="_92gtIHEDor VsNxhfpqhM" data-value="5" onclick="clickRadio(this)" role="radio" aria-checked="false">
-				<span class="blind">5</span>
-				</a>
-				<a href="#" class="_92gtIHEDor VsNxhfpqhM" data-value="4" onclick="clickRadio(this)" role="radio" aria-checked="false">
-				<span class="blind">4</span>
-				</a>
-				<a href="#" class="_92gtIHEDor VsNxhfpqhM" data-value="3" onclick="clickRadio(this)" role="radio" aria-checked="false">
-				<span class="blind">3</span>
-				</a>
-				<a href="#" class="_92gtIHEDor VsNxhfpqhM" data-value="2" onclick="clickRadio(this)" role="radio" aria-checked="false">
-				<span class="blind">2</span>
-				</a>
-				<a href="#" class="_92gtIHEDor VsNxhfpqhM" data-value="1" onclick="clickRadio(this)" role="radio" aria-checked="false" >
-				<span class="blind">1</span>
-				</a>
-			</div>
-		</div>
+		<input type="text" name="q_title" placeholder="문의합니다." value="문의합니다." style="width:90%;font-size:14px;padding:10px;"/>
 	</div>
 	<div class="oViOeBoH3d">
 		<div class="ystMZ36gvH">
 			<div class="_30-j0z23yB _2CEGIJbJ0M">
-				<textarea name="r_content" class="_2mqbEheJIc" id="reviewInput" cols="30" style="height: 100px;"></textarea>
+				<textarea name="q_content" class="_2mqbEheJIc" id="questionInput" cols="30" style="height: 100px;"></textarea>
 			</div>
 		</div>
 	</div>
@@ -307,31 +303,18 @@
 </form>
 </div>
 <script>
-var value=null;
-var r_content=null;
+var question=null;
 var o_id=null;
-function clickRadio(val){
-	value = val.getAttribute("data-value");
-}
+
 function submit(){
-	r_content = $("#reviewInput").val();
+	question = $("#questionInput").val();
 	
-	if(value==null)
-		alert("별점을 선택해주세요.");
-	else if(r_content==null)
-		alert("리뷰를 작성해주세요.");
+	if(question==null)
+		alert("문의를 작성해주세요.");
 	else{
 		var f = document.getElementsByTagName("form")[0]; // form 엘리멘트 생성 
 	
-		var i = document.createElement("input"); // input 엘리멘트 생성 
-		i.setAttribute("type","hidden"); // type 속성을 hidden으로 설정
-		i.setAttribute("name","r_star"); // name 속성을 'm_nickname'으로 설정 
-		i.setAttribute("value",value); // value 속성을 neilong에 담겨있는 값으로 설정
-		
-		f.appendChild(i); // form 엘리멘트에 input 엘리멘트 추가 
-
 		f.submit(); // form 태그 서브밋 실행
-		console.log("여기까지");
 		
 	}
 }

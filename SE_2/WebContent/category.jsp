@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.ArrayList"%>
-
+<%@ page import="java.io.PrintWriter" %>
 <%@ page import="dto.Product"%>
 <%@ page import="dto.Review"%>
 <%@ page import="dao.ReviewDAO"%>
@@ -17,19 +17,33 @@
 	}catch(Exception e){
 		cnt = 0;
 	}
-	String p_cate = request.getParameter("p_cate");
-	String p_sm_cate = request.getParameter("p_sm_cate");
+	String search = request.getParameter("search");
 	ArrayList<Product> pdDtos;
-	if(p_cate==null) {
-		pdDtos = pdDAO.productSelect("select * from product");
-	}
-	else if(p_sm_cate==null){
-		pdDtos = pdDAO.productSelect("select * from product where p_category='"+p_cate+"'");
-	}
-	else{
-		pdDtos = pdDAO.productSelect("select * from product where p_category='"+p_cate+"' and "+"p_sm_category='"+p_sm_cate+"'");
-	}
+	if(search!=null){
+		if(search.length()<=1){
+			PrintWriter script = response.getWriter();
+
+			script.println("<script>");
+			script.println("alert('한 글자 이상 검색해주세요.')");
+			script.println("history.back()");
+			script.println("</script>");
+		}
+		pdDtos = pdDAO.productSelect("select * from product where p_name like '%"+search+"%' or p_category like '%"+search+"%' or p_sm_category like '%"+search+"%'");
+	}else{
+
+		String p_cate = request.getParameter("p_cate");
+		String p_sm_cate = request.getParameter("p_sm_cate");
 		
+		if(p_cate==null) {
+			pdDtos = pdDAO.productSelect("select * from product");
+		}
+		else if(p_sm_cate==null){
+			pdDtos = pdDAO.productSelect("select * from product where p_category='"+p_cate+"'");
+		}
+		else{
+			pdDtos = pdDAO.productSelect("select * from product where p_category='"+p_cate+"' and "+"p_sm_category='"+p_sm_cate+"'");
+		}
+	}
 
 %>
 
@@ -93,15 +107,13 @@
 							<li><a href="/category.jsp?p_cate=tent">텐트/타프</a>
 								<ul class="sub-menu">
 									<li><a href="category.jsp?p_cate=tent&p_sm_cate=tent">텐트<span>(2)</span></a></li>
-									<li><a href="category.jsp?p_cate=tent">텐트 악세서리<span>(56)</span></a></li>
 									<li><a href="category.jsp?p_cate=tent&p_sm_cate=tarp">타프<span>(36)</span></a></li>
 								</ul>
 							</li>
 							<li><a href="">의자/테이블/가구</a>
 								<ul class="sub-menu">
-									<li><a href="#">의자<span>(2)</span></a></li>
-									<li><a href="#">테이블<span>(56)</span></a></li>
-									<li><a href="#">야전침대<span>(36)</span></a></li>
+									<li><a href="category.jsp?p_cate=chair&p_sm_cate=chair">의자<span>(2)</span></a></li>
+									<li><a href="category.jsp?p_cate=chair&p_sm_cate=table">테이블<span>(56)</span></a></li>
 								</ul></li>
 							<li><a href="">침낭/매트</a>
                             	<ul class="sub-menu">
