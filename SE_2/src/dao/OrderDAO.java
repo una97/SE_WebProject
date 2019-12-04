@@ -2,7 +2,9 @@ package dao;
 
 import dto.*;
 import java.util.*;
+import java.util.Date;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 
 public class OrderDAO {
 
@@ -22,17 +24,28 @@ public class OrderDAO {
 		}
 	}
 
-	public int addOrder(String u_id, int p_id, String o_u_name, String o_u_address, String totalPrice) {
-		String SQL = "insert into orders values(?,?,?,?,?,?,?,?)";
+	public int addOrder(String u_id, int p_id, String u_name, String u_address, String total_price,
+			String o_status, String o_phone, String o_email, String u_detailAddress, String o_pay, String o_divide,
+			String o_mention) {
+		String SQL = "insert into orders (u_id,p_id,o_date,u_name,u_address,total_price,o_status,o_phone,o_email,u_detailAddress,o_pay,o_divide,o_mention) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		Date from = new Date();
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String to = transFormat.format(from);
 		try {
 			pstmt = conn.prepareStatement(SQL);
-//    		pstmt.setString(1, u_id);
-			pstmt.setString(2, u_id);
-			pstmt.setInt(3, p_id); 
-			pstmt.setString(4, "2019-12-01");
-			pstmt.setString(5, o_u_name);
-			pstmt.setString(6, o_u_address);
-			pstmt.setString(7, totalPrice);
+			pstmt.setString(1, u_id);
+			pstmt.setInt(2, p_id); 
+			pstmt.setString(3, to);
+			pstmt.setString(4, u_name);
+			pstmt.setString(5, u_address);
+			pstmt.setString(6, total_price);
+			pstmt.setString(7, o_status);
+			pstmt.setString(8, o_phone);
+			pstmt.setString(9, o_email);
+			pstmt.setString(10, u_detailAddress);
+			pstmt.setString(11, o_pay);
+			pstmt.setString(12, o_divide);
+			pstmt.setString(13, o_mention);
 			return pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -55,12 +68,20 @@ public class OrderDAO {
 				Integer o_id = rs.getInt("o_id");
 				String u_id = rs.getString("u_id");
 				Integer p_id = rs.getInt("p_id");
-				String o_date ="2019-01-01";
+				String o_date = rs.getString("date");;
 				String u_name = rs.getString("u_name");
 				String u_address = rs.getString("u_address");
 				String total_price = rs.getString("total_price");
 				String o_status = rs.getString("o_status");
-				Order order = new Order(o_id, u_id, p_id, o_date, u_name, u_address, total_price, o_status);
+				String o_phone = rs.getString("o_phone");
+				String o_email = rs.getString("o_email");
+				String u_detailAddress = rs.getString("u_detailAddress");
+				String o_pay = rs.getString("o_pay");
+				String o_divide = rs.getString("o_divide");
+				String o_mention = rs.getString("o_mention");
+				
+				Order order = new Order(o_id, u_id, p_id, o_date, u_name, u_address, total_price,
+						o_status, o_phone, o_email, u_detailAddress, o_pay, o_divide, o_mention);
 				orderList.add(order);
 				
 			}
