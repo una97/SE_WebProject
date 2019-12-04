@@ -1,5 +1,5 @@
 package dao;
-import dto.Product;
+import dto.*;
 import java.util.*;
 import java.sql.*;
 
@@ -55,6 +55,42 @@ public class ProductDAO {
         }
         return pdtos;
     }
+    public ArrayList<Sharing> getSharing(){
+        ResultSet rs=null;
+        Statement stmt = null;
+        String sql =  "select * from product where isShared=1";
+        ArrayList<Sharing> shtos = new ArrayList<Sharing>();
+        try{
+   
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(sql);
+            while(rs.next()){
+            	  Integer s_p_id = rs.getInt("p_id");
+            	  String s_p_name = rs.getString("p_name");
+            	  String s_p_img  = rs.getString("p_pic");
+            	  Integer s_p_price =rs.getInt("p_price")* (s_p_id +1)*10/100 ;
+            	  Integer discount = (s_p_id +1)*10;
+            	  Sharing shto = new Sharing(s_p_id,s_p_name,s_p_img,s_p_price,discount);
+            	  shtos.add(shto);
+           
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            try{
+                if(rs!=null)rs.close();
+                if(stmt!=null)stmt.close();
+                if(conn!=null)conn.close();
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        return shtos;
+    }
+    
+    
+    
+    
     public ResultSet getResult(String sql) {
 		ResultSet rs=null;
 		try {
@@ -103,3 +139,6 @@ public class ProductDAO {
     	return -1;
     }
 }
+
+
+

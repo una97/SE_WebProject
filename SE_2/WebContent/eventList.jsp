@@ -3,10 +3,16 @@
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 
+<%@ page import="dto.*"%>
+<%@ page import="dao.*"%>
 
 <html>
 <head>
 <title>Docamp</title>
+<%
+	EventDAO ed = new EventDAO();
+	ResultSet rs = ed.getResult("select * from event");
+%>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Favicon -->
@@ -74,10 +80,14 @@
 					<input type="hidden" name="viewCount" id="viewCount" value="0">
 					<input type="hidden" name="startCount" i="startCount" value="0">
 					<div class="row">
-						<a href="eventDetail.jsp"> <img src="img/event/event_banner1.png" width="700" alt=""></a>
-
-
-						<img src="img/event/event_banner2.png" width="700" alt="">
+					<%while(rs.next()) {%>
+						<div style="margin-bottom:5px;">
+						<Br><h6><%=rs.getString("e_name") %></h6>
+						<a href="eventDetail.jsp?idx=<%=rs.getString("e_id")%>"> 
+						<img src=<%=rs.getString("e_pic") %> width="700" alt="">
+						</a>
+						</div>
+					<%} %>
 
 					</div>
 				</div>

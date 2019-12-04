@@ -67,17 +67,17 @@
 						<ul class="category-menu">
 							<li><a href="mypage.jsp">주문 내역</a>
 							</li>
-							<li><a href="#">상품 후기</a>
-							</li>
 							<li><a href="changeinfo.jsp">개인 정보 수정</a>
                             </li>
 						</ul>
 						<%} else{ %>
 						<h2 class="fw-title">관리 페이지</h2>
 						<ul class="category-menu">
-							<li><a href="mypage.jsp">주문 내역</a>
+							<li><a href="mypage.jsp">주문자 조회</a>
 							</li>
-							<li><a href="#">상품 후기</a>
+							<li><a href="#">회원 조회</a>
+							</li>
+							<li><a href="eventUpload.jsp">이벤트 등록</a>
 							</li>
 							<li><a href="newProduct.jsp">상품 등록 및 정보 변경</a>
 							</li>

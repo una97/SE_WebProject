@@ -112,14 +112,28 @@ public class UserDAO {
     }
     
     //회원탈퇴
-    public void out(String u_id ,String u_pw) {
-    		try {
-    			 String SQL="delete from user where u_id=\""+u_id+"\"";
-    			 pstmt=conn.prepareStatement(SQL);
-    			 pstmt.executeUpdate();
-    		}catch(Exception e) {
-    			e.printStackTrace();
-    		}
+    public int out(String u_id ,String u_pw) {
+    	 String SQL = "select u_pw from user where u_id = ?"; 
+         try {
+            pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, u_id);
+            rs= pstmt.executeQuery();
+            
+            if(rs.next()) {
+               if(rs.getString(1).equals(u_pw)) {
+            	 SQL="delete from user where u_id=\""+u_id+"\"";
+      			 pstmt=conn.prepareStatement(SQL);
+      			 pstmt.executeUpdate();
+                  return 1; //탈퇴 성공
+               }
+               else
+                  return 0; //비밀번호 불일치
+            }
+            return -1; //아이디 없음
+         }catch(Exception e) {
+            e.printStackTrace();
+         }
+         return -2; //데이터 베이스 오류
     } 
 
 }

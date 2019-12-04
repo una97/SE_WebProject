@@ -94,5 +94,17 @@ public class OrderDAO {
 		}
 		return rs;
 	}
+    public ResultSet getOrderer(int p_id) {
+		ResultSet rs=null;
+		String sql="select * from orders where p_id=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, p_id);
+			rs = pstmt.executeQuery();
+		}catch(Exception e) {
+			System.out.println("DB연결 문제: "+e.getMessage());
+		}
+		return rs;
+	}
 
 }

@@ -8,7 +8,8 @@
 <%@ page import="dto.*"%>
 <%@ page import="dao.*"%>
 <jsp:useBean id="odDAO" class="dao.OrderDAO"></jsp:useBean>
-
+<%@ page import="dto.Product"%>
+<%@ include file="jsp/product_li.jsp" %>
 
 
 <!DOCTYPE html>
@@ -89,7 +90,6 @@ padding-left: 20px;
 						%><h2 class="fw-title">마이 페이지</h2>
 						<ul class="category-menu">
 							<li><a href="mypage.jsp">주문 내역</a></li>
-							<li><a href="#">상품 후기</a></li>
 							<li><a href="changeinfo.jsp">개인 정보 수정</a></li>
 						</ul>
 						<%
@@ -97,8 +97,12 @@ padding-left: 20px;
 						%>
 						<h2 class="fw-title">관리 페이지</h2>
 						<ul class="category-menu">
-							<li><a href="mypage.jsp">주문 내역</a></li>
-							<li><a href="#">상품 후기</a></li>
+							<li><a href="mypage.jsp">주문자 조회</a>
+							</li>
+							<li><a href="seeMembers.jsp">회원 조회</a>
+							</li>
+							<li><a href="eventUpload.jsp">이벤트 등록</a>
+							</li>
 							<li><a href="newProduct.jsp">상품 등록 및 정보 변경</a></li>
 							<li><a href="changeinfo.jsp">개인 정보 수정</a></li>
 						</ul>
@@ -107,19 +111,17 @@ padding-left: 20px;
 						%>
 					</div>
 				</div>
-			</div>
-		</div>
-
-		<div class="change" align="center"
-			style="background-color: #f0f0f0; margin: 0 auto; width: 750px;">
-			<!-- <div class="cart-table-warp">
- -->
-			<table>
-				<thead>
-					<%
-										while(odDtos.next()) {
-											
-											%>
+				<div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
+				<%if (auth==0) {%>
+				<h4>
+				주문 내역
+				</h4>
+				<hr>
+				<br>
+				<div class="change" align="center" style="background-color: #f0f0f0; margin: 0 auto; width: 750px;">
+				<table>
+					<thead>
+					<% while(odDtos.next()) {%>
 					<tr>
 						<th class="product-th"><%= odDtos.getString("o_id")%> </th>
 						<th class="quy-th"><%=odDtos.getString("o_date")%></th>
@@ -128,11 +130,9 @@ padding-left: 20px;
 						<th class="price-th"><%=odDtos.getInt("total_price")%></th>
 						<th class="total-th"><button class="site-btn submit-order-btn" onclick="window.open('jsp/writeReview.jsp?o_id=<%=odDtos.getString("o_id") %>', '_blank', 'width=450px,height=350px,toolbars=no,scrollbars=no'); return false;">리뷰 쓰기</button></th>
 					</tr>
-					<%
-										}
-									%>
-				</thead>
-				<tbody>
+					<%}%>
+					</thead>
+					<tbody>
 
 				<%-- 	<%
 										for (int i = 0; i < odDtos.size(); i++) {
@@ -166,17 +166,49 @@ padding-left: 20px;
 
 										<td class="total-col"><h4><%=pdDto.getP_price()%></h4></td>
 									</tr> --%>
-					
-
-				</tbody>
-			</table>
-			<!-- 						</div>
- -->
+					</tbody>
+				</table>
+			</div>
+			<%} else{ %>
+				<h4>
+				주문자 조회
+				</h4>
+				<hr>
+				<br>
+				<div class="row">
+                    <%
+                        int size = pdDtos.size();
+                        for(int i=0;i<size;i++){
+                            Product pdDto = pdDtos.get(i);
+                    %>
+						<div class="col-lg-4 col-sm-6">
+							<div class="product-item" style="margin:10px;">
+								<div>
+									<div style="width:50%; float:left;">
+                                    <img width="200px" src=<%="http://localhost:8080/SE_2/"+pdDto.getP_pic() %> alt="">
+									</div>
+									<div style="width:50%; float:right; padding-left:5px;">
+									<%String name = pdDto.getP_name();
+									if(name.length()>10)
+										name = name.substring(0,10)+"...";
+									%>
+									<p><%=name%><br><%=pdDto.getP_price() %></p>
+									<button onclick="location.href='seeOrderers.jsp?idx=<%=pdDto.getP_id() %>'" class="fix">
+									 	조회하기
+									</button>
+									</div>						
+								</div>
+							</div>
+						</div>
+						
+						<%
+                        }
+                        %>
+					</div>
+			<%} %>
 		</div>
-
-
-
-
+			</div>
+		</div>
 	</section>
 	<!-- Footer section -->
 	<jsp:include page="jsp/footer.jsp" flush="false" />
