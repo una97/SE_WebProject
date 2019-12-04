@@ -43,7 +43,9 @@
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 <%
+	String u_id=(String) session.getAttribute("u_id");
 	ArrayList<Cart> ctDtos = ctDAO.getCart((String) session.getAttribute("u_id"));
+	ResultSet rs = ptDAO.getResult("select * from product INNER JOIN cart ON cart.c_p_id = product.p_id where c_u_id=\""+u_id+"\"");
 	int sum = 0;
 %>
 </head>
@@ -105,18 +107,15 @@
 								<tbody>
 
 									<%
-										for (int i = 0; i < ctDtos.size(); i++) {
-											Cart ctDto = ctDtos.get(i);
-											ArrayList<Product> pdDtos = ptDAO.productSelect(
-													"select * from product INNER JOIN cart ON cart.c_p_id where c_p_id=" + ctDto.getP_id());
-											Product pdDto = pdDtos.get(i);
-											sum += pdDto.getP_price();
+							
+										while(rs.next()){
+											sum+=Integer.parseInt(rs.getString("p_price"));
 									%>
 									<tr>
-										<td class="product-col"><img src=<%=pdDto.getP_pic()%> alt="">
+										<td class="product-col"><img src=<%=rs.getString("p_pic")%> alt="">
 											<div class="pc-title">
-												<h4><%=pdDto.getP_name()%></h4>
-												<p><%=pdDto.getP_price()%></p>
+												<h4><%=rs.getString("p_name")%></h4>
+												<p><%=rs.getString("p_price")%></p>
 											</div></td>
 										<td class="quy-col">
 											<div class="quantity">
@@ -127,7 +126,7 @@
 											</div>
 										</td>
 
-										<td class="total-col"><h4><%=pdDto.getP_price()%></h4></td>
+										<td class="total-col"><h4><%=rs.getString("p_price")%></h4></td>
 									</tr>
 									<%
 										}
@@ -138,7 +137,7 @@
 						</div>
 						<div class="total-cost">
 							<h6>
-								합계 <span><%=sum%> </span>
+								합계 <span><%=sum %> </span>
 							</h6>
 						</div>
 					</div>
