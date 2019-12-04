@@ -11,9 +11,17 @@ public class Order{
 	private String u_address;
 	private String total_price;
 	private String o_status;
+	private String o_phone;
+	private String o_email;
+	private String u_detailAddress;
+	private String o_pay;
+	private String o_divide;
+	private String o_mention;
 	
+
 	public Order(int o_id, String u_id, int p_id, String date, String u_name, String u_address, String total_price,
-			String o_status) {
+			String o_status, String o_phone, String o_email, String u_detailAddress, String o_pay, String o_divide,
+			String o_mention) {
 		super();
 		this.o_id = o_id;
 		this.u_id = u_id;
@@ -23,7 +31,14 @@ public class Order{
 		this.u_address = u_address;
 		this.total_price = total_price;
 		this.o_status = o_status;
+		this.o_phone = o_phone;
+		this.o_email = o_email;
+		this.u_detailAddress = u_detailAddress;
+		this.o_pay = o_pay;
+		this.o_divide = o_divide;
+		this.o_mention = o_mention;
 	}
+
 
 	public int getO_id() {
 		return o_id;
@@ -87,6 +102,54 @@ public class Order{
 
 	public void setO_status(String o_status) {
 		this.o_status = o_status;
+	}
+
+	public String getO_phone() {
+		return o_phone;
+	}
+
+	public void setO_phone(String o_phone) {
+		this.o_phone = o_phone;
+	}
+
+	public String getO_email() {
+		return o_email;
+	}
+
+	public void setO_email(String o_email) {
+		this.o_email = o_email;
+	}
+
+	public String getU_detailAddress() {
+		return u_detailAddress;
+	}
+
+	public void setU_detailAddress(String u_detailAddress) {
+		this.u_detailAddress = u_detailAddress;
+	}
+
+	public String getO_pay() {
+		return o_pay;
+	}
+
+	public void setO_pay(String o_pay) {
+		this.o_pay = o_pay;
+	}
+
+	public String getO_divide() {
+		return o_divide;
+	}
+
+	public void setO_divide(String o_divide) {
+		this.o_divide = o_divide;
+	}
+
+	public String getO_mention() {
+		return o_mention;
+	}
+
+	public void setO_mention(String o_mention) {
+		this.o_mention = o_mention;
 	}
 	
 	

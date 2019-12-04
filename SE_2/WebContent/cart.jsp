@@ -143,8 +143,9 @@
 					</div>
 				</div>
 				<div class="col-lg-4 card-right">
-				<button class="site-btn">주문 하기</button>
-			<!-- 		<a href="checkout.jsp" class="site-btn">결제 하기</a>  -->
+
+					<a href="checkout.jsp" class="site-btn">주문 하기</a>
+					
 					</form>
 					<a href="index.jsp" class="site-btn sb-dark">쇼핑 계속하기</a>
 				
