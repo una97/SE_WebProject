@@ -62,7 +62,7 @@ table.type04 td {
 </style>
 
 <%
-ArrayList<pro
+
 %>
 </head>
 <body>
