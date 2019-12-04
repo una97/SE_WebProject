@@ -72,9 +72,9 @@ div {
 	</div>
 	<div>
 		<img src=<%=rs.getString("e_info") %> usemap="#head-login-btn"
-			align="center" width="80%" alt="">
+			align="center" width="74%" alt="">
 		<map name="head-login-btn">
-			<area shape="rect" coords="350,2800,1100,3090" href="category.jsp">
+			<area shape="rect" coords="300,2000,750,2100" href="category.jsp">
 		</map>
 	</div>
 	<%}else{ %>
