@@ -25,6 +25,7 @@
 	   int p_id=pdDtos.size();
 	   int p_price=Integer.parseInt(multi.getParameter("p_price"));
 	   int p_stock=Integer.parseInt(multi.getParameter("p_stock"));
+	   int isShared = Integer.parseInt(multi.getParameter("isShared"));
 	   String p_name=multi.getParameter("p_name");
 	   String p_category=multi.getParameter("p_category");
 	   String p_sm_category=multi.getParameter("p_sm_category");
@@ -43,7 +44,7 @@
 			script.println("</script>");
 		} else {
 			response.setCharacterEncoding("utf-8");
-			pd2.add(p_id,p_name,p_price,p_pic,p_stock,p_info,p_category,p_sm_category);
+			pd2.add(p_id,p_name,p_price,p_pic,p_stock,p_info,p_category,p_sm_category,isShared);
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('새로운 상품이 등록되었습니다')");

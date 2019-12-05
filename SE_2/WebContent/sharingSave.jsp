@@ -67,6 +67,11 @@
 	String o_divide = request.getParameter("divide");
 	String total_price = request.getParameter("sum");
 	String o_status = "상품준비중";
+	
+	
+	int s = shrDAO.enrollSharing(u_id, p_id, sDate, eDate);
+	
+	
 %>
 
 

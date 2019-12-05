@@ -1,6 +1,6 @@
 package dao;
-import dto.Sharing;
-import dto.User;
+
+import dto.*;
 import java.sql.*;
 
 public class UserDAO {
@@ -26,7 +26,7 @@ public class UserDAO {
 			Statement stmt=conn.createStatement();
 			rs=stmt.executeQuery(sql);
 		}catch(Exception e) {
-			System.out.println("DB¿¬µ¿ ¿À·ùÀÔ´Ï´Ù : "+e.getMessage());
+			System.out.println("DB ì—°ë™ ì˜¤ë¥˜ì…ë‹ˆë‹¤ : "+e.getMessage());
 		}
 		return rs;
 	}
@@ -60,7 +60,7 @@ public class UserDAO {
     	   }
     	   return auth;
     }
-    public int login(String u_id, String u_pw) { //·Î±×ÀÎ
+    public int login(String u_id, String u_pw) {
        String SQL = "select u_pw from user where u_id = ?"; 
        try {
           pstmt = conn.prepareStatement(SQL);
@@ -69,19 +69,19 @@ public class UserDAO {
           
           if(rs.next()) {
              if(rs.getString(1).equals(u_pw)) {
-                return 1; //·Î±×ÀÎ ¼º°ø
+                return 1;
              }
              else
-                return 0; //ºñ¹Ğ¹øÈ£ ºÒÀÏÄ¡
+                return 0;
           }
-          return -1; //¾ÆÀÌµğ ¾øÀ½
+          return -1; 
        }catch(Exception e) {
           e.printStackTrace();
        }
-       return -2; //µ¥ÀÌÅÍ º£ÀÌ½º ¿À·ù
+       return -2; 
     }
 
-    public int join(User user) {//È¸¿ø°¡ÀÔ
+    public int join(User user) {
        String SQL = "insert into user values(?,?,?,?,?,?,?)";
        try {
           pstmt=conn.prepareStatement(SQL);
@@ -99,7 +99,7 @@ public class UserDAO {
        return -1;
     }
     
-    //È¸¿øÁ¤º¸ ¼öÁ¤
+  
     public void modifyInfo (String u_id, String u_email, String u_pw, String u_address, String u_tel)
     {
     	try {		
@@ -112,7 +112,7 @@ public class UserDAO {
     	}
     }
     
-    //È¸¿øÅ»Åğ
+
     public int out(String u_id ,String u_pw) {
     	 String SQL = "select u_pw from user where u_id = ?"; 
          try {
@@ -125,16 +125,16 @@ public class UserDAO {
             	 SQL="delete from user where u_id=\""+u_id+"\"";
       			 pstmt=conn.prepareStatement(SQL);
       			 pstmt.executeUpdate();
-                  return 1; //Å»Åğ ¼º°ø
+                  return 1; 
                }
                else
-                  return 0; //ºñ¹Ğ¹øÈ£ ºÒÀÏÄ¡
+                  return 0; 
             }
-            return -1; //¾ÆÀÌµğ ¾øÀ½
+            return -1; 
          }catch(Exception e) {
             e.printStackTrace();
          }
-         return -2; //µ¥ÀÌÅÍ º£ÀÌ½º ¿À·ù
+         return -2; 
     } 
 
 
@@ -163,3 +163,4 @@ public Sharing getSharing(int p_id) {
          } 
 
 }
+
