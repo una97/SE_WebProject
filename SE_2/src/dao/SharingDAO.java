@@ -88,5 +88,26 @@ public class SharingDAO {
 		}
 		return shto;
 	}
+	
+	public int enrollSharing(String u_id, int p_id, String sDate, String eDate) {
+		String sql ="insert into shar_reservation(s_r_u_id, s_r_p_id,s_r_start,s_r_end) values(?,?,?,?) ";
+		try{
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1, u_id);
+			pstmt.setInt(2, p_id);
+			pstmt.setString(3, sDate);
+			pstmt.setString(4, eDate);
+			
+			return pstmt.executeUpdate();
+		}catch(Exception e) {
+	          e.printStackTrace();
+	       }
+	      return -1;
+	}
+	
+	
+	
+	
+	
 
 }
