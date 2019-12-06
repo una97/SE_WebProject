@@ -22,7 +22,7 @@
 
 ## Result
 <p align="center">
-  <img src="images/index.gif">
+  <img src="images/index.gif" width="100%">
 </p>
 
 ### Done List
