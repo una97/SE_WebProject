@@ -100,7 +100,7 @@
 					out.println("DB 연동 오류입니다");
 				}
 				while(rs.next()){
-					String img="http://localhost:8080/SE_2/"+rs.getString("p_pic");
+					String img="http://3.15.209.156:8080/SE_2/"+rs.getString("p_pic");
 			%>
 				<div class="product-item">
 					<div class="pi-pic">
@@ -144,7 +144,7 @@
 				rs.beforeFirst();
 				for(int i=0;i<6;i++){
 					rs.next();
-					String img="http://localhost:8080/SE_2/"+rs.getString("p_pic");
+					String img="http://3.15.209.156:8080/SE_2/"+rs.getString("p_pic");
 			%>
 				<div class="col-lg-3 col-sm-6">
 					<div class="product-item">

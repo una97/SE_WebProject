@@ -16,7 +16,7 @@
 <%
 	   request.setCharacterEncoding("UTF-8");
 	   EventDAO ed = new EventDAO();
-	   String directory=application.getRealPath("/img/event");
+	   String directory="/usr/local/tomcat/img/event";
 	   int maxSize=1024*1024*100;
 	   String encoding="UTF-8";
 	   MultipartRequest multi=new MultipartRequest(request,directory,maxSize,encoding,new DefaultFileRenamePolicy());

@@ -38,7 +38,10 @@ public class ReviewDAO {
     		pstmt.setString(3, to);
     		pstmt.setInt(4, r_star);
     		pstmt.setString(5, r_content);
-    		
+    		System.out.println(o_id);
+    		System.out.println(u_id);
+    		System.out.println(r_star);
+    		System.out.println(r_content);
     		return pstmt.executeUpdate();
     		
     	}catch (Exception e) {

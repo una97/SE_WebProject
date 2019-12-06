@@ -148,12 +148,12 @@
 					<td align="center">
 						<input type="hidden" name="p_id" value=<%=idx %>>
 						<div class="selector">
-							<img id="preview" src=<%="http://localhost:8080/SE_2/"+pdDto.getP_pic() %>>
+							<img id="preview" src=<%="http://3.15.209.156:8080/SE_2/"+pdDto.getP_pic() %>>
 						</div>
 					</td>
 					<td align="center">
 						<div class="selector">
-							<img id="preview2" src=<%="http://localhost:8080/SE_2/"+pdDto.getP_info() %>>
+							<img id="preview2" src=<%="http://3.15.209.156:8080/SE_2/"+pdDto.getP_info() %>>
 						</div>
 					</td>
 				</tr>

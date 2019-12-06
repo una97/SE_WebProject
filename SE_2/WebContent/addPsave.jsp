@@ -18,7 +18,7 @@
 	   ArrayList<Product> pdDtos;
 	   ProductDAO pd = new ProductDAO();
 	   pdDtos = pd.productSelect("select * from product");
-	   String directory=application.getRealPath("/img/product");
+	   String directory="/usr/local/tomcat/img/product";
 	   int maxSize=1024*1024*100;
 	   String encoding="UTF-8";
 	   MultipartRequest multi=new MultipartRequest(request,directory,maxSize,encoding,new DefaultFileRenamePolicy());

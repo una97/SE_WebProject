@@ -45,7 +45,6 @@ public class WriteReview extends HttpServlet {
 		int o_id = Integer.parseInt(request.getParameter("o_id"));
 		String u_id = request.getParameter("u_id");
 
-
 		ReviewDAO rvDAO = new ReviewDAO();
 		int result = rvDAO.addReview(o_id, u_id, r_star, r_content);
 		
