@@ -14,7 +14,7 @@
 	<%
 	   request.setCharacterEncoding("UTF-8");
 	   
-	   String directory=application.getRealPath("/img/product");
+	   String directory="/usr/local/tomcat/img/product";
 	   int maxSize=1024*1024*100;
 	   String encoding="UTF-8";
 	   MultipartRequest multi=new MultipartRequest(request,directory,maxSize,encoding,new DefaultFileRenamePolicy());
@@ -26,11 +26,18 @@
 	   String p_sm_category=multi.getParameter("p_sm_category");
 	   String p_pic=multi.getFilesystemName("p_pic");
 	   String p_info=multi.getFilesystemName("p_info");
+	   
+	   if(p_pic == null){
+		   p_pic = multi.getParameter("p_pic1");
+	   }else{
+	   
 	   p_pic = "img/product/"+p_pic;
+	   }
 	   if(p_info!=null){
 		   p_info="img/product/"+p_info;
 	   }
 	   ProductDAO pd = new ProductDAO();
+
 	   if (p_pic == null || p_category == null || p_name == null || p_sm_category == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");

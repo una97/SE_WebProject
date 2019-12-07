@@ -245,7 +245,7 @@
 							<div class="product-item">
 								<div class="pi-pic">
 									<!--<div class="tag-sale">ON SALE</div>-->
-                                    <a href=product.jsp?idx=<%=pdDto.getP_id() %>><img src=<%="http://localhost:8080/SE_2/"+pdDto.getP_pic() %> alt=""></a>
+                                    <a href=product.jsp?idx=<%=pdDto.getP_id() %>><img src=<%="http://3.15.209.156:8080/SE_2/"+pdDto.getP_pic() %> alt=""></a>
 									<div class="pi-links">
 										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>장바구니</span></a>
 										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>

@@ -21,7 +21,7 @@ public class Review {
     	this.r_date = r_date;
     	this.r_star = r_star;
     	this.r_content = r_content;
-    	this.reples = (r_reply==null)? null: setReples(r_reply);
+    	this.reples = setReples(r_reply);
     	this.r_like = r_like;
     	this.r_hate = r_hate;
     }
@@ -84,15 +84,18 @@ public class Review {
 
 	public ArrayList<Reply> setReples(String reply) {
 		String[] rep = (reply==null)? null: reply.split(";");
+		reples = new ArrayList<Reply>();
 		try {
-			reples = new ArrayList<Reply>();
 			for(int i=0;i<rep.length;i++) {
 				String[] inp = rep[i].split(",");
 				Reply tmp = new Reply(inp[0], inp[1]);
 				reples.add(tmp);
+				return reples;
 		}
-		}catch(Exception e){
-			e.printStackTrace();
+		}catch(NullPointerException e){
+			Reply tmp = new Reply("","");
+			reples.add(tmp);
+			return reples;
 		}
 		return reples;
 	}

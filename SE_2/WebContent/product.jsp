@@ -78,7 +78,7 @@ Product pdDto = pdDtos.get(idx);
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="product-pic-zoom">
-						<img class="product-big-img" src=<%=pdDto.getP_pic()%> alt="">
+						<img class="product-big-img" src=<%="http://3.15.209.156:8080/SE_2/"+pdDto.getP_pic()%> alt="">
 					</div>
 					<!--
 					<div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">

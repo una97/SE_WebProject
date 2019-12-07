@@ -141,7 +141,7 @@
 							<div class="product-item" style="margin:10px;">
 								<div>
 									<div style="width:50%; float:left;">
-                                    <img width="200px" src=<%="http://localhost:8080/SE_2/"+pdDto.getP_pic() %> alt="">
+                                    <img width="200px" src=<%="http://3.15.209.156:8080/SE_2/"+pdDto.getP_pic() %> alt="">
 									</div>
 									<div style="width:50%; float:right; padding-left:5px;">
 									<%String name = pdDto.getP_name();

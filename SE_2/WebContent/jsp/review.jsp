@@ -322,7 +322,7 @@ ArrayList<Review> rvDtos = rvDAO.reviewSelect("select * from review INNER JOIN o
           >
           
           <button class="comments__new_comment_submit_button js-ie-opacity-fix" type="submit">등록</button>
-          <input type="hidden" name="u_id" value=<%=(String) session.getAttribute("u_id") %>>
+          <input type="hidden" name="u_id" value=<%=(String) session.getAttribute("u_id") %> >
           <input type="hidden" name="o_id" value=<%=rvDto.getO_id() %>>
           <input type="hidden" name="p_id" value=<%=request.getParameter("idx") %>>
           
